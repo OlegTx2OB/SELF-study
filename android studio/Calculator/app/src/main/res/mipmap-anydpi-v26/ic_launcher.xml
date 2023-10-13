@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@android:drawable/checkbox_on_background" />
+    <foreground android:drawable="?android:attr/listChoiceIndicatorSingle" />
+    <monochrome android:drawable="@android:drawable/divider_horizontal_dark" />
+</adaptive-icon>

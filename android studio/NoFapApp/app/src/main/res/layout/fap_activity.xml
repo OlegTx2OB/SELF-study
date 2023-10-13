@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:padding="10dp"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111111">
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="63dp"
+        android:layout_height="60dp"
+
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="88dp"
+        android:src="@drawable/baseline_wb_sunny_24"
+        android:backgroundTint="#FFFF56"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/resetButton"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:layout_margin="10dp"
+
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.12"
+        android:src="@drawable/baseline_wb_sunny_24"
+        android:background="@drawable/reset_button"
+        android:text="reset"
+        android:textColor="#FFFFFF"
+
+        app:layout_constraintBottom_toTopOf="@+id/historyButton"
+        app:layout_constraintStart_toStartOf="@+id/historyButton"
+        app:layout_constraintEnd_toEndOf="@+id/achieveButton"
+        tools:ignore="HardcodedText" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/historyButton"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="35dp"
+
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.09"
+
+        android:background="@drawable/history_and_achieve_button"
+        android:text="history"
+        android:textColor="#FFFFFF"
+
+        app:layout_constraintBottom_toTopOf="@+id/dietButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/achieveButton"
+        tools:ignore="HardcodedText" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/achieveButton"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="35dp"
+
+        android:background="@drawable/history_and_achieve_button"
+        android:text="achieve"
+        android:textColor="#FFFFFF"
+
+        app:layout_constraintTop_toTopOf="@+id/historyButton"
+        app:layout_constraintBottom_toBottomOf="@+id/historyButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/historyButton"
+        tools:ignore="HardcodedText" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/dietButton"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.06"
+
+        android:background="@drawable/diet_button"
+        android:text="diet"
+        android:textColor="#FFFFFF"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/smokeButton"
+        tools:ignore="HardcodedText" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/smokeButton"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:background="@drawable/smoke_button"
+        android:text="smoke"
+        android:textColor="#FFFFFF"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dietButton"
+        app:layout_constraintStart_toEndOf="@+id/dietButton"
+        app:layout_constraintEnd_toStartOf="@+id/fapButton"
+        tools:ignore="HardcodedText" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/fapButton"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+
+        android:background="@drawable/fap_button"
+        android:text="fap"
+        android:textColor="#FFFFFF"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dietButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/smokeButton"
+        tools:ignore="HardcodedText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
