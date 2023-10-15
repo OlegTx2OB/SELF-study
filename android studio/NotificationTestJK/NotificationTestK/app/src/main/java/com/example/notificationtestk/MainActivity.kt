@@ -8,14 +8,17 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 
 
+
 class MainActivity : AppCompatActivity()
 {
+    lateinit var textView : TextView
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -52,6 +55,8 @@ class MainActivity : AppCompatActivity()
         val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent,
             PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_UPDATE_CURRENT)
 
+        val vibrate = longArrayOf(1000, 1000, 1000, 1000, 1000, 1000, 1000)
+
         val builder = NotificationCompat.Builder(this, "default")
             .setSmallIcon(R.drawable.notification_icon)
             .setContentTitle(getString(R.string.content_title))
@@ -60,9 +65,11 @@ class MainActivity : AppCompatActivity()
             .addAction(yesBuilder)
             .addAction(noBuilder)
             .setContentIntent(pendingIntent)
+            .setVibrate(vibrate)
             .setAutoCancel(true)
 
         val notificationManagerCompat = NotificationManagerCompat.from(this)
+
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
             == PackageManager.PERMISSION_GRANTED
