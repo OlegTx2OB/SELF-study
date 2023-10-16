@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/sheep"
         android:layout_width="200dp"
         android:layout_height="228dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/sheep" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/cat"
         android:layout_width="216dp"
         android:layout_height="214dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,7 +28,7 @@
         app:srcCompat="@drawable/cat" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/chicken"
         android:layout_width="212dp"
         android:layout_height="230dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,7 +36,7 @@
         app:srcCompat="@drawable/chicken" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/cow"
         android:layout_width="208dp"
         android:layout_height="203dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +44,7 @@
         app:srcCompat="@drawable/cow" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/dog"
         android:layout_width="199dp"
         android:layout_height="219dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,7 +52,7 @@
         app:srcCompat="@drawable/dog" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/duck"
         android:layout_width="200dp"
         android:layout_height="219dp"
         app:layout_constraintStart_toStartOf="parent"
