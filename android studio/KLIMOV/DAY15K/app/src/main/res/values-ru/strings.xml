@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DAY15K</string>
+    <string name="to_parrots_button">метры -> попугаи</string>
+    <string name="to_metres_button">футы -> метры</string>
+    <string name="button_text">перевести</string>
+</resources>

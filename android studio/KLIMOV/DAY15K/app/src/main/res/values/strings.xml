@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">DAY15K</string>
+    <string name="to_parrots_button">metres -> parrots</string>
+    <string name="to_metres_button">foot -> metres</string>
+    <string name="button_text">convert</string>
+</resources>
