@@ -6,7 +6,7 @@ import android.util.Log
 
 class MainActivity : AppCompatActivity()
 {
-
+    //package:mine фильтр
     //com.example.day16k mainActivity called
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
