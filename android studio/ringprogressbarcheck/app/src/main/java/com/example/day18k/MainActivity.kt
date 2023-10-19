@@ -7,6 +7,10 @@ import android.os.Looper
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity()
 {
@@ -30,23 +34,30 @@ class MainActivity : AppCompatActivity()
 
         handler = Handler(Looper.getMainLooper())
         runnable = Runnable {
-
-                progressBar.progress = intProgress++
-                if (intProgress == progressBar.max) intProgress = 0
-                Thread.sleep(500)
-            progressBar.progress = 500
-            Thread.sleep(1000)
-            progressBar.progress = 200
-            Thread.sleep(3000)
-            progressBar.progress = 800//todo почему-то замораживается основной поток на это время(точнее, отрисовка не работает)
-
+            GlobalScope.launch(Dispatchers.Main) {
+                while (isLoopActive)
+                {
+                    if (intProgress == progressBar.max)
+                    {
+                        intProgress = 0
+                        textView.text = (++count).toString()
+                    }
+                    progressBar.progress = intProgress++
+                    delay(20)
+                }
+            }
         }
-        handler.post(runnable)
     }
 
-    override fun onPause()
+    override fun onResume()
     {
-        super.onPause()
+        super.onResume()
+        isLoopActive = true
+        handler.post(runnable)
+    }
+    override fun onStop()
+    {
+        super.onStop()
         isLoopActive = false
     }
 }
