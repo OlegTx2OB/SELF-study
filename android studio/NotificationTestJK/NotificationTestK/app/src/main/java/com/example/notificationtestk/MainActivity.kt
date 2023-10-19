@@ -19,11 +19,15 @@ import androidx.core.app.NotificationManagerCompat
 class MainActivity : AppCompatActivity()
 {
     lateinit var textView : TextView
+    val notificationId = 0
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         createNotificationChannel()
+        setNotificationTextOnTextView()
+        cancelNotification()
     }
 
     private fun createNotificationChannel()
@@ -32,18 +36,31 @@ class MainActivity : AppCompatActivity()
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(channel)
     }
+    private fun cancelNotification()
+    {
+        val notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.cancel(notificationId);
+    }
+    private fun setNotificationTextOnTextView()
+    {
+        textView = findViewById(R.id.textView)
+        val text = intent.getStringExtra("text")
+        text?.let{ textView.text = text }
+    }
     fun onClickNotificationButton(view : View)
     {
         val yesIntent = Intent(this, MainActivity::class.java)
         val noIntent = Intent(this, MainActivity::class.java)
+
         yesIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            .putExtra("text", "Yes")
         noIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        yesIntent.putExtra("response", "Yes")
-        noIntent.putExtra("response", "No")
+            .putExtra("text", "No")
+
         val yesPendingIntent = PendingIntent.getActivity(this, 1, yesIntent,
-            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_UPDATE_CURRENT)
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_UPDATE_CURRENT)
         val noPendingIntent = PendingIntent.getActivity(this, 2, noIntent,
-            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_UPDATE_CURRENT)
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_UPDATE_CURRENT)
 
         val yesBuilder = NotificationCompat.Action.Builder(R.drawable.yes_icon, "Yes", yesPendingIntent).build()
         val noBuilder = NotificationCompat.Action.Builder(R.drawable.no_icon, "No", noPendingIntent).build()
@@ -52,11 +69,6 @@ class MainActivity : AppCompatActivity()
         val notificationIntent = packageManager.getLaunchIntentForPackage(packageName)
         notificationIntent!!.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
 
-        val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent,
-            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_UPDATE_CURRENT)
-
-        val vibrate = longArrayOf(1000, 1000, 1000, 1000, 1000, 1000, 1000)
-
         val builder = NotificationCompat.Builder(this, "default")
             .setSmallIcon(R.drawable.notification_icon)
             .setContentTitle(getString(R.string.content_title))
@@ -64,15 +76,13 @@ class MainActivity : AppCompatActivity()
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .addAction(yesBuilder)
             .addAction(noBuilder)
-            .setContentIntent(pendingIntent)
-            .setVibrate(vibrate)
-            .setAutoCancel(true)
+            .setAutoCancel(false)
 
         val notificationManagerCompat = NotificationManagerCompat.from(this)
 
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
             == PackageManager.PERMISSION_GRANTED
-        ) notificationManagerCompat.notify(0, builder.build())
+        ) notificationManagerCompat.notify(notificationId, builder.build())
     }
 }
