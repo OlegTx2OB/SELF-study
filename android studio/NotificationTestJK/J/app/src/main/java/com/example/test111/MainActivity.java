@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void createNotificationChannel()
     {
-        NotificationChannel channel = new NotificationChannel("default", "Default Channel", NotificationManager.IMPORTANCE_DEFAULT);
+        NotificationChannel channel = new NotificationChannel(
+                "default", "Default Channel", NotificationManager.IMPORTANCE_DEFAULT);
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.createNotificationChannel(channel);
     }
