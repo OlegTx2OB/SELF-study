@@ -14,7 +14,7 @@
         android:toYScale="1.5" />
 
     <translate
-        android:fromYDelta="80%p"
+        android:fromYDelta="45%p"
         android:toYDelta="10%p" />
 
     <alpha

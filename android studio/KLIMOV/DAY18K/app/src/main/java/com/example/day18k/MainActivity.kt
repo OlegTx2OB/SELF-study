@@ -16,9 +16,10 @@ class MainActivity : AppCompatActivity()
         setContentView(R.layout.activity_main)
 
         val sunImageView: ImageView = findViewById(R.id.sun)
-        // Анимация для восхода солнца
+        val clockImageView: ImageView = findViewById(R.id.clock)
         val sunRiseAnimation: Animation = AnimationUtils.loadAnimation(this, R.anim.sun_rise)
-        // Подключаем анимацию к нужному View
+        val clockTurnAnimation: Animation = AnimationUtils.loadAnimation(this, R.anim.clock_turn)
         sunImageView.startAnimation(sunRiseAnimation)
+        clockImageView.startAnimation(clockTurnAnimation)
     }
 }

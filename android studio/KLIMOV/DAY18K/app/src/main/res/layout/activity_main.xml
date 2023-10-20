@@ -67,7 +67,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/grass" />
 
-
+    <ImageView
+        android:id="@+id/clock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/grass"
+        app:srcCompat="@drawable/clock"
+        android:layout_margin="20dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
