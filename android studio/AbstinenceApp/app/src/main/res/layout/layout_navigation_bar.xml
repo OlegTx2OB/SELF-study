@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_bottle"
+
+        style="@style/navigationBarStyle"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        android:drawableBottom="@drawable/ic_bottle"
+        android:drawableTint="@color/charcoal"
+
+        app:layout_constraintEnd_toStartOf="@+id/button_cigarette"
+        app:layout_constraintStart_toStartOf="parent"
+         />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_cigarette"
+
+        style="@style/navigationBarStyle"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        android:drawableBottom="@drawable/ic_cigarette"
+        android:drawableTint="@color/burnt_orange"
+        android:enabled="false"
+
+        app:layout_constraintEnd_toStartOf="@+id/button_xxx"
+        app:layout_constraintStart_toEndOf="@+id/button_bottle"
+         />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_xxx"
+
+        style="@style/navigationBarStyle"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        android:drawableBottom="@drawable/ic_xxx"
+        android:drawableTint="@color/charcoal"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_cigarette" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
