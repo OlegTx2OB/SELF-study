@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <EditText
+        android:id="@+id/editSearch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionSearch"
+        android:singleLine="true"
+        android:text="editSearch"
+        android:textSize="26sp"
+        android:inputType="none"
+
+        app:layout_constraintBottom_toTopOf="@+id/editGo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editGo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionGo"
+        android:singleLine="true"
+        android:text="editGo"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@+id/editSend"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        android:inputType="date"
+        app:layout_constraintTop_toBottomOf="@+id/editSearch" />
+
+    <EditText
+        android:id="@+id/editSend"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionSend"
+        android:singleLine="true"
+        android:text="editSend"
+        android:textSize="26sp"
+        android:inputType="textCapWords"
+        app:layout_constraintBottom_toTopOf="@+id/editNext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editGo" />
+
+    <EditText
+        android:id="@+id/editNext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionNext"
+        android:singleLine="true"
+        android:text="editNext"
+        android:textSize="26sp"
+        android:inputType="textUri"
+
+        app:layout_constraintBottom_toTopOf="@+id/editDone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editSend" />
+
+    <EditText
+        android:id="@+id/editDone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
+        android:text="editDone"
+        android:textSize="26sp"
+        android:inputType="phone"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editNext" />
+</androidx.constraintlayout.widget.ConstraintLayout>
