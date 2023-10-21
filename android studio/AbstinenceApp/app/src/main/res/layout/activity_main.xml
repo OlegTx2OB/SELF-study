@@ -8,5 +8,6 @@
     android:background="@color/pale_beige">
 
     <include layout="@layout/layout_navigation_bar" />
+    <include layout="@layout/layout_center_buttons" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

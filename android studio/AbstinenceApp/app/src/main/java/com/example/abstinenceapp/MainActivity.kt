@@ -5,8 +5,6 @@ import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import androidx.appcompat.widget.AppCompatButton
 
 class MainActivity : AppCompatActivity()
@@ -20,9 +18,9 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        cigaretteButton = findViewById(R.id.button_cigarette)
-        bottleButton = findViewById(R.id.button_bottle)
-        xxxButton = findViewById(R.id.button_xxx)
+        cigaretteButton = findViewById(R.id.cigarette)
+        bottleButton = findViewById(R.id.bottle)
+        xxxButton = findViewById(R.id.xxx)
     }
 
     @SuppressLint("UseCompatTextViewDrawableApis")
@@ -41,10 +39,6 @@ class MainActivity : AppCompatActivity()
         disabledButton.compoundDrawableTintList = ColorStateList.valueOf(
             getColor(R.color.charcoal))
         disabledButton.isEnabled = true
-
-//        val buttonActivating: Animation = AnimationUtils.loadAnimation(
-//            this, R.anim.navigation_bar_button_activating)
-//        disabledButton.startAnimation(buttonActivating)
 
     }
 
