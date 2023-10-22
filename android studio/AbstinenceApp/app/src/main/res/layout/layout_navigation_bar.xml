@@ -6,46 +6,42 @@
     android:layout_height="match_parent"
     android:gravity="center">
 
-    <androidx.appcompat.widget.AppCompatButton
+    <ImageButton
         android:id="@+id/bottle"
-
         style="@style/navigationBarStyle"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+        android:src="@drawable/ic_bottle100"
+
         app:layout_constraintBottom_toBottomOf="parent"
-
-        android:drawableBottom="@drawable/ic_bottle50"
-        android:drawableTint="@color/dark_chocolate"
-
         app:layout_constraintEnd_toStartOf="@+id/cigarette"
         app:layout_constraintStart_toStartOf="parent"
-         />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1"
+        app:tint="@color/dark_chocolate" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <ImageButton
         android:id="@+id/cigarette"
 
         style="@style/navigationBarStyle"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
-        app:layout_constraintBottom_toBottomOf="parent"
-
-        android:drawableBottom="@drawable/ic_cigarette50"
-        android:drawableTint="@color/burnt_orange"
         android:enabled="false"
+        android:src="@drawable/ic_cigarette100"
 
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/xxx"
         app:layout_constraintStart_toEndOf="@+id/bottle"
-         />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1"
+        app:tint="@color/burnt_orange" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <ImageButton
         android:id="@+id/xxx"
-
         style="@style/navigationBarStyle"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+        android:src="@drawable/ic_xxx100"
+
         app:layout_constraintBottom_toBottomOf="parent"
-
-        android:drawableBottom="@drawable/ic_xxx50"
-        android:drawableTint="@color/dark_chocolate"
-
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cigarette" />
+        app:layout_constraintStart_toEndOf="@+id/cigarette"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1"
+        app:tint="@color/dark_chocolate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

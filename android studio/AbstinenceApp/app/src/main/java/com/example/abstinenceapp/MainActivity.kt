@@ -8,12 +8,12 @@ import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.widget.AppCompatButton
 
-class MainActivity : AppCompatActivity()
+open class MainActivity : AppCompatActivity()
 {
 
-    lateinit var mCigaretteBtn: AppCompatButton
-    lateinit var mBottleBtn: AppCompatButton
-    lateinit var mXXXBtn: AppCompatButton
+    lateinit var mCigaretteBtn: ImageButton
+    lateinit var mBottleBtn: ImageButton
+    lateinit var mXXXBtn: ImageButton
 
     lateinit var mMenuBtn: ImageButton
     lateinit var mRestartBtn: ImageButton
@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         viewsInitialization()
+
+     
     }
 
     fun viewsInitialization()
@@ -35,27 +37,32 @@ class MainActivity : AppCompatActivity()
         mBottleBtn = findViewById(R.id.bottle)
         mXXXBtn = findViewById(R.id.xxx)
 
-        mMenuBtn = findViewById(R.id.menu)
+        mMenuBtn = findViewById(R.id.archieve)
         mRestartBtn = findViewById(R.id.restart)
         mSettingsBtn = findViewById(R.id.settings)
         mAchieveBtn = findViewById(R.id.achieve)
     }
-    @SuppressLint("UseCompatTextViewDrawableApis")
-    fun onClickNavigationBarButtons(view: View)
-    {
-        val pressedButton = view as AppCompatButton
 
-        val disabledButton: AppCompatButton = if(!mCigaretteBtn.isEnabled) mCigaretteBtn
-        else if(!mBottleBtn.isEnabled) mBottleBtn
-        else mXXXBtn
 
-        pressedButton.compoundDrawableTintList = ColorStateList.valueOf(
-            getColor(R.color.burnt_orange))
-        pressedButton.isEnabled = false
 
-        disabledButton.compoundDrawableTintList = ColorStateList.valueOf(
-            getColor(R.color.dark_chocolate))
-        disabledButton.isEnabled = true
-    }
+
+
+//    @SuppressLint("UseCompatTextViewDrawableApis")
+//    fun onClickNavigationBarButtons(view: View)
+//    {
+//        val pressedButton = view as AppCompatButton
+//
+//        val disabledButton: AppCompatButton = if(!mCigaretteBtn.isEnabled) mCigaretteBtn
+//        else if(!mBottleBtn.isEnabled) mBottleBtn
+//        else mXXXBtn
+//
+//        pressedButton.compoundDrawableTintList = ColorStateList.valueOf(
+//            getColor(R.color.burnt_orange))
+//        pressedButton.isEnabled = false
+//
+//        disabledButton.compoundDrawableTintList = ColorStateList.valueOf(
+//            getColor(R.color.dark_chocolate))
+//        disabledButton.isEnabled = true
+//    }
 
 }
