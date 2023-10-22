@@ -7,8 +7,13 @@
     tools:context=".MainActivity"
     android:background="@color/dark_pale_beige">
 
-    <include layout="@layout/layout_navigation_bar" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/layout_navigation_bar" />
     <include layout="@layout/layout_center_buttons" />
-    <include layout="@layout/layout_clock"/>
+
+    <include
+        layout="@layout/layout_clock"
+        app:layout_constraintBottom_toBottomOf="@+id/include" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

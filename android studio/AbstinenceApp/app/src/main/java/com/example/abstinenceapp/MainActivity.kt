@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 
 open class MainActivity : AppCompatActivity()
@@ -20,6 +22,8 @@ open class MainActivity : AppCompatActivity()
     lateinit var mSettingsBtn: ImageButton
     lateinit var mAchieveBtn: ImageButton
 
+    lateinit var mTextView: TextView
+
 
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -28,7 +32,21 @@ open class MainActivity : AppCompatActivity()
         setContentView(R.layout.activity_main)
         viewsInitialization()
 
-     
+        var timePeeker: Long = 0
+        mRestartBtn.setOnClickListener{
+            if (timePeeker + 2000 > System.currentTimeMillis())
+            {
+                mTextView.text = "Meow"
+            }
+            else
+            {
+                Toast.makeText(
+                    baseContext, "Press once again to restart!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            timePeeker = System.currentTimeMillis()
+        }
     }
 
     fun viewsInitialization()
@@ -41,6 +59,8 @@ open class MainActivity : AppCompatActivity()
         mRestartBtn = findViewById(R.id.restart)
         mSettingsBtn = findViewById(R.id.settings)
         mAchieveBtn = findViewById(R.id.achieve)
+
+        mTextView = findViewById(R.id.textView)
     }
 
 
