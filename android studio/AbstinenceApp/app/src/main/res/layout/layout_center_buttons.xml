@@ -6,21 +6,21 @@
     android:layout_height="match_parent">
 
     <ImageButton
-        android:id="@+id/star"
+        android:id="@+id/achieve"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/background_center_buttons"
+        android:background="@drawable/center_additional_buttons"
         android:src="@drawable/ic_star50"
 
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.10"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85"
+        app:layout_constraintVertical_bias="0.88"
         app:layout_constraintWidth_percent="0.4"
-        app:layout_constraintHeight_percent="0.18"
 
         app:tint="@color/white" />
 
@@ -29,19 +29,17 @@
 
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/background_center_buttons"
+        android:background="@drawable/restart_button"
         android:src="@drawable/ic_restart50"
 
         app:layout_constraintBottom_toBottomOf="parent"
-
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.90"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85"
+        app:layout_constraintVertical_bias="0.88"
         app:layout_constraintWidth_percent="0.4"
-        app:layout_constraintHeight_percent="0.18"
-
         app:tint="@color/white" />
 
     <ImageButton
@@ -49,19 +47,18 @@
 
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/background_center_buttons"
+        android:background="@drawable/center_additional_buttons"
         android:src="@drawable/ic_menu50"
-
 
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.90"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58"
+        app:layout_constraintVertical_bias="0.68"
         app:layout_constraintWidth_percent="0.4"
-        app:layout_constraintHeight_percent="0.18"
 
         app:tint="@color/white" />
 
@@ -69,18 +66,17 @@
         android:id="@+id/settings"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/background_center_buttons"
-
+        android:background="@drawable/center_additional_buttons"
 
         android:src="@drawable/ic_settings50"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.18"
-        app:layout_constraintHorizontal_bias="0.10"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58"
+        app:layout_constraintVertical_bias="0.68"
         app:layout_constraintWidth_percent="0.4"
         app:tint="@color/white" />
 

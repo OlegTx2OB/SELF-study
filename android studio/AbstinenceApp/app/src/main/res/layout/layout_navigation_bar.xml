@@ -13,8 +13,8 @@
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
         app:layout_constraintBottom_toBottomOf="parent"
 
-        android:drawableBottom="@drawable/ic_bottle100"
-        android:drawableTint="@color/charcoal"
+        android:drawableBottom="@drawable/ic_bottle50"
+        android:drawableTint="@color/dark_chocolate"
 
         app:layout_constraintEnd_toStartOf="@+id/cigarette"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,7 @@
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
         app:layout_constraintBottom_toBottomOf="parent"
 
-        android:drawableBottom="@drawable/ic_cigarette100"
+        android:drawableBottom="@drawable/ic_cigarette50"
         android:drawableTint="@color/burnt_orange"
         android:enabled="false"
 
@@ -42,8 +42,8 @@
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
         app:layout_constraintBottom_toBottomOf="parent"
 
-        android:drawableBottom="@drawable/ic_xxx100"
-        android:drawableTint="@color/charcoal"
+        android:drawableBottom="@drawable/ic_xxx50"
+        android:drawableTint="@color/dark_chocolate"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cigarette" />
