@@ -7,8 +7,8 @@
 
     <ImageButton
         android:id="@+id/achieve"
-        style="@style/centerButtonsStyle"
-        android:background="@drawable/center_additional_buttons"
+        style="@style/bigButtonsStyle"
+        android:background="@drawable/big_buttons"
         android:src="@drawable/ic_star100"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +22,7 @@
 
     <ImageButton
         android:id="@+id/restart"
-        style="@style/centerButtonsStyle"
+        style="@style/bigButtonsStyle"
         android:background="@drawable/restart_button"
         android:src="@drawable/ic_restart200"
 
@@ -39,10 +39,10 @@
     <ImageButton
         android:id="@+id/archieve"
 
-        style="@style/centerButtonsStyle"
+        style="@style/bigButtonsStyle"
 
-        android:background="@drawable/center_additional_buttons"
-        android:src="@drawable/ic_archieve200"
+        android:background="@drawable/big_buttons"
+        android:src="@drawable/ic_archive200"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,9 +56,9 @@
 
     <ImageButton
         android:id="@+id/settings"
-        style="@style/centerButtonsStyle"
+        style="@style/bigButtonsStyle"
 
-        android:background="@drawable/center_additional_buttons"
+        android:background="@drawable/big_buttons"
 
         android:src="@drawable/ic_settings200"
 

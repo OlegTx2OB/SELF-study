@@ -1,18 +1,15 @@
 package com.example.abstinenceapp
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatButton
 
 //todo сделать так, чтобы при запуске таймер не работал
 //todo при нажатии на настройки передать какая из кнопок выбора была прожата
+//todo мб из-за одинаковых названий (например, back, может отъёбываться приложуха)
 open class MainActivity : AppCompatActivity()
 {
 
@@ -34,15 +31,15 @@ open class MainActivity : AppCompatActivity()
         setContentView(R.layout.activity_main)
         viewsInitialization()
 
-        var timePeeker: Long = 0
+        var timePicker: Long = 0
 
         mRestartBtn.setOnClickListener{
-            if (timePeeker + 2000 > System.currentTimeMillis()) mTextView.text = "Meow"//todo
+            if (timePicker + 2000 > System.currentTimeMillis()) mTextView.text = "Meow"//todo
             else Toast.makeText(
                     baseContext, "Press once again to restart!",
                     Toast.LENGTH_SHORT
                 ).show()
-            timePeeker = System.currentTimeMillis()
+            timePicker = System.currentTimeMillis()
         }
 
         mSettingsBtn.setOnClickListener {

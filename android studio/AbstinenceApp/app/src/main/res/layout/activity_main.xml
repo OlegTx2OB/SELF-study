@@ -9,7 +9,7 @@
 
     <include layout="@layout/layout_navigation_bar" />
 
-    <include layout="@layout/layout_center_buttons" />
+    <include layout="@layout/layout_center_buttons_ma" />
 
     <include layout="@layout/layout_clock" />
 
