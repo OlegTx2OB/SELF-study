@@ -1,6 +1,7 @@
 package com.example.abstinenceapp
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 
+//todo сделать так, чтобы при запуске таймер не работал
+//todo при нажатии на настройки передать какая из кнопок выбора была прожата
 open class MainActivity : AppCompatActivity()
 {
 
@@ -25,7 +28,6 @@ open class MainActivity : AppCompatActivity()
     lateinit var mTextView: TextView
 
 
-
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -33,23 +35,23 @@ open class MainActivity : AppCompatActivity()
         viewsInitialization()
 
         var timePeeker: Long = 0
+
         mRestartBtn.setOnClickListener{
-            if (timePeeker + 2000 > System.currentTimeMillis())
-            {
-                mTextView.text = "Meow"
-            }
-            else
-            {
-                Toast.makeText(
+            if (timePeeker + 2000 > System.currentTimeMillis()) mTextView.text = "Meow"//todo
+            else Toast.makeText(
                     baseContext, "Press once again to restart!",
                     Toast.LENGTH_SHORT
                 ).show()
-            }
             timePeeker = System.currentTimeMillis()
+        }
+
+        mSettingsBtn.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
         }
     }
 
-    fun viewsInitialization()
+    private fun viewsInitialization()
     {
         mCigaretteBtn = findViewById(R.id.cigarette)
         mBottleBtn = findViewById(R.id.bottle)
@@ -84,5 +86,11 @@ open class MainActivity : AppCompatActivity()
 //            getColor(R.color.dark_chocolate))
 //        disabledButton.isEnabled = true
 //    }
+
+
+//    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//    Editor edit = sharedPreferences.edit();
+//    edit.putBoolean("sly", false);
+//    edit.commit();
 
 }
