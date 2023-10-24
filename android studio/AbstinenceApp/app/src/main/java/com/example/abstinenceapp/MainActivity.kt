@@ -2,7 +2,6 @@ package com.example.abstinenceapp
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -10,11 +9,13 @@ import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.ZoneOffset
 
 /*
     all ONTOUCHS and ONCLICKS will be inside the OnStart() method
@@ -24,7 +25,7 @@ import java.time.LocalDate
 //todo при нажатии на настройки передать какая из кнопок выбора была прожата
 //todo мб из-за одинаковых названий (например, back, может отъёбываться приложуха)
 
-abstract class MainActivity : AppCompatActivity()
+class MainActivity : AppCompatActivity()
 {
     private lateinit var handler: Handler
     private lateinit var runnable: Runnable
@@ -59,9 +60,7 @@ abstract class MainActivity : AppCompatActivity()
         mRestartBtn.setOnClickListener{
             if (timePicker + 2000 > System.currentTimeMillis()) mTimeTV.text = "Meow"//todo
             else Toast.makeText(
-                baseContext, "Press once again to restart!",
-                Toast.LENGTH_SHORT
-            ).show()
+                baseContext, "Press once again to restart!", Toast.LENGTH_SHORT).show()
             timePicker = System.currentTimeMillis()
         }
 
@@ -75,8 +74,8 @@ abstract class MainActivity : AppCompatActivity()
     {
         super.onResume()
 
-            //setClockTimeThread()
         isLoopActive = true
+        setClockTimeThread()
     }
 
     override fun onPause()
@@ -93,19 +92,39 @@ abstract class MainActivity : AppCompatActivity()
             GlobalScope.launch(Dispatchers.Main) {
                 while (isLoopActive)
                 {
-                    val daysSinceEpoch = LocalDate.now().toEpochDay().toInt()
+                    val currFullTimeInMin = (LocalDateTime.now().toEpochSecond(ZoneOffset.UTC) / 60).toInt()
 
-                    val sharedPreferences = getSharedPreferences("preferences", Context.MODE_PRIVATE)
-                    val calendarTimeInDays = sharedPreferences.getInt("calendarTimeInDays", daysSinceEpoch)
-                    val clockTimeInMinutes = sharedPreferences.getInt("clockTimeInMinutes", 0)
+                    val sP = getSharedPreferences("preferences", Context.MODE_PRIVATE)
 
-                    val days = calendarTimeInDays - daysSinceEpoch
-                    val hours: Int = clockTimeInMinutes / 60
-                    val minutes = clockTimeInMinutes % 60
+                    val fullMemTimeInMin = sP.getInt("fullMemTimeInMin", currFullTimeInMin)
+                    if(fullMemTimeInMin == currFullTimeInMin)
+                    {
+                        val editor = sP.edit()
+                        editor.putInt("fullMemTimeInMin", currFullTimeInMin)
+                        editor.apply()
+                    }
+                    val days: Int = (currFullTimeInMin - fullMemTimeInMin) / 1440
+                    val hours: Int = ((currFullTimeInMin - fullMemTimeInMin) % 1440) / 60
+                    val minutes: Int = (currFullTimeInMin - fullMemTimeInMin) % 60
 
                     mTimeTV.text = "$days:$hours:$minutes"
-                    activeClockRing.progress = (hours * 60) + minutes
-                    delay(60000)
+                    activeClockRing.progress = (currFullTimeInMin - fullMemTimeInMin) % 1440
+                    delay(1000)//todo 60000
+
+
+
+//                    val memTimeInMinutes = sP.getInt("clockTimeInMinutes", currTimeInMinutes)
+//                    if (memTimeInMinutes == currTimeInMinutes)
+//                    {
+//                        val editor = sP.edit()
+//                        editor.putInt("clockTimeInMinutes", currTimeInMinutes)
+//                        editor.apply()
+//                    }
+//                    val days = memTimeInDays - daysSinceEpoch
+//                    val hours: Int = memTimeInMinutes / 60
+//                    val minutes = memTimeInMinutes % 60
+//
+
                 }
             }
         }

@@ -8,6 +8,6 @@
     android:background="@color/dark_pale_beige">
 
     <include layout="@layout/layout_back_button"/>
-    <include layout="@layout/layout_date_time_buttons_ca"/>
+    <include layout="@layout/layout_date_time_button_ca"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

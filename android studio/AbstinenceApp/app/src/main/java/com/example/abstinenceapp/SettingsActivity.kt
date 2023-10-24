@@ -2,14 +2,13 @@ package com.example.abstinenceapp
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.widget.ImageButton
-import android.widget.ProgressBar
 import android.widget.TextView
-import java.time.LocalDate
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import java.time.LocalDateTime
+import java.time.ZoneOffset
 import java.util.Calendar
 
 /*
@@ -21,11 +20,10 @@ class SettingsActivity : AppCompatActivity()
     //todo написать, чтобы по умолчанию время бралось как нынешнее(если до этого не заходил ты в приложуху)
 
     lateinit var mBackBtn: ImageButton
-    lateinit var mCalendarBtn: ImageButton
     lateinit var mClockBtn: ImageButton
 
     lateinit var mCalendarTimeTV: TextView
-    lateinit var mClockTimeTV: TextView
+    lateinit var mTimeWithinADayTV: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -41,53 +39,56 @@ class SettingsActivity : AppCompatActivity()
 
         mBackBtn.setOnClickListener { onBackPressed() }
 
-        mCalendarBtn.setOnClickListener {
+        mClockBtn.setOnClickListener {
             val calendar = Calendar.getInstance()
-
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH)
             val day = calendar.get(Calendar.DAY_OF_MONTH)
-
-            val datePickerDialog = DatePickerDialog(this, { _, y, m, d ->
-                mCalendarTimeTV.text = "$d.${m + 1}.$y"
-                val sharedPreferences = getSharedPreferences("preferences", Context.MODE_PRIVATE)
-                val editor = sharedPreferences.edit()
-                val daysCount = LocalDate.of(y, m+1, d).toEpochDay().toInt()
-                editor.putInt("calendarTimeInDays", daysCount)
-                editor.apply()
-            }, year, month, day)//todo цвет стиля последним аргументом можно выбрать
-
-            datePickerDialog.show()
-        }
-
-        mClockBtn.setOnClickListener {
-            val calendar = Calendar.getInstance()
-
             val hour = calendar.get(Calendar.HOUR_OF_DAY)
             val minute = calendar.get(Calendar.MINUTE)
 
-            val timePickerDialog = TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { _, hr, min ->
-                mClockTimeTV.text = "$hr.$min"
 
-                val sharedPreferences = getSharedPreferences("preferences", Context.MODE_PRIVATE)
-                val editor = sharedPreferences.edit()
-                val minutesCount = hr * 60 + min
-                editor.putInt("clockTimeInMinutes", minutesCount)
-                editor.apply()
+            val currFullTimeInMin = (LocalDateTime.now()
+                .toEpochSecond(ZoneOffset.UTC) / 60).toInt()
+            var enteredFullTimeInMin: Int = 0
+            var enteredY = 0
+            var enteredM = 0
+            var enteredD = 0
+
+            val timePickerDialog = TimePickerDialog(this, { _, hr, min ->
+                enteredFullTimeInMin += (hr * 60) + min
+
+                if(enteredFullTimeInMin <= currFullTimeInMin)//todo неверный подсчет enteredFullTimeInMin(погрешность в около 2 недели. типа 24 год не пропускает, но близкие даты - да)
+                {
+                    mTimeWithinADayTV.text = "$hr:$min"
+                    mCalendarTimeTV.text = "$enteredD.${enteredM + 1}.$enteredY"
+                }
+                else Toast.makeText(
+                    baseContext, "Entered time is > than current", Toast.LENGTH_SHORT).show()
 
             }, hour, minute, true)
 
-            timePickerDialog.show()
+            val datePickerDialog = DatePickerDialog(this, { _, y, m, d ->
+
+                enteredFullTimeInMin = (LocalDateTime.of(y, m, d, 0, 0)
+                    .toEpochSecond(ZoneOffset.UTC) / 60).toInt()
+
+                enteredY = y; enteredM = m; enteredD = d;
+
+                timePickerDialog.show()
+            }, year, month, day)//todo цвет стиля последним аргументом можно выбрать
+
+            datePickerDialog.show()
+
         }
     }
 
     private fun viewsInitialization()
     {
         mBackBtn = findViewById(R.id.backBtn)
-        mCalendarBtn = findViewById(R.id.calendarBtn)
         mClockBtn = findViewById(R.id.clockBtn)
 
-        mCalendarTimeTV = findViewById(R.id.calendarTimeTV)
-        mClockTimeTV = findViewById(R.id.clockTimeTV)
+        mCalendarTimeTV = findViewById(R.id.dateTV)
+        mTimeWithinADayTV = findViewById(R.id.timeWithinADayTV)
     }
 }
