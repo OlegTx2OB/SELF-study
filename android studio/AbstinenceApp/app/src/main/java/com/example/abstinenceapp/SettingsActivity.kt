@@ -2,16 +2,20 @@ package com.example.abstinenceapp
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.widget.ImageButton
+import android.widget.ProgressBar
 import android.widget.TextView
+import java.time.LocalDate
 import java.util.Calendar
 
 /*
-    all ONTOUCHS and ONCLICKS will be inside the OnResume() method
+    all ONTOUCHS and ONCLICKS will be inside the OnStart() method
 */
+
 class SettingsActivity : AppCompatActivity()
 {
     //todo написать, чтобы по умолчанию время бралось как нынешнее(если до этого не заходил ты в приложуху)
@@ -31,9 +35,9 @@ class SettingsActivity : AppCompatActivity()
         viewsInitialization()
     }
 
-    override fun onResume()
+    override fun onStart()
     {
-        super.onResume()
+        super.onStart()
 
         mBackBtn.setOnClickListener { onBackPressed() }
 
@@ -46,10 +50,11 @@ class SettingsActivity : AppCompatActivity()
 
             val datePickerDialog = DatePickerDialog(this, { _, y, m, d ->
                 mCalendarTimeTV.text = "$d.${m + 1}.$y"
-//                val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-//                val edit = sharedPreferences.edit();
-//                edit.putBoolean("sly", false);
-//                edit.commit();
+                val sharedPreferences = getSharedPreferences("preferences", Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                val daysCount = LocalDate.of(y, m+1, d).toEpochDay().toInt()
+                editor.putInt("calendarTimeInDays", daysCount)
+                editor.apply()
             }, year, month, day)//todo цвет стиля последним аргументом можно выбрать
 
             datePickerDialog.show()
@@ -63,6 +68,12 @@ class SettingsActivity : AppCompatActivity()
 
             val timePickerDialog = TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { _, hr, min ->
                 mClockTimeTV.text = "$hr.$min"
+
+                val sharedPreferences = getSharedPreferences("preferences", Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                val minutesCount = hr * 60 + min
+                editor.putInt("clockTimeInMinutes", minutesCount)
+                editor.apply()
 
             }, hour, minute, true)
 
