@@ -7,39 +7,39 @@
     android:gravity="center">
 
     <ImageButton
-        android:id="@+id/bottle"
+        android:id="@+id/bottleBtn"
         style="@style/navigationBarStyle"
         android:src="@drawable/ic_bottle100"
 
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/cigarette"
+        app:layout_constraintEnd_toStartOf="@+id/cigaretteBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1"
         app:tint="@color/dark_chocolate" />
 
     <ImageButton
-        android:id="@+id/cigarette"
+        android:id="@+id/cigaretteBtn"
 
         style="@style/navigationBarStyle"
         android:enabled="false"
         android:src="@drawable/ic_cigarette100"
 
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/xxx"
-        app:layout_constraintStart_toEndOf="@+id/bottle"
+        app:layout_constraintEnd_toStartOf="@+id/xxxBtn"
+        app:layout_constraintStart_toEndOf="@+id/bottleBtn"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1"
         app:tint="@color/burnt_orange" />
 
     <ImageButton
-        android:id="@+id/xxx"
+        android:id="@+id/xxxBtn"
         style="@style/navigationBarStyle"
         android:src="@drawable/ic_xxx100"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cigarette"
+        app:layout_constraintStart_toEndOf="@+id/cigaretteBtn"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1"
         app:tint="@color/dark_chocolate" />

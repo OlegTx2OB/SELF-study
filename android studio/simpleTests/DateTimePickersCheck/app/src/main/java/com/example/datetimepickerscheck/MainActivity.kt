@@ -1,5 +1,5 @@
 package com.example.datetimepickerscheck
-import android.annotation.SuppressLint
+
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
@@ -23,8 +23,6 @@ class MainActivity : AppCompatActivity() {
         timeButton = findViewById(R.id.timeButton)
 
         dateButton.setOnClickListener {
-            showTimePicker()
-
             showDatePicker()
         }
 

@@ -19,41 +19,41 @@
         app:layout_constraintWidth_percent="0.4" />
 
     <TextView
-        android:id="@+id/textViewCalendarDescription"
+        android:id="@+id/calendarDescriptionTV"
         style="@style/textViewStyle"
 
         android:text="@string/date_start"
-        app:layout_constraintBottom_toTopOf="@+id/textViewCalendarTime"
+        app:layout_constraintBottom_toTopOf="@+id/calendarTimeTV"
         app:layout_constraintEnd_toEndOf="@+id/frameCalendar"
         app:layout_constraintStart_toStartOf="@+id/frameCalendar"
         app:layout_constraintTop_toTopOf="@+id/frameCalendar" />
 
     <TextView
-        android:id="@+id/textViewCalendarTime"
+        android:id="@+id/calendarTimeTV"
         style="@style/textViewStyle"
         android:text="05.01.2005"
         app:layout_constraintBottom_toBottomOf="@+id/frameCalendar"
         app:layout_constraintEnd_toEndOf="@+id/frameCalendar"
         app:layout_constraintStart_toStartOf="@+id/frameCalendar"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCalendarDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarDescriptionTV" />
 
     <TextView
-        android:id="@+id/textViewClockDescription"
+        android:id="@+id/clockDescriptionTV"
         style="@style/textViewStyle"
         android:text="@string/time_start"
-        app:layout_constraintBottom_toTopOf="@+id/textViewClockTime"
+        app:layout_constraintBottom_toTopOf="@+id/clockTimeTV"
         app:layout_constraintEnd_toEndOf="@+id/frameClock"
         app:layout_constraintStart_toStartOf="@+id/frameClock"
         app:layout_constraintTop_toTopOf="@+id/frameClock" />
 
     <TextView
-        android:id="@+id/textViewClockTime"
+        android:id="@+id/clockTimeTV"
         style="@style/textViewStyle"
         android:text="18:45"
         app:layout_constraintBottom_toBottomOf="@+id/frameClock"
         app:layout_constraintEnd_toEndOf="@+id/frameClock"
         app:layout_constraintStart_toStartOf="@+id/frameClock"
-        app:layout_constraintTop_toBottomOf="@+id/textViewClockDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/clockDescriptionTV" />
 
     <View
         android:id="@+id/frameClock"
@@ -71,7 +71,7 @@
         app:layout_constraintWidth_percent="0.4" />
 
     <ImageButton
-        android:id="@+id/calendar"
+        android:id="@+id/calendarBtn"
 
         style="@style/bigButtonsStyle"
 
@@ -89,7 +89,7 @@
         app:tint="@color/white" />
 
     <ImageButton
-        android:id="@+id/clock"
+        android:id="@+id/clockBtn"
         style="@style/bigButtonsStyle"
         android:background="@drawable/big_buttons"
         android:src="@drawable/ic_clock200"

@@ -7,10 +7,14 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 
+/*
+    all ONTOUCHS and ONCLICKS will be inside the OnResume() method
+*/
+
 //todo сделать так, чтобы при запуске таймер не работал
 //todo при нажатии на настройки передать какая из кнопок выбора была прожата
 //todo мб из-за одинаковых названий (например, back, может отъёбываться приложуха)
-open class MainActivity : AppCompatActivity()
+class MainActivity : AppCompatActivity()
 {
 
     lateinit var mCigaretteBtn: ImageButton
@@ -30,15 +34,19 @@ open class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         viewsInitialization()
+    }
+
+    override fun onResume()
+    {
+        super.onResume()
 
         var timePicker: Long = 0
-
         mRestartBtn.setOnClickListener{
             if (timePicker + 2000 > System.currentTimeMillis()) mTextView.text = "Meow"//todo
             else Toast.makeText(
-                    baseContext, "Press once again to restart!",
-                    Toast.LENGTH_SHORT
-                ).show()
+                baseContext, "Press once again to restart!",
+                Toast.LENGTH_SHORT
+            ).show()
             timePicker = System.currentTimeMillis()
         }
 
@@ -47,22 +55,25 @@ open class MainActivity : AppCompatActivity()
             startActivity(intent)
         }
     }
-
     private fun viewsInitialization()
     {
-        mCigaretteBtn = findViewById(R.id.cigarette)
-        mBottleBtn = findViewById(R.id.bottle)
-        mXXXBtn = findViewById(R.id.xxx)
+        mCigaretteBtn = findViewById(R.id.cigaretteBtn)
+        mBottleBtn = findViewById(R.id.bottleBtn)
+        mXXXBtn = findViewById(R.id.xxxBtn)
 
-        mMenuBtn = findViewById(R.id.archieve)
-        mRestartBtn = findViewById(R.id.restart)
-        mSettingsBtn = findViewById(R.id.settings)
-        mAchieveBtn = findViewById(R.id.achieve)
+        mMenuBtn = findViewById(R.id.archiveBtn)
+        mRestartBtn = findViewById(R.id.restartBtn)
+        mSettingsBtn = findViewById(R.id.settingsBtn)
+        mAchieveBtn = findViewById(R.id.achieveBtn)
 
-        mTextView = findViewById(R.id.textView)
+        mTextView = findViewById(R.id.timeTV)
     }
 
 
+//    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//    Editor edit = sharedPreferences.edit();
+//    edit.putBoolean("sly", false);
+//    edit.commit();
 
 
 
@@ -83,11 +94,5 @@ open class MainActivity : AppCompatActivity()
 //            getColor(R.color.dark_chocolate))
 //        disabledButton.isEnabled = true
 //    }
-
-
-//    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//    Editor edit = sharedPreferences.edit();
-//    edit.putBoolean("sly", false);
-//    edit.commit();
 
 }

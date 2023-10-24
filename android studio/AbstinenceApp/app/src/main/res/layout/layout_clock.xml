@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ProgressBar
-        android:id="@+id/static_clock_ring"
+        android:id="@+id/staticClockRing"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -24,12 +24,12 @@
         app:layout_constraintWidth_percent="0.89" />
 
     <ProgressBar
-        android:id="@+id/active_clock_ring"
+        android:id="@+id/activeClockRing"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:indeterminate="false"
-        android:max="200"
+        android:max="1440"
         android:progress="120"
         android:progressDrawable="@drawable/active_clock_ring"
         android:rotation="270"
@@ -42,15 +42,15 @@
         app:layout_constraintWidth_percent="0.89" />
 
     <TextView
-        android:id="@+id/textView"
-        android:text="12:21:11"
+        android:id="@+id/timeTV"
+        android:text="112:21:11"
         style="@style/textViewStyle"
         android:layout_width="wrap_content"
         android:textSize="56sp"
-        app:layout_constraintBottom_toBottomOf="@+id/static_clock_ring"
-        app:layout_constraintEnd_toStartOf="@+id/static_clock_ring"
-        app:layout_constraintStart_toEndOf="@+id/static_clock_ring"
-        app:layout_constraintTop_toTopOf="@+id/static_clock_ring" />
+        app:layout_constraintBottom_toBottomOf="@+id/staticClockRing"
+        app:layout_constraintEnd_toStartOf="@+id/staticClockRing"
+        app:layout_constraintStart_toEndOf="@+id/staticClockRing"
+        app:layout_constraintTop_toTopOf="@+id/staticClockRing" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
