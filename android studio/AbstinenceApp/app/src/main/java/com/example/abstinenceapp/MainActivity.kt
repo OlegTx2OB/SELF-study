@@ -1,19 +1,14 @@
 package com.example.abstinenceapp
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.abstinenceapp.CoroutinesMethods.Companion.setClockTimeThread
-import com.example.abstinenceapp.TimeMethods.Companion.putIntToSP
-import com.example.abstinenceapp.TimeMethods.Companion.setTimeToMainClock
-import kotlinx.coroutines.*
+import com.example.abstinenceapp.TimeMethods.Companion.putLongToSP
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 
@@ -39,7 +34,9 @@ class MainActivity : AppCompatActivity()
     private lateinit var mMainClockTV: TextView
     private lateinit var activeClockRing: ProgressBar
 
-    var isLoopActive = true
+    companion object {
+        var isLoopActive = true
+    }
     val context = this
 
 
@@ -59,8 +56,8 @@ class MainActivity : AppCompatActivity()
         mRestartBtn.setOnClickListener{
             if (timePicker + 2000 > System.currentTimeMillis())
             {
-                val currTimeInMin = (LocalDateTime.now().toEpochSecond(ZoneOffset.UTC) / 60).toInt()
-                putIntToSP(this, "currTimeInMin", currTimeInMin)
+                val currTimeInMin = (LocalDateTime.now().toEpochSecond(ZoneOffset.UTC) / 60)
+                putLongToSP(this, "savedTime", currTimeInMin)
             }
             else Toast.makeText(
                 baseContext, "Press once again to restart!", Toast.LENGTH_SHORT).show()
@@ -80,7 +77,7 @@ class MainActivity : AppCompatActivity()
         super.onResume()
 
         isLoopActive = true
-        setClockTimeThread(this, isLoopActive, mMainClockTV, activeClockRing)
+        setClockTimeThread(this, mMainClockTV, activeClockRing)
     }
 
     override fun onPause()

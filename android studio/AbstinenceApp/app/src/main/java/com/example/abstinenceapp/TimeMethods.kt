@@ -6,19 +6,19 @@ class TimeMethods
 {
     companion object
     {
-        fun setTimeToMainClock(currT: Int, memT: Int): String
+        fun setTimeToMainClock(currT: Long, memT: Long): String
         {
-            val days: Int = (currT - memT) / 1440
-            val hours: Int = ((currT - memT) % 1440) / 60
-            val minutes: Int = (currT - memT) % 60
+            val days = (currT - memT) / 1440
+            val hours = ((currT - memT) % 1440) / 60
+            val minutes = (currT - memT) % 60
             return "$days:$hours:$minutes"
         }
 
-        fun putIntToSP(context: Context, key: String, value: Int)
+        fun putLongToSP(context: Context, key: String, value: Long)
         {
             val sP = context.getSharedPreferences("preferences", Context.MODE_PRIVATE)
             val editor = sP.edit()
-            editor.putInt(key, value)
+            editor.putLong(key, value)
             editor.apply()
         }
 
