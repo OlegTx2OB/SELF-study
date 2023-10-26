@@ -2,11 +2,13 @@ package com.example.abstinenceapp
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.abstinenceapp.TimeMethods.Companion.putStringToSP
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.util.Calendar
@@ -30,15 +32,17 @@ class SettingsActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
         viewsInitialization()
+        setTimeOnTV()
     }
 
     override fun onStart()
     {
         super.onStart()
-
+//
         mBackBtn.setOnClickListener { onBackPressed() }
-
+//
         mClockBtn.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -50,18 +54,20 @@ class SettingsActivity : AppCompatActivity()
 
             val currFullTimeInMin = (LocalDateTime.now()
                 .toEpochSecond(ZoneOffset.UTC) / 60).toInt()
-            var enteredFullTimeInMin: Int = 0
-            var enteredY = 0
-            var enteredM = 0
-            var enteredD = 0
+
+            var yCopy = 0; var mCopy = 0; var dCopy = 0
 
             val timePickerDialog = TimePickerDialog(this, { _, hr, min ->
-                enteredFullTimeInMin += (hr * 60) + min
 
-                if(enteredFullTimeInMin <= currFullTimeInMin)//todo неверный подсчет enteredFullTimeInMin(погрешность в около 2 недели. типа 24 год не пропускает, но близкие даты - да)
+                val enteredFullTimeInMin = (LocalDateTime.of(yCopy, mCopy, dCopy, hr, min)
+                    .toEpochSecond(ZoneOffset.UTC) / 60).toInt()
+
+                if(enteredFullTimeInMin <= currFullTimeInMin)
                 {
+                    putStringToSP(this, "mTimeWithinADayTV", "$hr:$min")
+                    putStringToSP(this, "mCalendarTimeTV", "$dCopy.${mCopy}.$yCopy")
                     mTimeWithinADayTV.text = "$hr:$min"
-                    mCalendarTimeTV.text = "$enteredD.${enteredM + 1}.$enteredY"
+                    mCalendarTimeTV.text = "$dCopy.${mCopy}.$yCopy"
                 }
                 else Toast.makeText(
                     baseContext, "Entered time is > than current", Toast.LENGTH_SHORT).show()
@@ -69,12 +75,7 @@ class SettingsActivity : AppCompatActivity()
             }, hour, minute, true)
 
             val datePickerDialog = DatePickerDialog(this, { _, y, m, d ->
-
-                enteredFullTimeInMin = (LocalDateTime.of(y, m, d, 0, 0)
-                    .toEpochSecond(ZoneOffset.UTC) / 60).toInt()
-
-                enteredY = y; enteredM = m; enteredD = d;
-
+                yCopy = y; mCopy = m + 1; dCopy = d
                 timePickerDialog.show()
             }, year, month, day)//todo цвет стиля последним аргументом можно выбрать
 
@@ -90,5 +91,19 @@ class SettingsActivity : AppCompatActivity()
 
         mCalendarTimeTV = findViewById(R.id.dateTV)
         mTimeWithinADayTV = findViewById(R.id.timeWithinADayTV)
+    }
+
+    private fun setTimeOnTV()
+    {
+        val currTimeInMin = (LocalDateTime.now().toEpochSecond(ZoneOffset.UTC) / 60)
+        val epochStart = LocalDateTime.ofEpochSecond(0, 0, ZoneOffset.UTC)
+        val currDT = epochStart.plusMinutes(currTimeInMin)
+
+        val sP = getSharedPreferences("preferences", Context.MODE_PRIVATE)
+        mTimeWithinADayTV.text = sP.getString("mTimeWithinADayTV", "${currDT.hour}:${currDT.minute}")
+        mCalendarTimeTV.text = sP.getString("mCalendarTimeTV",
+            "${currDT.dayOfMonth}.${currDT.month}.${currDT.year}")
+        //todo время тут тоже обновляется. нужно поставить значение для запоминания
+        //todo а еще время берется не из изначального таймера
     }
 }

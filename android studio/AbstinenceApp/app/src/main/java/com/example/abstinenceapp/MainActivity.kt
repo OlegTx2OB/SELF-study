@@ -10,10 +10,10 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.example.abstinenceapp.CoroutinesMethods.Companion.setClockTimeThread
+import com.example.abstinenceapp.TimeMethods.Companion.putIntToSP
+import com.example.abstinenceapp.TimeMethods.Companion.setTimeToMainClock
+import kotlinx.coroutines.*
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 
@@ -27,9 +27,6 @@ import java.time.ZoneOffset
 
 class MainActivity : AppCompatActivity()
 {
-    private lateinit var handler: Handler
-    private lateinit var runnable: Runnable
-
     private lateinit var mCigaretteBtn: ImageButton
     private lateinit var mBottleBtn: ImageButton
     private lateinit var mXXXBtn: ImageButton
@@ -39,10 +36,11 @@ class MainActivity : AppCompatActivity()
     private lateinit var mSettingsBtn: ImageButton
     private lateinit var mAchieveBtn: ImageButton
 
-    private lateinit var mTimeTV: TextView
+    private lateinit var mMainClockTV: TextView
     private lateinit var activeClockRing: ProgressBar
 
     var isLoopActive = true
+    val context = this
 
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -56,14 +54,21 @@ class MainActivity : AppCompatActivity()
     {
         super.onStart()
 
+//
         var timePicker: Long = 0
         mRestartBtn.setOnClickListener{
-            if (timePicker + 2000 > System.currentTimeMillis()) mTimeTV.text = "Meow"//todo
+            if (timePicker + 2000 > System.currentTimeMillis())
+            {
+                val currTimeInMin = (LocalDateTime.now().toEpochSecond(ZoneOffset.UTC) / 60).toInt()
+                putIntToSP(this, "currTimeInMin", currTimeInMin)
+            }
             else Toast.makeText(
                 baseContext, "Press once again to restart!", Toast.LENGTH_SHORT).show()
+
             timePicker = System.currentTimeMillis()
         }
 
+//
         mSettingsBtn.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
@@ -75,60 +80,13 @@ class MainActivity : AppCompatActivity()
         super.onResume()
 
         isLoopActive = true
-        setClockTimeThread()
+        setClockTimeThread(this, isLoopActive, mMainClockTV, activeClockRing)
     }
 
     override fun onPause()
     {
         super.onPause()
         isLoopActive = false
-
-    }
-
-    fun setClockTimeThread()
-    {
-        handler = Handler(Looper.getMainLooper())
-        runnable = Runnable {
-            GlobalScope.launch(Dispatchers.Main) {
-                while (isLoopActive)
-                {
-                    val currFullTimeInMin = (LocalDateTime.now().toEpochSecond(ZoneOffset.UTC) / 60).toInt()
-
-                    val sP = getSharedPreferences("preferences", Context.MODE_PRIVATE)
-
-                    val fullMemTimeInMin = sP.getInt("fullMemTimeInMin", currFullTimeInMin)
-                    if(fullMemTimeInMin == currFullTimeInMin)
-                    {
-                        val editor = sP.edit()
-                        editor.putInt("fullMemTimeInMin", currFullTimeInMin)
-                        editor.apply()
-                    }
-                    val days: Int = (currFullTimeInMin - fullMemTimeInMin) / 1440
-                    val hours: Int = ((currFullTimeInMin - fullMemTimeInMin) % 1440) / 60
-                    val minutes: Int = (currFullTimeInMin - fullMemTimeInMin) % 60
-
-                    mTimeTV.text = "$days:$hours:$minutes"
-                    activeClockRing.progress = (currFullTimeInMin - fullMemTimeInMin) % 1440
-                    delay(1000)//todo 60000
-
-
-
-//                    val memTimeInMinutes = sP.getInt("clockTimeInMinutes", currTimeInMinutes)
-//                    if (memTimeInMinutes == currTimeInMinutes)
-//                    {
-//                        val editor = sP.edit()
-//                        editor.putInt("clockTimeInMinutes", currTimeInMinutes)
-//                        editor.apply()
-//                    }
-//                    val days = memTimeInDays - daysSinceEpoch
-//                    val hours: Int = memTimeInMinutes / 60
-//                    val minutes = memTimeInMinutes % 60
-//
-
-                }
-            }
-        }
-        handler.post(runnable)
     }
     private fun viewsInitialization()
     {
@@ -141,7 +99,7 @@ class MainActivity : AppCompatActivity()
         mSettingsBtn = findViewById(R.id.settingsBtn)
         mAchieveBtn = findViewById(R.id.achieveBtn)
 
-        mTimeTV = findViewById(R.id.timeTV)
+        mMainClockTV = findViewById(R.id.timeTV)
         activeClockRing = findViewById(R.id.activeClockRing)
     }
 
