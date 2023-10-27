@@ -25,23 +25,53 @@ class TimeMethods
 
             return "$daysStr:$hoursStr:$minutesStr"
         }
-        fun getLongInSP(context: Context, key: String, defaultValue: Long) : Long
+        fun getLongSP(context: Context, key: String, defaultValue: Long) : Long
         {
             val sP = context.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
             return sP.getLong(key, defaultValue)
         }
-        fun saveTimeInSP(context: Context, value: Long)
+
+        fun saveLongSP(context: Context, key: String, value: Long)//"savedTime"
         {
-            val key = "savedTime"
             val sP = context.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
             val editor = sP.edit()
             editor.putLong(key, value)
             editor.apply()
         }
 
+        fun getAppModeSP(context: Context)//todo
+        {
+            val appMode = getStringSP(context, "savedAppMode", "smoking")
+            if(appMode == "smoking")
+            {
+
+            }
+            else if(appMode == "drinking")
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+        fun getStringSP(context: Context, key: String, defaultValue: String) : String?
+        {
+            val sP = context.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
+            return sP.getString(key, defaultValue)
+        }
+
+        fun saveStringSP(context: Context, key: String, value: String)//"savedAppMode"
+        {
+            val sP = context.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
+            val editor = sP.edit()
+            editor.putString(key, value)
+            editor.apply()
+        }
+
         fun setDateTimeOnTVs(context: Context, mTimeWithinADayTV: TextView)
         {
-            val savedEpochMinute = getLongInSP(context, "savedTime", -1)
+            val savedEpochMinute = getLongSP(context, "savedTime", -1)
             val dT = LocalDateTime.ofEpochSecond(savedEpochMinute * 60, 0, ZoneOffset.UTC)
             mTimeWithinADayTV.text = "${dT.dayOfMonth}.${dT.monthValue}.${dT.year}\n${dT.hour}:${dT.minute}"
         }

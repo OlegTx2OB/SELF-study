@@ -8,16 +8,15 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.abstinenceapp.CoroutinesMethods.Companion.newThreadCheckAndSetTime
-import com.example.abstinenceapp.TimeMethods.Companion.saveTimeInSP
+import com.example.abstinenceapp.TimeMethods.Companion.saveLongSP
+import com.example.abstinenceapp.TimeMethods.Companion.saveStringSP
 import java.time.LocalDateTime
 import java.time.ZoneOffset
-
 
 /*
     all ONTOUCHS and ONCLICKS will be inside the OnStart() method
 */
-
-class MainActivity : AppCompatActivity()
+ class MainActivity : AppCompatActivity()
 {
     private lateinit var mCigaretteBtn: ImageButton
     private lateinit var mBottleBtn: ImageButton
@@ -55,7 +54,7 @@ class MainActivity : AppCompatActivity()
             {
                 val currEpochMinute = LocalDateTime.now()
                     .toEpochSecond(ZoneOffset.UTC) / 60
-                saveTimeInSP(this, currEpochMinute)
+                saveLongSP(this, "savedTime", currEpochMinute)
             }
             else Toast.makeText(this, "Press one more time", Toast.LENGTH_SHORT).show()
 
@@ -78,8 +77,9 @@ class MainActivity : AppCompatActivity()
 
         }
 
-        mBottleBtn.setOnClickListener {
 
+        mBottleBtn.setOnClickListener {
+            saveStringSP(this,"savedAppMode", "drinking")
         }
 
         mCigaretteBtn.setOnClickListener {
@@ -117,6 +117,7 @@ class MainActivity : AppCompatActivity()
         mCigaretteBtn = findViewById(R.id.cigaretteBtn)
         mBottleBtn = findViewById(R.id.bottleBtn)
         mXXXBtn = findViewById(R.id.xxxBtn)
+
     }
 
 }

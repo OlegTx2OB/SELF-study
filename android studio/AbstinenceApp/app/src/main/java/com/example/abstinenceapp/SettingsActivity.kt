@@ -7,7 +7,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.abstinenceapp.TimeMethods.Companion.saveTimeInSP
+import com.example.abstinenceapp.TimeMethods.Companion.saveLongSP
 import com.example.abstinenceapp.TimeMethods.Companion.setDateTimeOnTVs
 import java.time.LocalDateTime
 import java.time.ZoneOffset
@@ -50,7 +50,7 @@ class SettingsActivity : AppCompatActivity()
 
                 if(currDateTime.isAfter(selectedDateTime))
                 {
-                    saveTimeInSP(this, (selectedDateTime.toEpochSecond(ZoneOffset.UTC) / 60))
+                    saveLongSP(this, (selectedDateTime.toEpochSecond(ZoneOffset.UTC) / 60))
                     setDateTimeOnTVs(this, mTimeWithinADayTV)
                 }
                 else Toast.makeText(this, "selected Date if after current", Toast.LENGTH_SHORT)
