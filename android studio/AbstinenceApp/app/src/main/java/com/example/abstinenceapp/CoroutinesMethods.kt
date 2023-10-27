@@ -7,6 +7,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import com.example.abstinenceapp.MainActivity.Companion.isLoopActive
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.getLongSP
+import com.example.abstinenceapp.SharedPreferencesMethods.Companion.getStringSP
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.saveLongSP
 import com.example.abstinenceapp.TimeMethods.Companion.getTimeForMainClockTV
 import kotlinx.coroutines.Dispatchers
@@ -34,8 +35,10 @@ class CoroutinesMethods
                         val currEpochMinute = LocalDateTime.now()
                             .toEpochSecond(ZoneOffset.UTC) / 60
 
-                        val savedEpochMinute = getLongSP(context, "savedTime", currEpochMinute)
-                        if(currEpochMinute == savedEpochMinute) saveLongSP(context, "savedTime", currEpochMinute)
+                        val appMode = getStringSP(context, "savedAppMode", "smoking")
+                        val savedEpochMinute = getLongSP(context, "savedTime$appMode", currEpochMinute)
+                        if(currEpochMinute == savedEpochMinute)
+                            saveLongSP(context, "savedTime$appMode", currEpochMinute)
 
                         mMainClockTV.text = getTimeForMainClockTV(currEpochMinute - savedEpochMinute)
                         activeClockRing.progress = ((currEpochMinute - savedEpochMinute) % 1440).toInt()

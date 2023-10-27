@@ -3,6 +3,7 @@ package com.example.abstinenceapp
 import android.content.Context
 import android.widget.TextView
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.getLongSP
+import com.example.abstinenceapp.SharedPreferencesMethods.Companion.getStringSP
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 
@@ -29,7 +30,9 @@ class TimeMethods
 
         fun setDateTimeOnTVs(context: Context, mTimeWithinADayTV: TextView)
         {
-            val savedEpochMinute = getLongSP(context, "savedTime", -1)
+            val appMode = getStringSP(context, "savedAppMode", "smoking")
+            val savedEpochMinute = getLongSP(context, "savedTime$appMode", -1)
+
             val dT = LocalDateTime.ofEpochSecond(savedEpochMinute * 60, 0, ZoneOffset.UTC)
             mTimeWithinADayTV.text = "${dT.dayOfMonth}.${dT.monthValue}.${dT.year}\n${dT.hour}:${dT.minute}"
         }

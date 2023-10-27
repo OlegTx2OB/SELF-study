@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.abstinenceapp.CoroutinesMethods.Companion.newThreadCheckAndSetTime
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.getAppModeSP
+import com.example.abstinenceapp.SharedPreferencesMethods.Companion.getStringSP
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.saveLongSP
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.saveStringSP
 import java.time.LocalDateTime
@@ -36,7 +37,8 @@ import java.time.ZoneOffset
         var isLoopActive = true
     }
 
-
+//todo при нажатии на кнопку навигационной панели цикл корутинов не прекращается.
+// надо сделать так, чтобы с часами было всё корректно
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -55,7 +57,10 @@ import java.time.ZoneOffset
             {
                 val currEpochMinute = LocalDateTime.now()
                     .toEpochSecond(ZoneOffset.UTC) / 60
-                saveLongSP(this, "savedTime", currEpochMinute)
+
+                val appMode =
+                    getStringSP(this, "savedAppMode", "smoking")
+                saveLongSP(this, "savedTime$appMode", currEpochMinute)
             }
             else Toast.makeText(this, "Press one more time", Toast.LENGTH_SHORT).show()
 
@@ -81,14 +86,20 @@ import java.time.ZoneOffset
 
         mBottleBtn.setOnClickListener {
             saveStringSP(this,"savedAppMode", "drinking")
+            getAppModeSP(this,
+                mCigaretteBtn, mBottleBtn, mXXXBtn)
         }
 
         mCigaretteBtn.setOnClickListener {
             saveStringSP(this,"savedAppMode", "smoking")
+            getAppModeSP(this,
+                mCigaretteBtn, mBottleBtn, mXXXBtn)
         }
 
         mXXXBtn.setOnClickListener {
             saveStringSP(this,"savedAppMode", "xxx")
+            getAppModeSP(this,
+                mCigaretteBtn, mBottleBtn, mXXXBtn)
         }
 
     }

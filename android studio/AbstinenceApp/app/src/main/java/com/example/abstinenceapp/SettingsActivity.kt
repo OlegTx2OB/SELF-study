@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.abstinenceapp.SharedPreferencesMethods.Companion.getStringSP
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.saveLongSP
 import com.example.abstinenceapp.TimeMethods.Companion.setDateTimeOnTVs
 import java.time.LocalDateTime
@@ -50,7 +51,9 @@ class SettingsActivity : AppCompatActivity()
 
                 if(currDateTime.isAfter(selectedDateTime))
                 {
-                    saveLongSP(this, "savedTime", (selectedDateTime.toEpochSecond(ZoneOffset.UTC) / 60))
+                    val appMode =
+                        getStringSP(this, "savedAppMode", "smoking")
+                    saveLongSP(this, "savedTime$appMode", (selectedDateTime.toEpochSecond(ZoneOffset.UTC) / 60))
                     setDateTimeOnTVs(this, mTimeWithinADayTV)
                 }
                 else Toast.makeText(this, "selected Date if after current", Toast.LENGTH_SHORT)
