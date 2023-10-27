@@ -25,18 +25,10 @@ class TimeMethods
 
             return "$daysStr:$hoursStr:$minutesStr"
         }
-        fun getTimeInSP(context: Context, defaultValue: Long) : Long
+        fun getLongInSP(context: Context, key: String, defaultValue: Long) : Long
         {
-            val key = "savedTime"
             val sP = context.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
             return sP.getLong(key, defaultValue)
-        }
-
-        fun getTimeInSP(context: Context) : Long
-        {
-            val key = "savedTime"
-            val sP = context.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
-            return sP.getLong(key, -1)//this func is used only in verified cases
         }
         fun saveTimeInSP(context: Context, value: Long)
         {
@@ -49,7 +41,7 @@ class TimeMethods
 
         fun setDateTimeOnTVs(context: Context, mTimeWithinADayTV: TextView)
         {
-            val savedEpochMinute = getTimeInSP(context)
+            val savedEpochMinute = getLongInSP(context, "savedTime", -1)
             val dT = LocalDateTime.ofEpochSecond(savedEpochMinute * 60, 0, ZoneOffset.UTC)
             mTimeWithinADayTV.text = "${dT.dayOfMonth}.${dT.monthValue}.${dT.year}\n${dT.hour}:${dT.minute}"
         }

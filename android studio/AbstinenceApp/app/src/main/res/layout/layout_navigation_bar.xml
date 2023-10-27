@@ -20,11 +20,9 @@
 
     <ImageButton
         android:id="@+id/cigaretteBtn"
-
         style="@style/navigationBarStyle"
-        android:enabled="false"
         android:src="@drawable/ic_cigarette100"
-
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/xxxBtn"
         app:layout_constraintStart_toEndOf="@+id/bottleBtn"

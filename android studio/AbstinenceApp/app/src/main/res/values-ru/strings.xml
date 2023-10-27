@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Воздержание</string>
-    <string name="date_start">Дата начала</string>
-    <string name="time_start">Время начала</string>
+
 </resources>

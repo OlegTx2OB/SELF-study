@@ -77,6 +77,19 @@ class MainActivity : AppCompatActivity()
         mChroniclesBtn.setOnClickListener {//todo
 
         }
+
+        mBottleBtn.setOnClickListener {
+
+        }
+
+        mCigaretteBtn.setOnClickListener {
+
+        }
+
+        mXXXBtn.setOnClickListener {
+
+        }
+
     }
 
     override fun onResume()
@@ -93,10 +106,6 @@ class MainActivity : AppCompatActivity()
     }
     private fun viewsInitialization()
     {
-        mCigaretteBtn = findViewById(R.id.cigaretteBtn)
-        mBottleBtn = findViewById(R.id.bottleBtn)
-        mXXXBtn = findViewById(R.id.xxxBtn)
-
         mChroniclesBtn = findViewById(R.id.chroniclesBtn)
         mRestartBtn = findViewById(R.id.restartBtn)
         mSettingsBtn = findViewById(R.id.settingsBtn)
@@ -104,6 +113,10 @@ class MainActivity : AppCompatActivity()
 
         mMainClockTV = findViewById(R.id.timeTV)
         activeClockRing = findViewById(R.id.activeClockRing)
+
+        mCigaretteBtn = findViewById(R.id.cigaretteBtn)
+        mBottleBtn = findViewById(R.id.bottleBtn)
+        mXXXBtn = findViewById(R.id.xxxBtn)
     }
 
 }

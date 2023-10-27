@@ -6,7 +6,7 @@ import android.os.Looper
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.example.abstinenceapp.MainActivity.Companion.isLoopActive
-import com.example.abstinenceapp.TimeMethods.Companion.getTimeInSP
+import com.example.abstinenceapp.TimeMethods.Companion.getLongInSP
 import com.example.abstinenceapp.TimeMethods.Companion.getTimeForMainClockTV
 import com.example.abstinenceapp.TimeMethods.Companion.saveTimeInSP
 import kotlinx.coroutines.Dispatchers
@@ -34,7 +34,7 @@ class CoroutinesMethods
                         val currEpochMinute = LocalDateTime.now()
                             .toEpochSecond(ZoneOffset.UTC) / 60
 
-                        val savedEpochMinute = getTimeInSP(context, currEpochMinute)
+                        val savedEpochMinute = getLongInSP(context, "savedTime", currEpochMinute)
                         if(currEpochMinute == savedEpochMinute) saveTimeInSP(context, currEpochMinute)
 
                         mMainClockTV.text = getTimeForMainClockTV(currEpochMinute - savedEpochMinute)
