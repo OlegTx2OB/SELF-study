@@ -37,12 +37,12 @@
         app:tint="@color/white" />
 
     <ImageButton
-        android:id="@+id/archiveBtn"
+        android:id="@+id/chroniclesBtn"
 
         style="@style/bigButtonsStyle"
 
         android:background="@drawable/big_buttons"
-        android:src="@drawable/ic_archive200"
+        android:src="@drawable/ic_chronicles200"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

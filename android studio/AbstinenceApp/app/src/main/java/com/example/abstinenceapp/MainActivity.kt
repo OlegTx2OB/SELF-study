@@ -7,18 +7,15 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.abstinenceapp.CoroutinesMethods.Companion.setClockTimeThread
-import com.example.abstinenceapp.TimeMethods.Companion.putLongToSP
+import com.example.abstinenceapp.CoroutinesMethods.Companion.newThreadCheckAndSetTime
+import com.example.abstinenceapp.TimeMethods.Companion.saveTimeInSP
 import java.time.LocalDateTime
 import java.time.ZoneOffset
+
 
 /*
     all ONTOUCHS and ONCLICKS will be inside the OnStart() method
 */
-
-//todo сделать так, чтобы при запуске таймер не работал
-//todo при нажатии на настройки передать какая из кнопок выбора была прожата
-//todo мб из-за одинаковых названий (например, back, может отъёбываться приложуха)
 
 class MainActivity : AppCompatActivity()
 {
@@ -26,18 +23,18 @@ class MainActivity : AppCompatActivity()
     private lateinit var mBottleBtn: ImageButton
     private lateinit var mXXXBtn: ImageButton
 
-    private lateinit var mMenuBtn: ImageButton
+    private lateinit var mChroniclesBtn: ImageButton
     private lateinit var mRestartBtn: ImageButton
     private lateinit var mSettingsBtn: ImageButton
-    private lateinit var mAchieveBtn: ImageButton
+    private lateinit var mStarBtn: ImageButton
 
     private lateinit var mMainClockTV: TextView
     private lateinit var activeClockRing: ProgressBar
 
-    companion object {
+    companion object
+    {
         var isLoopActive = true
     }
-    val context = this
 
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -45,44 +42,51 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         viewsInitialization()
+
     }
 
     override fun onStart()
     {
         super.onStart()
 
-//
-        var timePicker: Long = 0
+        var timeFromRestartClick: Long = 0
         mRestartBtn.setOnClickListener{
-            if (timePicker + 2000 > System.currentTimeMillis())
+            if(timeFromRestartClick + 2000 > System.currentTimeMillis())
             {
-                val currTimeInMin = (LocalDateTime.now().toEpochSecond(ZoneOffset.UTC) / 60)
-                putLongToSP(this, "savedTime", currTimeInMin)
+                val currEpochMinute = LocalDateTime.now()
+                    .toEpochSecond(ZoneOffset.UTC) / 60
+                saveTimeInSP(this, currEpochMinute)
             }
-            else Toast.makeText(
-                baseContext, "Press once again to restart!", Toast.LENGTH_SHORT).show()
+            else Toast.makeText(this, "Press one more time", Toast.LENGTH_SHORT).show()
 
-            timePicker = System.currentTimeMillis()
+            timeFromRestartClick = System.currentTimeMillis()
         }
 
-//
+
         mSettingsBtn.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
+        }
+
+        mStarBtn.setOnClickListener {//todo
+            val intent = Intent(this, )
+        }
+
+        mChroniclesBtn.setOnClickListener {//todo
+
         }
     }
 
     override fun onResume()
     {
         super.onResume()
-
         isLoopActive = true
-        setClockTimeThread(this, mMainClockTV, activeClockRing)
+        newThreadCheckAndSetTime(this, mMainClockTV, activeClockRing)
     }
 
-    override fun onPause()
+    override fun onStop()
     {
-        super.onPause()
+        super.onStop()
         isLoopActive = false
     }
     private fun viewsInitialization()
@@ -91,10 +95,10 @@ class MainActivity : AppCompatActivity()
         mBottleBtn = findViewById(R.id.bottleBtn)
         mXXXBtn = findViewById(R.id.xxxBtn)
 
-        mMenuBtn = findViewById(R.id.archiveBtn)
+        mChroniclesBtn = findViewById(R.id.chroniclesBtn)
         mRestartBtn = findViewById(R.id.restartBtn)
         mSettingsBtn = findViewById(R.id.settingsBtn)
-        mAchieveBtn = findViewById(R.id.achieveBtn)
+        mStarBtn = findViewById(R.id.achieveBtn)
 
         mMainClockTV = findViewById(R.id.timeTV)
         activeClockRing = findViewById(R.id.activeClockRing)

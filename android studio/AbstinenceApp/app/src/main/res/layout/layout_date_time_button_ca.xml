@@ -6,22 +6,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/dateTV"
+        android:id="@+id/dateTimeStartTV"
         style="@style/textViewStyle"
-        android:text="00.00.0000"
-        app:layout_constraintBottom_toTopOf="@+id/timeWithinADayTV"
-        app:layout_constraintEnd_toEndOf="@+id/frameClock"
-        app:layout_constraintStart_toStartOf="@+id/frameClock"
-        app:layout_constraintTop_toTopOf="@+id/frameClock" />
-
-    <TextView
-        android:id="@+id/timeWithinADayTV"
-        style="@style/textViewStyle"
-        android:text="00:00"
+        android:text="00.00.0000\n00:00"
         app:layout_constraintBottom_toBottomOf="@+id/frameClock"
         app:layout_constraintEnd_toEndOf="@+id/frameClock"
         app:layout_constraintStart_toStartOf="@+id/frameClock"
-        app:layout_constraintTop_toBottomOf="@+id/dateTV" />
+        app:layout_constraintTop_toTopOf="@+id/frameClock" />
 
     <View
         android:id="@+id/frameClock"

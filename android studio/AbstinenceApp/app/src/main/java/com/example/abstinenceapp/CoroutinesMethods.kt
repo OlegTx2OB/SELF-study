@@ -6,6 +6,9 @@ import android.os.Looper
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.example.abstinenceapp.MainActivity.Companion.isLoopActive
+import com.example.abstinenceapp.TimeMethods.Companion.getTimeInSP
+import com.example.abstinenceapp.TimeMethods.Companion.getTimeForMainClockTV
+import com.example.abstinenceapp.TimeMethods.Companion.saveTimeInSP
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -19,8 +22,8 @@ class CoroutinesMethods
     {
         private lateinit var handler: Handler
         private lateinit var runnable: Runnable
-        fun setClockTimeThread(context: Context,
-                               mMainClockTV: TextView, activeClockRing: ProgressBar)
+        fun newThreadCheckAndSetTime(context: Context,
+                                     mMainClockTV: TextView, activeClockRing: ProgressBar)
         {
             handler = Handler(Looper.getMainLooper())
             runnable = kotlinx.coroutines.Runnable{
@@ -28,18 +31,18 @@ class CoroutinesMethods
                 {
                     while (isLoopActive)
                     {
-                        val currTimeInMin = (LocalDateTime.now().toEpochSecond(ZoneOffset.UTC) / 60)
+                        val currEpochMinute = LocalDateTime.now()
+                            .toEpochSecond(ZoneOffset.UTC) / 60
 
-                        val sP = context.getSharedPreferences("preferences", Context.MODE_PRIVATE)
-                        val sPTimeInMin = sP.getLong("savedTime", currTimeInMin)
-                        if (sPTimeInMin == currTimeInMin) TimeMethods.putLongToSP(context, "savedTime", currTimeInMin)
+                        val savedEpochMinute = getTimeInSP(context, currEpochMinute)
+                        if(currEpochMinute == savedEpochMinute) saveTimeInSP(context, currEpochMinute)
 
-                        mMainClockTV.text = TimeMethods.setTimeToMainClock(currTimeInMin, sPTimeInMin)
-                        activeClockRing.progress = ((currTimeInMin - sPTimeInMin) % 1440).toInt()
+                        mMainClockTV.text = getTimeForMainClockTV(currEpochMinute - savedEpochMinute)
+                        activeClockRing.progress = ((currEpochMinute - savedEpochMinute) % 1440).toInt()
                         delay(2000)
-                        }
                     }
                 }
+            }
             handler.post(runnable)
         }
 
