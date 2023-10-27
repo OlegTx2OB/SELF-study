@@ -69,7 +69,9 @@ class MainActivity : AppCompatActivity()
         }
 
         mStarBtn.setOnClickListener {//todo
-            val intent = Intent(this, )
+            val intent = Intent(this, AchieveActivity::class.java)
+            startActivity(intent)
+
         }
 
         mChroniclesBtn.setOnClickListener {//todo
