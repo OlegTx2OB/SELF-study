@@ -6,9 +6,9 @@ import android.os.Looper
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.example.abstinenceapp.MainActivity.Companion.isLoopActive
-import com.example.abstinenceapp.TimeMethods.Companion.getLongSP
+import com.example.abstinenceapp.SharedPreferencesMethods.Companion.getLongSP
+import com.example.abstinenceapp.SharedPreferencesMethods.Companion.saveLongSP
 import com.example.abstinenceapp.TimeMethods.Companion.getTimeForMainClockTV
-import com.example.abstinenceapp.TimeMethods.Companion.saveLongSP
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay

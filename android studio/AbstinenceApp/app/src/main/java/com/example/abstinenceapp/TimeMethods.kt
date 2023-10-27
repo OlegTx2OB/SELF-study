@@ -2,6 +2,7 @@ package com.example.abstinenceapp
 
 import android.content.Context
 import android.widget.TextView
+import com.example.abstinenceapp.SharedPreferencesMethods.Companion.getLongSP
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 
@@ -24,49 +25,6 @@ class TimeMethods
             if(minutes < 10) minutesStr = "0$minutes"
 
             return "$daysStr:$hoursStr:$minutesStr"
-        }
-        fun getLongSP(context: Context, key: String, defaultValue: Long) : Long
-        {
-            val sP = context.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
-            return sP.getLong(key, defaultValue)
-        }
-
-        fun saveLongSP(context: Context, key: String, value: Long)//"savedTime"
-        {
-            val sP = context.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
-            val editor = sP.edit()
-            editor.putLong(key, value)
-            editor.apply()
-        }
-
-        fun getAppModeSP(context: Context)//todo
-        {
-            val appMode = getStringSP(context, "savedAppMode", "smoking")
-            if(appMode == "smoking")
-            {
-
-            }
-            else if(appMode == "drinking")
-            {
-
-            }
-            else
-            {
-
-            }
-        }
-        fun getStringSP(context: Context, key: String, defaultValue: String) : String?
-        {
-            val sP = context.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
-            return sP.getString(key, defaultValue)
-        }
-
-        fun saveStringSP(context: Context, key: String, value: String)//"savedAppMode"
-        {
-            val sP = context.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
-            val editor = sP.edit()
-            editor.putString(key, value)
-            editor.apply()
         }
 
         fun setDateTimeOnTVs(context: Context, mTimeWithinADayTV: TextView)

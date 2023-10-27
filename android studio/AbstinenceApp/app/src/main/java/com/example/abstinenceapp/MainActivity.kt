@@ -8,8 +8,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.abstinenceapp.CoroutinesMethods.Companion.newThreadCheckAndSetTime
-import com.example.abstinenceapp.TimeMethods.Companion.saveLongSP
-import com.example.abstinenceapp.TimeMethods.Companion.saveStringSP
+import com.example.abstinenceapp.SharedPreferencesMethods.Companion.getAppModeSP
+import com.example.abstinenceapp.SharedPreferencesMethods.Companion.saveLongSP
+import com.example.abstinenceapp.SharedPreferencesMethods.Companion.saveStringSP
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 
@@ -83,11 +84,11 @@ import java.time.ZoneOffset
         }
 
         mCigaretteBtn.setOnClickListener {
-
+            saveStringSP(this,"savedAppMode", "smoking")
         }
 
         mXXXBtn.setOnClickListener {
-
+            saveStringSP(this,"savedAppMode", "xxx")
         }
 
     }
@@ -118,6 +119,7 @@ import java.time.ZoneOffset
         mBottleBtn = findViewById(R.id.bottleBtn)
         mXXXBtn = findViewById(R.id.xxxBtn)
 
+        getAppModeSP(this, mCigaretteBtn, mBottleBtn, mXXXBtn)
     }
 
 }
