@@ -37,9 +37,9 @@ class SettingsActivity : AppCompatActivity()
     override fun onStart()
     {
         super.onStart()
-//
+
         mBackBtn.setOnClickListener { onBackPressed() }
-//
+
         mClockBtn.setOnClickListener {
             val currT = LocalDateTime.now()
 

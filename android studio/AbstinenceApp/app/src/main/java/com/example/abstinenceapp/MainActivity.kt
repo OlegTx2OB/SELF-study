@@ -80,7 +80,8 @@ import java.time.ZoneOffset
         }
 
         mChroniclesBtn.setOnClickListener {//todo
-
+            val intent = Intent(this, ChroniclesActivity::class.java)
+            startActivity(intent)
         }
 
 

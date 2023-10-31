@@ -42,7 +42,7 @@ class CoroutinesMethods
 
                         mMainClockTV.text = getTimeForMainClockTV(currEpochMinute - savedEpochMinute)
                         activeClockRing.progress = ((currEpochMinute - savedEpochMinute) % 1440).toInt()
-                        delay(2000)
+                        delay(200)
                     }
                 }
             }
