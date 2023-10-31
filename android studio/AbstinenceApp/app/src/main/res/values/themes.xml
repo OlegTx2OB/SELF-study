@@ -11,6 +11,7 @@
         <item name="android:imageButtonStyle">colorStyleIBSmoking</item>
         <item name="android:textViewStyle">colorStyleTVSmoking</item>
         <item name="android:progressBarStyle">colorStylePBSmoking</item>
+        <item name="android:imageWellStyle">styleIV</item>
     </style>
 
 </resources>
