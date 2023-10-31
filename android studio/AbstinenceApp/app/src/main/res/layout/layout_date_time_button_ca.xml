@@ -32,7 +32,7 @@
     <ImageButton
         android:id="@+id/clockBtn"
         style="@style/bigButtonsStyle"
-        android:background="@drawable/big_buttons"
+        android:background="@drawable/smoking_image_buttons_background"
         android:src="@drawable/ic_clock200"
 
         app:layout_constraintBottom_toBottomOf="parent"

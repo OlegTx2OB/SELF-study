@@ -51,4 +51,52 @@
     </style>
 
 
+
+
+    <style name="styleIV">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:enabled">false</item>
+    </style>
+
+    <style name="styleIB">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:padding">20dp</item>
+    </style>
+
+    <style name="styleTV">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="stylePB">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:indeterminate">false</item>
+        <item name="android:max">1440</item>
+        <item name="android:progress">0</item>
+        <item name="android:rotation">270</item>
+        <item name="android:layout_marginBottom">290dp</item>
+    </style>
+
+    <style name="colorStyleIBSmoking" parent="styleIB">
+        <item name="android:background">@drawable/smoking_image_buttons_background</item>
+    </style>
+
+    <style name="colorStyleTVSmoking" parent="styleTV">
+        <item name="android:textColor">@color/dark_chocolate</item>
+    </style>
+
+    <style name="colorStylePBSmoking" parent="stylePB">
+        <item name="android:progressDrawable">@drawable/active_clock_ring</item>
+    </style>
+
 </resources>

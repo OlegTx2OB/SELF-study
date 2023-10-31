@@ -25,7 +25,7 @@
 
     <ProgressBar
         android:id="@+id/activeClockRing"
-        style="?android:attr/progressBarStyleHorizontal"
+        app:style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:indeterminate="false"

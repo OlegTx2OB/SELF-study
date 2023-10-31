@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center">
 
-    <ImageButton
+    <ImageView
         android:id="@+id/bottleBtn"
         style="@style/navigationBarStyle"
         android:src="@drawable/ic_bottle100"
@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="1"
         app:tint="@color/dark_chocolate" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/cigaretteBtn"
         style="@style/navigationBarStyle"
         android:src="@drawable/ic_cigarette100"
@@ -30,7 +30,7 @@
         app:layout_constraintVertical_bias="1"
         app:tint="@color/burnt_orange" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/xxxBtn"
         style="@style/navigationBarStyle"
         android:src="@drawable/ic_xxx100"

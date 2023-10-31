@@ -3,6 +3,7 @@ package com.example.abstinenceapp
 import android.content.Context
 import android.content.res.ColorStateList
 import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
 
 class SharedPreferencesMethods
@@ -24,9 +25,9 @@ class SharedPreferencesMethods
         }
 
         fun getAppModeSP(context: Context,
-                         mCigaretteBtn: ImageButton, mBottleBtn: ImageButton, mXXXBtn: ImageButton)//todo
+                         mCigaretteBtn: ImageView, mBottleBtn: ImageView, mXXXBtn: ImageView)//todo
         {
-            val burntOrange = ContextCompat.getColor(context, R.color.burnt_orange)
+            val burntOrange = ContextCompat.getColor(context, R.color.burnt_orange)//todo на всякий
             val darkChocolate = ContextCompat.getColor(context, R.color.dark_chocolate)
 
             val appMode = getStringSP(context, "savedAppMode", "smoking")

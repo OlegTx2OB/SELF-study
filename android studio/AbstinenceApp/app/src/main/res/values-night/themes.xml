@@ -1,7 +1,0 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.AbstinenceApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:navigationBarColor">@color/dark_pale_beige</item>
-        <item name="android:statusBarColor">@color/dark_pale_beige</item>
-    </style>
-</resources>
