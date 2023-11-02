@@ -3,5 +3,5 @@
     android:innerRadiusRatio="2.15"
     android:shape="ring"
     android:thicknessRatio="30">
-    <solid android:color="@color/burnt_orange" />
+    <solid android:color="?attr/colorAccent" />
 </shape>

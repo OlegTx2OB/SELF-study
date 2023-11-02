@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SettingsActivity"
-    android:background="@color/dark_pale_beige">
+    android:background="?attr/colorPrimary">
 
     <include layout="@layout/layout_back_button"/>
     <include layout="@layout/layout_date_time_button_ca"/>
