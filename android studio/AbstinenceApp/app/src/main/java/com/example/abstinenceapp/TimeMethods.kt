@@ -14,7 +14,7 @@ class TimeMethods
         fun getTimeForMainClockTV(differenceInMin: Long): String
         {
             val days = differenceInMin / 1440
-            val hours = differenceInMin % 1440 / 60 //TODO вот тут что-то не так
+            val hours = differenceInMin % 1440 / 60
             val minutes = differenceInMin % 60
 
             var daysStr = days.toString()

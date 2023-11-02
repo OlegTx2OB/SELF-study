@@ -3,14 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".MainActivity"
     android:background="@color/dark_pale_beige">
 
-    <include layout="@layout/layout_clock" />
+    <include layout="@layout/layout_navigation_bar" />
 
     <include layout="@layout/layout_center_buttons_ma" />
 
-    <include layout="@layout/layout_navigation_bar" />
+    <include layout="@layout/layout_clock" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

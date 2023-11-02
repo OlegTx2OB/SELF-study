@@ -8,7 +8,7 @@
     <ImageButton
         android:id="@+id/achieveBtn"
         style="@style/bigButtonsStyle"
-        android:background="@drawable/smoking_image_buttons_background"
+        android:background="@drawable/big_buttons"
         android:src="@drawable/ic_star100"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +41,7 @@
 
         style="@style/bigButtonsStyle"
 
-        android:background="@drawable/smoking_image_buttons_background"
+        android:background="@drawable/big_buttons"
         android:src="@drawable/ic_chronicles200"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,7 +58,7 @@
         android:id="@+id/settingsBtn"
         style="@style/bigButtonsStyle"
 
-        android:background="@drawable/smoking_image_buttons_background"
+        android:background="@drawable/big_buttons"
 
         android:src="@drawable/ic_settings200"
 

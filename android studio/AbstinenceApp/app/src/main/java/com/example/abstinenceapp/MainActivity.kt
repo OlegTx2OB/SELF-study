@@ -3,7 +3,6 @@ package com.example.abstinenceapp
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -21,9 +20,9 @@ import java.time.ZoneOffset
 */
  class MainActivity : AppCompatActivity()
 {
-    private lateinit var mCigaretteBtn: ImageView
-    private lateinit var mBottleBtn: ImageView
-    private lateinit var mXXXBtn: ImageView
+    private lateinit var mCigaretteBtn: ImageButton
+    private lateinit var mBottleBtn: ImageButton
+    private lateinit var mXXXBtn: ImageButton
 
     private lateinit var mChroniclesBtn: ImageButton
     private lateinit var mRestartBtn: ImageButton
@@ -38,6 +37,8 @@ import java.time.ZoneOffset
         var isLoopActive = true
     }
 
+//todo при нажатии на кнопку навигационной панели цикл корутинов не прекращается.
+// надо сделать так, чтобы с часами было всё корректно
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
