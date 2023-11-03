@@ -1,5 +1,6 @@
 package com.example.abstinenceapp
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
@@ -8,7 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.abstinenceapp.CoroutinesMethods.Companion.newThreadCheckAndSetTime
-import com.example.abstinenceapp.SharedPreferencesMethods.Companion.getAppModeSP
+import com.example.abstinenceapp.SharedPreferencesMethods.Companion.setNavigationBarBtnColors
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.getStringSP
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.saveLongSP
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.saveStringSP
@@ -41,16 +42,21 @@ import java.time.ZoneOffset
 // надо сделать так, чтобы с часами было всё корректно
     override fun onCreate(savedInstanceState: Bundle?)
     {
+        val appMode =
+            getStringSP(this, "savedAppMode", "smoking")
+
+        if(appMode == "smoking") setTheme(R.style.Theme_AbstinenceApp_smoking)
+        else if(appMode == "drinking") setTheme(R.style.Theme_AbstinenceApp_drinking)
+        else setTheme(R.style.Theme_AbstinenceApp_xxx)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         viewsInitialization()
-
     }
 
     override fun onStart()
     {
         super.onStart()
-
         var timeFromRestartClick: Long = 0
         mRestartBtn.setOnClickListener{
             if(timeFromRestartClick + 2000 > System.currentTimeMillis())
@@ -71,6 +77,7 @@ import java.time.ZoneOffset
         mSettingsBtn.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
+
         }
 
         mStarBtn.setOnClickListener {//todo
@@ -87,26 +94,40 @@ import java.time.ZoneOffset
 
         mBottleBtn.setOnClickListener {
             saveStringSP(this,"savedAppMode", "drinking")
-            getAppModeSP(this,
-                mCigaretteBtn, mBottleBtn, mXXXBtn)
+            finish()
+
+            val intent = Intent(this, MainActivity::class.java)
+            val options =
+                ActivityOptions.makeCustomAnimation(this, R.anim.slide_in, R.anim.slide_out)
+            startActivity(intent, options.toBundle())
         }
 
         mCigaretteBtn.setOnClickListener {
             saveStringSP(this,"savedAppMode", "smoking")
-            getAppModeSP(this,
-                mCigaretteBtn, mBottleBtn, mXXXBtn)
+            finish()
+
+            val intent = Intent(this, MainActivity::class.java)
+            val options =
+                ActivityOptions.makeCustomAnimation(this, R.anim.slide_in, R.anim.slide_out)
+            startActivity(intent, options.toBundle())
+
         }
 
         mXXXBtn.setOnClickListener {
             saveStringSP(this,"savedAppMode", "xxx")
-            getAppModeSP(this,
-                mCigaretteBtn, mBottleBtn, mXXXBtn)
+            finish()
+
+            val intent = Intent(this, MainActivity::class.java)
+            val options =
+                ActivityOptions.makeCustomAnimation(this, R.anim.slide_in, R.anim.slide_out)
+            startActivity(intent, options.toBundle())
         }
 
     }
 
     override fun onResume()
     {
+
         super.onResume()
         isLoopActive = true
         newThreadCheckAndSetTime(this, mMainClockTV, activeClockRing)
@@ -131,7 +152,7 @@ import java.time.ZoneOffset
         mBottleBtn = findViewById(R.id.bottleBtn)
         mXXXBtn = findViewById(R.id.xxxBtn)
 
-        getAppModeSP(this, mCigaretteBtn, mBottleBtn, mXXXBtn)
+        setNavigationBarBtnColors(this, mCigaretteBtn, mBottleBtn, mXXXBtn)
     }
 
 }

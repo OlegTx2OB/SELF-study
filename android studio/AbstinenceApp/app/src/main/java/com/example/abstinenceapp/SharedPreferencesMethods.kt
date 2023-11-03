@@ -23,12 +23,13 @@ class SharedPreferencesMethods
             editor.apply()
         }
 
-        fun getAppModeSP(context: Context,
-                         mCigaretteBtn: ImageButton, mBottleBtn: ImageButton, mXXXBtn: ImageButton)//todo
+        fun setNavigationBarBtnColors(context: Context,
+                                      mCigaretteBtn: ImageButton, mBottleBtn: ImageButton, mXXXBtn: ImageButton)//todo
         {
-            val burntOrange = ContextCompat.getColor(context, R.color.burnt_orange)
-            val darkChocolate = ContextCompat.getColor(context, R.color.dark_chocolate)
+            val activeColor = ContextCompat.getColor(context, R.color.burnt_orange)
+            val passiveColor = ContextCompat.getColor(context, R.color.dark_chocolate)
 
+            
             val appMode = getStringSP(context, "savedAppMode", "smoking")
 
             if(appMode == "drinking")
@@ -37,9 +38,9 @@ class SharedPreferencesMethods
                 mCigaretteBtn.isEnabled = true
                 mXXXBtn.isEnabled = true
 
-                mBottleBtn.imageTintList = ColorStateList.valueOf(burntOrange)
-                mCigaretteBtn.imageTintList = ColorStateList.valueOf(darkChocolate)
-                mXXXBtn.imageTintList = ColorStateList.valueOf(darkChocolate)
+                mBottleBtn.imageTintList = ColorStateList.valueOf(activeColor)
+                mCigaretteBtn.imageTintList = ColorStateList.valueOf(passiveColor)
+                mXXXBtn.imageTintList = ColorStateList.valueOf(passiveColor)
             }
             else if(appMode == "smoking")
             {
@@ -47,9 +48,9 @@ class SharedPreferencesMethods
                 mCigaretteBtn.isEnabled = false
                 mXXXBtn.isEnabled = true
 
-                mBottleBtn.imageTintList = ColorStateList.valueOf(darkChocolate)
-                mCigaretteBtn.imageTintList = ColorStateList.valueOf(burntOrange)
-                mXXXBtn.imageTintList = ColorStateList.valueOf(darkChocolate)
+                mBottleBtn.imageTintList = ColorStateList.valueOf(passiveColor)
+                mCigaretteBtn.imageTintList = ColorStateList.valueOf(activeColor)
+                mXXXBtn.imageTintList = ColorStateList.valueOf(passiveColor)
             }
             else
             {
@@ -57,9 +58,9 @@ class SharedPreferencesMethods
                 mCigaretteBtn.isEnabled = true
                 mXXXBtn.isEnabled = false
 
-                mBottleBtn.imageTintList = ColorStateList.valueOf(darkChocolate)
-                mCigaretteBtn.imageTintList = ColorStateList.valueOf(darkChocolate)
-                mXXXBtn.imageTintList = ColorStateList.valueOf(burntOrange)
+                mBottleBtn.imageTintList = ColorStateList.valueOf(passiveColor)
+                mCigaretteBtn.imageTintList = ColorStateList.valueOf(passiveColor)
+                mXXXBtn.imageTintList = ColorStateList.valueOf(activeColor)
             }
         }
         fun getStringSP(context: Context, key: String, defaultValue: String) : String?

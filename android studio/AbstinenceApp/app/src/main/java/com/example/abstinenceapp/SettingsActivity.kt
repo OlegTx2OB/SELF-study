@@ -28,6 +28,13 @@ class SettingsActivity : AppCompatActivity()
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
+        val appMode =
+            getStringSP(this, "savedAppMode", "smoking")
+
+        if(appMode == "smoking") setTheme(R.style.Theme_AbstinenceApp_smoking)
+        else if(appMode == "drinking") setTheme(R.style.Theme_AbstinenceApp_drinking)
+        else setTheme(R.style.Theme_AbstinenceApp_xxx)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
