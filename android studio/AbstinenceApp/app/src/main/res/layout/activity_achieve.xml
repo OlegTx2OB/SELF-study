@@ -10,25 +10,27 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="8dp">
+            android:orientation="vertical">
 
-            <View style="@style/achieveFrameStyle" />
-            <View style="@style/achieveFrameStyle" />
-            <View style="@style/achieveFrameStyle" />
-            <View style="@style/achieveFrameStyle" />
-            <View style="@style/achieveFrameStyle" />
-            <View style="@style/achieveFrameStyle" />
-            <View style="@style/achieveFrameStyle" />
-            <View style="@style/achieveFrameStyle" />
-            <View style="@style/achieveFrameStyle" />
-            <View style="@style/achieveFrameStyle" />
+            <include layout="@layout/layout01_private"/>
+            <include layout="@layout/layout02_corporal"/>
+            <include layout="@layout/layout03_sergeant"/>
+            <include layout="@layout/layout04_first_officer"/>
+            <include layout="@layout/layout05_lieutenant"/>
+            <include layout="@layout/layout06_captain"/>
+            <include layout="@layout/layout07_major"/>
+            <include layout="@layout/layout08_colonel"/>
+            <include layout="@layout/layout09_brigadier"/>
+            <include layout="@layout/layout10_general"/>
+
+
 
         </LinearLayout>
     </ScrollView>
+
     <include layout="@layout/layout_back_button"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

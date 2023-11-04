@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Abstinence</string>
+    <string name="rank_1">Private</string>
+    <string name="rank_2">Corporal</string>
+    <string name="rank_3">sergeant</string>
+    <string name="rank_4">Subaltern</string>
+    <string name="rank_5">lieutenant</string>
+    <string name="rank_6">Captain</string>
+    <string name="rank_7">Major</string>
+    <string name="rank_8">Colonel</string>
+    <string name="rank_9">Brigadier</string>
+    <string name="rank_10">General</string>
+    <string name="rank_1_condition">you lasted 6 hours</string>
+    <string name="rank_2_condition">you lasted 1 day</string>
+    <string name="rank_3_condition">you lasted 3 days</string>
+    <string name="rank_4_condition">you lasted 5 days</string>
+    <string name="rank_5_condition">you lasted 7 days</string>
+    <string name="rank_6_condition">you lasted 10 days</string>
+    <string name="rank_7_condition">you lasted 15 days</string>
+    <string name="rank_8_condition">you lasted 20 days</string>
+    <string name="rank_9_condition">you lasted 25 days</string>
+    <string name="rank_10_condition">you lasted 30 days! Congratulations!</string>
 
 </resources>

@@ -25,7 +25,7 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="achieveFrameStyle">
+    <style name="achieveAndChroniclesFrameStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">100dp</item>
         <item name="android:background">@drawable/frame</item>
@@ -38,17 +38,12 @@
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">16dp</item>
-
     </style>
 
-    <style name="achieveTVStyle">
+    <style name="guideLineActivityAchieveStyle">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:gravity">center</item>
-        <item name="android:fontFamily">sans-serif-black</item>
-        <item name="android:textColor">?attr/colorText</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
     </style>
-
 
 </resources>

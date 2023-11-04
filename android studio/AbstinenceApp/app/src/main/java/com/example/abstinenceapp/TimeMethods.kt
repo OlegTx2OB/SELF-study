@@ -28,7 +28,7 @@ class TimeMethods
             return "$daysStr:$hoursStr:$minutesStr"
         }
 
-        fun setDateTimeOnTVs(context: Context, mTimeWithinADayTV: TextView)
+        fun setDateTimeOnTV(context: Context, mTimeWithinADayTV: TextView)
         {
             val appMode = getStringSP(context, "savedAppMode", "smoking")
             val savedEpochMinute = getLongSP(context, "savedTime$appMode", -1)

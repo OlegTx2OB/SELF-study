@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.getStringSP
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.saveLongSP
-import com.example.abstinenceapp.TimeMethods.Companion.setDateTimeOnTVs
+import com.example.abstinenceapp.TimeMethods.Companion.setDateTimeOnTV
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 
@@ -61,7 +61,7 @@ class SettingsActivity : AppCompatActivity()
                     val appMode =
                         getStringSP(this, "savedAppMode", "smoking")
                     saveLongSP(this, "savedTime$appMode", (selectedDateTime.toEpochSecond(ZoneOffset.UTC) / 60))
-                    setDateTimeOnTVs(this, mTimeWithinADayTV)
+                    setDateTimeOnTV(this, mTimeWithinADayTV)
                 }
                 else Toast.makeText(this, "selected Date if after current", Toast.LENGTH_SHORT)
                     .show()
@@ -80,7 +80,7 @@ class SettingsActivity : AppCompatActivity()
     override fun onResume()
     {
         super.onResume()
-        setDateTimeOnTVs(this, mTimeWithinADayTV)
+        setDateTimeOnTV(this, mTimeWithinADayTV)
     }
 
     private fun viewsInitialization()

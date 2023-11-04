@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Воздержание</string>
+    <string name="rank_1">Рядовой</string>
+    <string name="rank_2">Капрал</string>
+    <string name="rank_3">Сержант</string>
+    <string name="rank_4">Младший офицер</string>
+    <string name="rank_5">Лейтенант</string>
+    <string name="rank_6">Капитан</string>
+    <string name="rank_7">Майор</string>
+    <string name="rank_8">Полковник</string>
+    <string name="rank_9">Бригадир</string>
+    <string name="rank_10">Генерал</string>
+    <string name="rank_1_condition">вы продержались 6 часов</string>
+    <string name="rank_2_condition">вы продержались 1 день</string>
+    <string name="rank_3_condition">вы продержались 3 дня</string>
+    <string name="rank_4_condition">вы продержались 5 дней</string>
+    <string name="rank_5_condition">вы продержались 7 дней</string>
+    <string name="rank_6_condition">вы продержались 10 дней</string>
+    <string name="rank_7_condition">вы продержались 15 дней</string>
+    <string name="rank_8_condition">вы продержались 20 дней</string>
+    <string name="rank_9_condition">вы продержались 25 дней</string>
+    <string name="rank_10_condition">вы продержались 30 дней! Поздравляем!</string>
 
 </resources>
