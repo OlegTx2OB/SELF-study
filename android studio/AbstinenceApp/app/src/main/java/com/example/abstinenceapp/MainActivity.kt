@@ -89,6 +89,8 @@ import java.time.ZoneOffset
             saveStringSP(this,"savedAppMode", "drinking")
             getAppModeSP(this,
                 mCigaretteBtn, mBottleBtn, mXXXBtn)
+            setTheme(R.style.Theme_AbstinenceApp_green)
+            recreate()
         }
 
         mCigaretteBtn.setOnClickListener {
