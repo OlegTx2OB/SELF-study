@@ -2,7 +2,6 @@ package com.example.abstinenceapp
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.util.TypedValue
 import android.widget.ImageButton
 import androidx.core.content.ContextCompat
 
@@ -35,8 +34,8 @@ class SharedPreferencesMethods
 
             if(appMode == "drinking")
             {
-                val activeColor = ContextCompat.getColor(context, R.color.olive_green_500)
-                val passiveColor = ContextCompat.getColor(context, R.color.olive_green_400)
+                val activeColor = ContextCompat.getColor(context, R.color.pink)
+                val passiveColor = ContextCompat.getColor(context, R.color.gunmetal)
 
                 mBottleBtn.isEnabled = false
                 mCigaretteBtn.isEnabled = true

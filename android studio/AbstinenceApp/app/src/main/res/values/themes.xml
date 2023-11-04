@@ -2,25 +2,27 @@
 
     <!-- Base application theme. -->
     <style name="Theme.AbstinenceApp.smoking" parent="Theme.Material3.DayNight.NoActionBar">
-      <item name="android:navigationBarColor">@color/dark_pale_beige</item>
-      <item name="android:statusBarColor">@color/dark_pale_beige</item>
+      <item name="android:navigationBarColor">@color/pale_beige</item>
+      <item name="android:statusBarColor">@color/pale_beige</item>
 
         <item name="colorText">@color/dark_chocolate</item>
-        <item name="colorOnBackground">@color/dark_pale_beige</item>
-        <item name="colorPrimaryVariant">@color/dark_dark_pale_beige</item>
+        <item name="colorPrimary">@color/pale_beige</item>
+        <item name="colorPrimaryVariant">@color/dark_pale_beige</item>
         <item name="colorSecondary">@color/dark_chocolate</item>
         <item name="colorAccent">@color/burnt_orange</item>
     </style>
 
     <style name="Theme.AbstinenceApp.drinking" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:navigationBarColor">@color/olive_green_300</item>
-        <item name="android:statusBarColor">@color/olive_green_300</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/mint_cream</item>
+        <item name="android:statusBarColor">@color/mint_cream</item>
 
-        <item name="colorText">@color/white</item>
-        <item name="colorOnBackground">@color/olive_green_300</item>
-        <item name="colorPrimaryVariant">@color/olive_green_400</item>
-        <item name="colorSecondary">@color/olive_green_500</item>
-        <item name="colorAccent">@color/olive_green_450</item>
+        <item name="colorText">@color/gunmetal</item>
+        <item name="colorPrimary">@color/mint_cream</item>
+        <item name="colorPrimaryVariant">@color/pink</item>
+        <item name="colorSecondary">@color/gunmetal</item>
+        <item name="colorAccent">@color/amaranth_purple</item>
+
     </style>
 
     <style name="Theme.AbstinenceApp.xxx" parent="Theme.Material3.DayNight.NoActionBar">
@@ -28,8 +30,8 @@
         <item name="android:statusBarColor">@color/gray_990</item>
 
         <item name="colorText">@color/white</item>
-        <item name="colorOnBackground">@color/gray_990</item>
-        <item name="colorPrimaryVariant">@color/gray_200</item>
+        <item name="colorPrimary">@color/gray_990</item>
+        <item name="colorPrimaryVariant">@color/gray_900</item>
         <item name="colorSecondary">@color/gray_900</item>
         <item name="colorAccent">@color/orange_300</item>
 

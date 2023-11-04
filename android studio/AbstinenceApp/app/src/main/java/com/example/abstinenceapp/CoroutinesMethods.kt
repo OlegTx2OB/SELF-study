@@ -3,6 +3,7 @@ package com.example.abstinenceapp
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.example.abstinenceapp.MainActivity.Companion.isLoopActive
@@ -17,38 +18,46 @@ import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 
-class CoroutinesMethods
-{
+class CoroutinesMethods {
     companion object
     {
-        private lateinit var handler: Handler
-        private lateinit var runnable: Runnable
-        fun newThreadCheckAndSetTime(context: Context,
-                                     mMainClockTV: TextView, activeClockRing: ProgressBar)
-        {
-            handler = Handler(Looper.getMainLooper())
-            runnable = kotlinx.coroutines.Runnable{
+        fun newThreadCheckAndSetTime(
+            context: Context,
+            mMainClockTV: TextView, activeClockRing: ProgressBar
+        ) {
+            val handler = Handler(Looper.getMainLooper())
+            val runnableLoop = kotlinx.coroutines.Runnable {
                 GlobalScope.launch(Dispatchers.Main)
                 {
-                    while (isLoopActive)
-                    {
+                    while (isLoopActive) {
                         val currEpochMinute = LocalDateTime.now()
                             .toEpochSecond(ZoneOffset.UTC) / 60
-
+Log.i("","")//todo
                         val appMode = getStringSP(context, "savedAppMode", "smoking")
-                        val savedEpochMinute = getLongSP(context, "savedTime$appMode", currEpochMinute)
-                        if(currEpochMinute == savedEpochMinute)
+                        val savedEpochMinute =
+                            getLongSP(context, "savedTime$appMode", currEpochMinute)
+                        if (currEpochMinute == savedEpochMinute)
                             saveLongSP(context, "savedTime$appMode", currEpochMinute)
-
-                        mMainClockTV.text = getTimeForMainClockTV(currEpochMinute - savedEpochMinute)
-                        activeClockRing.progress = ((currEpochMinute - savedEpochMinute) % 1440).toInt()
-                        delay(2000)
+                        mMainClockTV.text =
+                            getTimeForMainClockTV(currEpochMinute - savedEpochMinute)
+                        activeClockRing.progress =
+                            ((currEpochMinute - savedEpochMinute) % 1440).toInt()
+                        delay(500)
                     }
                 }
             }
-            handler.post(runnable)
+            val runnableSetIsLoopActiveTrue = kotlinx.coroutines.Runnable {
+                GlobalScope.launch(Dispatchers.Main)
+                {
+                    isLoopActive = true
+                    delay(200)
+                    isLoopActive = true
+                    delay(200)
+                    isLoopActive = true
+                }
+            }
+            handler.post(runnableSetIsLoopActiveTrue)
+            handler.post(runnableLoop)
         }
-
-
     }
 }

@@ -57,6 +57,7 @@ import java.time.ZoneOffset
     override fun onStart()
     {
         super.onStart()
+
         var timeFromRestartClick: Long = 0
         mRestartBtn.setOnClickListener{
             if(timeFromRestartClick + 2000 > System.currentTimeMillis())
@@ -79,12 +80,12 @@ import java.time.ZoneOffset
             startActivity(intent)
         }
 
-        mStarBtn.setOnClickListener {//todo
+        mStarBtn.setOnClickListener {
             val intent = Intent(this, AchieveActivity::class.java)
             startActivity(intent)
         }
 
-        mChroniclesBtn.setOnClickListener {//todo
+        mChroniclesBtn.setOnClickListener {
             val intent = Intent(this, ChroniclesActivity::class.java)
             startActivity(intent)
         }
@@ -92,12 +93,6 @@ import java.time.ZoneOffset
 
         mBottleBtn.setOnClickListener {
             saveStringSP(this,"savedAppMode", "drinking")
-
-            getAppModeSP(this,
-                mCigaretteBtn, mBottleBtn, mXXXBtn)
-            setTheme(R.style.Theme_AbstinenceApp_green)
-            recreate()
-
             finish()
 
             val intent = Intent(this, MainActivity::class.java)
@@ -131,7 +126,6 @@ import java.time.ZoneOffset
 
     override fun onResume()
     {
-
         super.onResume()
         isLoopActive = true
         newThreadCheckAndSetTime(this, mMainClockTV, activeClockRing)
