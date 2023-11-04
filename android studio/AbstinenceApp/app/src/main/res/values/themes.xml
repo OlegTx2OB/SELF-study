@@ -33,7 +33,7 @@
         <item name="colorPrimary">@color/gray_990</item>
         <item name="colorPrimaryVariant">@color/gray_900</item>
         <item name="colorSecondary">@color/gray_900</item>
-        <item name="colorAccent">@color/orange_300</item>
+        <item name="colorAccent">@color/orange</item>
 
     </style>
 </resources>

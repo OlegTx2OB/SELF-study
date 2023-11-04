@@ -28,10 +28,6 @@ class SharedPreferencesMethods
         {
             val appMode = getStringSP(context, "savedAppMode", "smoking")
 
-
-
-
-
             if(appMode == "drinking")
             {
                 val activeColor = ContextCompat.getColor(context, R.color.pink)
@@ -60,7 +56,7 @@ class SharedPreferencesMethods
             }
             else
             {
-                val activeColor = ContextCompat.getColor(context, R.color.orange_300)
+                val activeColor = ContextCompat.getColor(context, R.color.orange)
                 val passiveColor = ContextCompat.getColor(context, R.color.gray_900)
 
                 mBottleBtn.isEnabled = true
