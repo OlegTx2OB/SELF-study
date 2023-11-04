@@ -5,6 +5,7 @@
       <item name="android:navigationBarColor">@color/dark_pale_beige</item>
       <item name="android:statusBarColor">@color/dark_pale_beige</item>
 
+        <item name="colorText">@color/dark_chocolate</item>
         <item name="colorOnBackground">@color/dark_pale_beige</item>
         <item name="colorPrimaryVariant">@color/dark_dark_pale_beige</item>
         <item name="colorSecondary">@color/dark_chocolate</item>
@@ -15,6 +16,7 @@
         <item name="android:navigationBarColor">@color/olive_green_300</item>
         <item name="android:statusBarColor">@color/olive_green_300</item>
 
+        <item name="colorText">@color/white</item>
         <item name="colorOnBackground">@color/olive_green_300</item>
         <item name="colorPrimaryVariant">@color/olive_green_400</item>
         <item name="colorSecondary">@color/olive_green_500</item>
@@ -25,9 +27,11 @@
         <item name="android:navigationBarColor">@color/gray_990</item>
         <item name="android:statusBarColor">@color/gray_990</item>
 
+        <item name="colorText">@color/white</item>
         <item name="colorOnBackground">@color/gray_990</item>
         <item name="colorPrimaryVariant">@color/gray_200</item>
         <item name="colorSecondary">@color/gray_900</item>
         <item name="colorAccent">@color/orange_300</item>
+
     </style>
 </resources>

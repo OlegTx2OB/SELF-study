@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity()
         setContentView(R.layout.activity_main)
     }
 
-    @Suppress("DEPRECATION")
     override fun onBackPressed()
     {
         if (backPressed + 2000 > System.currentTimeMillis()) super.onBackPressed()

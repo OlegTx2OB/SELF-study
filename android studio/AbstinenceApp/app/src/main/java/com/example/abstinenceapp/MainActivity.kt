@@ -77,13 +77,11 @@ import java.time.ZoneOffset
         mSettingsBtn.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
-
         }
 
         mStarBtn.setOnClickListener {//todo
             val intent = Intent(this, AchieveActivity::class.java)
             startActivity(intent)
-
         }
 
         mChroniclesBtn.setOnClickListener {//todo

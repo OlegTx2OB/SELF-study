@@ -2,6 +2,7 @@ package com.example.abstinenceapp
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.util.TypedValue
 import android.widget.ImageButton
 import androidx.core.content.ContextCompat
 
@@ -26,14 +27,17 @@ class SharedPreferencesMethods
         fun setNavigationBarBtnColors(context: Context,
                                       mCigaretteBtn: ImageButton, mBottleBtn: ImageButton, mXXXBtn: ImageButton)//todo
         {
-            val activeColor = ContextCompat.getColor(context, R.color.burnt_orange)
-            val passiveColor = ContextCompat.getColor(context, R.color.dark_chocolate)
-
-            
             val appMode = getStringSP(context, "savedAppMode", "smoking")
+
+
+
+
 
             if(appMode == "drinking")
             {
+                val activeColor = ContextCompat.getColor(context, R.color.olive_green_500)
+                val passiveColor = ContextCompat.getColor(context, R.color.olive_green_400)
+
                 mBottleBtn.isEnabled = false
                 mCigaretteBtn.isEnabled = true
                 mXXXBtn.isEnabled = true
@@ -44,6 +48,9 @@ class SharedPreferencesMethods
             }
             else if(appMode == "smoking")
             {
+                val activeColor = ContextCompat.getColor(context, R.color.burnt_orange)
+                val passiveColor = ContextCompat.getColor(context, R.color.dark_chocolate)
+
                 mBottleBtn.isEnabled = true
                 mCigaretteBtn.isEnabled = false
                 mXXXBtn.isEnabled = true
@@ -54,6 +61,9 @@ class SharedPreferencesMethods
             }
             else
             {
+                val activeColor = ContextCompat.getColor(context, R.color.orange_300)
+                val passiveColor = ContextCompat.getColor(context, R.color.gray_900)
+
                 mBottleBtn.isEnabled = true
                 mCigaretteBtn.isEnabled = true
                 mXXXBtn.isEnabled = false
