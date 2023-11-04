@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+
     <color name="dark_pale_beige">#FFE0D0C0</color>
     <color name="dark_dark_pale_beige">#FFD0C0B0</color>
     <color name="burnt_orange">#FFB37D27</color>
     <color name="dark_chocolate">#371400</color>
-    <color name="black">#FF000000</color>
-    
     
     <color name="olive_green_300">#B5C99A</color>
     <color name="olive_green_400">#97A97C</color>
     <color name="olive_green_450">#87986A</color>
     <color name="olive_green_500">#718355</color>
 
-
+    <color name="gray_990">#0A0A0A</color>
+    <color name="gray_900">#343434</color>
+    <color name="gray_200">#7C7C7C</color>
+    <color name="orange_300">#FF9900</color>
 </resources>
