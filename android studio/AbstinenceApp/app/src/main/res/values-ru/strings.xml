@@ -20,6 +20,6 @@
     <string name="rank_7_condition">вы продержались 15 дней</string>
     <string name="rank_8_condition">вы продержались 20 дней</string>
     <string name="rank_9_condition">вы продержались 25 дней</string>
-    <string name="rank_10_condition">вы продержались 30 дней! Поздравляем!</string>
+    <string name="rank_10_condition">вы продержались 30 дней</string>
 
 </resources>

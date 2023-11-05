@@ -20,6 +20,6 @@
     <string name="rank_7_condition">you lasted 15 days</string>
     <string name="rank_8_condition">you lasted 20 days</string>
     <string name="rank_9_condition">you lasted 25 days</string>
-    <string name="rank_10_condition">you lasted 30 days! Congratulations!</string>
+    <string name="rank_10_condition">you lasted 30 days!</string>
 
 </resources>
