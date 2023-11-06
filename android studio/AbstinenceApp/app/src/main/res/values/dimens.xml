@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="constraint_l_height">86dp</dimen>
+    <dimen name="constraint_l_vertical_padding">8dp</dimen>
+    <dimen name="constraint_l_horizontal_padding">16dp</dimen>
+</resources>

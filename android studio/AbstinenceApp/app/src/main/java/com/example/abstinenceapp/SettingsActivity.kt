@@ -37,8 +37,9 @@ class SettingsActivity : AppCompatActivity()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-
         viewsInitialization()
+        mTimeWithinADayTV.text = setDateTimeOnTV(this)
+
     }
 
     override fun onStart()
@@ -61,10 +62,9 @@ class SettingsActivity : AppCompatActivity()
                     val appMode =
                         getStringSP(this, "savedAppMode", "smoking")
                     saveLongSP(this, "savedTime$appMode", (selectedDateTime.toEpochSecond(ZoneOffset.UTC) / 60))
-                    setDateTimeOnTV(this, mTimeWithinADayTV)
+                    mTimeWithinADayTV.text = setDateTimeOnTV(this)
                 }
-                else Toast.makeText(this, "selected Date if after current", Toast.LENGTH_SHORT)
-                    .show()
+                else Toast.makeText(this, "selected Date if after current", Toast.LENGTH_SHORT).show()
             }, currT.hour, currT.minute, true)
 
             val datePickerDialog = DatePickerDialog(this, { _, y, m, d ->
@@ -75,12 +75,6 @@ class SettingsActivity : AppCompatActivity()
             datePickerDialog.show()
 
         }
-    }
-
-    override fun onResume()
-    {
-        super.onResume()
-        setDateTimeOnTV(this, mTimeWithinADayTV)
     }
 
     private fun viewsInitialization()

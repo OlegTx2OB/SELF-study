@@ -10,7 +10,7 @@ import com.example.abstinenceapp.MainActivity.Companion.isLoopActive
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.getLongSP
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.getStringSP
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.saveLongSP
-import com.example.abstinenceapp.TimeMethods.Companion.getTimeForMainClockTV
+import com.example.abstinenceapp.TimeMethods.Companion.getDaysHoursMinutesSinceStart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -39,7 +39,7 @@ Log.i("","")//todo
                         if (currEpochMinute == savedEpochMinute)
                             saveLongSP(context, "savedTime$appMode", currEpochMinute)
                         mMainClockTV.text =
-                            getTimeForMainClockTV(currEpochMinute - savedEpochMinute)
+                            getDaysHoursMinutesSinceStart(currEpochMinute - savedEpochMinute)
                         activeClockRing.progress =
                             ((currEpochMinute - savedEpochMinute) % 1440).toInt()
                         delay(500)

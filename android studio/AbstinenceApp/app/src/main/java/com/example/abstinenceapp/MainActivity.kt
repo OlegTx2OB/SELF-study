@@ -11,8 +11,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.abstinenceapp.CoroutinesMethods.Companion.newThreadCheckAndSetTime
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.setNavigationBarBtnColors
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.getStringSP
+import com.example.abstinenceapp.SharedPreferencesMethods.Companion.loadArrayList
+import com.example.abstinenceapp.SharedPreferencesMethods.Companion.saveArrayList
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.saveLongSP
 import com.example.abstinenceapp.SharedPreferencesMethods.Companion.saveStringSP
+import com.example.abstinenceapp.TimeMethods.Companion.setDateTimeOnTV
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 
@@ -36,10 +39,10 @@ import java.time.ZoneOffset
     companion object
     {
         var isLoopActive = true
+        var arrayList = ArrayList<String>()
     }
 
-//todo при нажатии на кнопку навигационной панели цикл корутинов не прекращается.
-// надо сделать так, чтобы с часами было всё корректно
+//todo могут возникнуть проблемы вследствие того, что новая активити появляется раньше, чем исчезает старая
     override fun onCreate(savedInstanceState: Bundle?)
     {
         val appMode =
@@ -51,6 +54,7 @@ import java.time.ZoneOffset
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        arrayList = loadArrayList(this)
         viewsInitialization()
     }
 
@@ -68,6 +72,9 @@ import java.time.ZoneOffset
                 val appMode =
                     getStringSP(this, "savedAppMode", "smoking")
                 saveLongSP(this, "savedTime$appMode", currEpochMinute)
+
+                arrayList.add(setDateTimeOnTV(this))//todo test
+                saveArrayList(this, arrayList)
             }
             else Toast.makeText(this, "Press one more time", Toast.LENGTH_SHORT).show()
 

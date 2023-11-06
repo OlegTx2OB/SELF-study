@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.widget.ImageButton
 import androidx.core.content.ContextCompat
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class SharedPreferencesMethods
 {
@@ -21,6 +23,33 @@ class SharedPreferencesMethods
             val editor = sP.edit()
             editor.putLong(key, value)
             editor.apply()
+        }
+
+        fun saveArrayList(context: Context, list: ArrayList<String>)
+        {
+            val key = "ArrayList"
+            val appMode =
+                getStringSP(context, "savedAppMode", "smoking")
+
+            val sP = context.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
+            val editor = sP.edit()
+            val gson = Gson()
+            val json: String = gson.toJson(list)
+            editor.putString(key + appMode, json)
+            editor.apply()
+        }
+
+        fun loadArrayList(context: Context): ArrayList<String>
+        {
+            val key = "ArrayList"
+            val appMode =
+                getStringSP(context, "savedAppMode", "smoking")
+
+            val sP = context.getSharedPreferences("MySharedPreferences", Context.MODE_PRIVATE)
+            val gson = Gson()
+            val json: String? = sP.getString(key + appMode, null)
+            val type = object : TypeToken<ArrayList<String>>() {}.type
+            return gson.fromJson(json, type) ?: ArrayList()
         }
 
         fun setNavigationBarBtnColors(context: Context,
