@@ -39,7 +39,6 @@ class SettingsActivity : AppCompatActivity()
         setContentView(R.layout.activity_settings)
         viewsInitialization()
         mTimeWithinADayTV.text = setDateTimeOnTV(this)
-
     }
 
     override fun onStart()
