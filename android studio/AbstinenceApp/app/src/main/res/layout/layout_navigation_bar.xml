@@ -33,7 +33,7 @@
     <ImageButton
         android:id="@+id/xxxBtn"
         style="@style/navigationBarStyle"
-        android:src="@drawable/ic_xxx100"
+        android:src="@drawable/ic_diet100"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

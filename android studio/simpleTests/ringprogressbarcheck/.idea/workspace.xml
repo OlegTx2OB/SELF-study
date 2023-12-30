@@ -5,16 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bdd30b3e-a323-4b6c-853d-462e402cc7f0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../KLIMOV/DAY16K/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../KLIMOV/DAY16K/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KLIMOV/DAY16K/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../KLIMOV/DAY16K/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KLIMOV/DAY16K/app/src/test/java/com/example/day16k/ExampleUnitTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../KLIMOV/DAY16K/app/src/test/java/com/example/day16k/ExampleUnitTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AbstinenceApp/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../AbstinenceApp/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AbstinenceApp/app/src/main/res/layout/layout_navigation_bar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../AbstinenceApp/app/src/main/res/layout/layout_navigation_bar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BootReceiverTest/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BootReceiverTest/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BootReceiverTest/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BootReceiverTest/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/tx2ob/.android/avd/Pixel_3a_API_34_extension_level_7_arm64-v8a.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Tx2OB\.android\avd\Pixel_XL_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -59,7 +60,7 @@
     </system>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="ProjectId" id="2WyC4vWmHa0tEXt1GNlAhbo35b2" />
   <component name="ProjectViewState">
@@ -72,7 +73,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "/Users/tx2ob/Desktop/SELF-study/android studio/ringprogressbarcheck"
+    "last_opened_file_path": "Z:/GitHub/SELF-study/android studio/simpleTests/ringprogressbarcheck",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RunManager">
