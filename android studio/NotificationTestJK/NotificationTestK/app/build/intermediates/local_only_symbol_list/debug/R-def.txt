@@ -1,0 +1,23 @@
+R_DEF: Internal format may change without notice
+local
+color background_red
+color black
+color button_red
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable no_icon
+drawable notification_icon
+drawable yes_icon
+id button
+id textView
+layout activity_main
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string content_text
+string content_title
+style Base.Theme.NotificationTestK
+style Theme.NotificationTestK
+xml backup_rules
+xml data_extraction_rules
