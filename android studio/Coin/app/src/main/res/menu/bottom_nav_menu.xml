@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item
+        android:id="@+id/navigation_incomes_outcomes"
+        android:icon="@drawable/ic_incomes"
+        android:title="@string/title_bottom_nav_incomes" />
+
+    <item
+        android:id="@+id/navigation_incomes_outcomes"
+        android:icon="@drawable/ic_outcomes"
+        android:title="@string/title_bottom_nav_outcomes"
+        tools:ignore="DuplicateIds" />
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/title_bottom_nav_settings" />
+
+
+</menu>

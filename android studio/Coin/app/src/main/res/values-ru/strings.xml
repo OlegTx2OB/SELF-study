@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Coin</string>
+    <string name="title_bottom_nav_outcomes">Расходы</string>
+    <string name="title_bottom_nav_incomes">Доходы</string>
+    <string name="title_bottom_nav_settings">Параметры</string>
+</resources>

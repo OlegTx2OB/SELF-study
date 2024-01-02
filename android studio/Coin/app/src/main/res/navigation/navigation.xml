@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_incomes_outcomes">
+
+
+    <fragment
+        android:id="@+id/navigation_incomes_outcomes"
+        android:name="com.example.coin.ui.IncomesOutcomes.IncomesOutcomesFragment"
+        tools:layout="@layout/fragment_incomes_outcomes" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.example.coin.ui.Settings.SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
+
+</navigation>
