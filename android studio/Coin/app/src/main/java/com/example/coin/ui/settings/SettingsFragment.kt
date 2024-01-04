@@ -1,4 +1,4 @@
-package com.example.coin.ui.IncomesOutcomes
+package com.example.coin.ui.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.coin.databinding.FragmentIncomesOutcomesBinding
+import com.example.coin.databinding.FragmentSettingsBinding
 
-class IncomesOutcomesFragment : Fragment()
+class SettingsFragment : Fragment()
 {
 
-    private var _binding: FragmentIncomesOutcomesBinding? = null
+    private var _binding: FragmentSettingsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,20 +23,21 @@ class IncomesOutcomesFragment : Fragment()
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val incomesOutcomesViewModel =
-            ViewModelProvider(this).get(IncomesOutcomesViewModel::class.java)
+        val settingsViewModel =
+            ViewModelProvider(this).get(SettingsViewModel::class.java)
 
-        _binding = FragmentIncomesOutcomesBinding.inflate(inflater, container, false)
+        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        incomesOutcomesViewModel.text.observe(viewLifecycleOwner) {
+        val textView: TextView = binding.textHome
+        settingsViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root
     }
 
-    override fun onDestroyView() {
+    override fun onDestroyView()
+    {
         super.onDestroyView()
         _binding = null
     }

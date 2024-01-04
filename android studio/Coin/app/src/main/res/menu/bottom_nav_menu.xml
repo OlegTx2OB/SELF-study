@@ -2,8 +2,6 @@
 <menu xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-
     <item
         android:id="@+id/navigation_incomes_outcomes"
         android:icon="@drawable/ic_incomes"
@@ -19,6 +17,5 @@
         android:id="@+id/navigation_settings"
         android:icon="@drawable/ic_settings"
         android:title="@string/title_bottom_nav_settings" />
-
 
 </menu>

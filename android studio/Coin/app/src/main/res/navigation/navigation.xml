@@ -5,15 +5,14 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_incomes_outcomes">
 
-
     <fragment
         android:id="@+id/navigation_incomes_outcomes"
-        android:name="com.example.coin.ui.IncomesOutcomes.IncomesOutcomesFragment"
+        android:name="com.example.coin.ui.incomesOutcomes.IncomesOutcomesFragment"
         tools:layout="@layout/fragment_incomes_outcomes" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="com.example.coin.ui.Settings.SettingsFragment"
+        android:name="com.example.coin.ui.settings.SettingsFragment"
         tools:layout="@layout/fragment_settings" />
 
 </navigation>
