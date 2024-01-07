@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "info.fandroid.databindingsample.app-mergeDebugResources-18:/values-watch-v21/values-watch-v21.xml",
+            "map": [
+                {
+                    "source": "/Users/tx2ob/.gradle/caches/transforms-3/3f4b3a146335a57f3fcd136b69f0b7c8/transformed/appcompat-1.0.2/res/values-watch-v21/values-watch-v21.xml",
+                    "from": {
+                        "startLines": "2,6,10",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,271,499",
+                        "endLines": "5,9,13",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "266,494,724"
+                    }
+                }
+            ]
+        }
+    ]
+}
