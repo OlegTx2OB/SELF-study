@@ -1,43 +1,32 @@
 package com.example.coin.ui.incomesOutcomes
 
+import com.example.coin.R.layout.fragment_incomes_outcomes
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.coin.databinding.FragmentIncomesOutcomesBinding
+
 
 class IncomesOutcomesFragment : Fragment()
 {
 
     private var _binding: FragmentIncomesOutcomesBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val incomesOutcomesViewModel =
-            ViewModelProvider(this).get(IncomesOutcomesViewModel::class.java)
+    ): View
+    {
+        val rootView: View = inflater.inflate(fragment_incomes_outcomes, container, false)
 
-        _binding = FragmentIncomesOutcomesBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        incomesOutcomesViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        return rootView
     }
 }
