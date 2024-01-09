@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "info.fandroid.databindingsample.app-mergeDebugResources-18:/values-hdpi-v4/values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "/Users/tx2ob/.gradle/caches/transforms-3/3f4b3a146335a57f3fcd136b69f0b7c8/transformed/appcompat-1.0.2/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    }
+                }
+            ]
+        }
+    ]
+}
