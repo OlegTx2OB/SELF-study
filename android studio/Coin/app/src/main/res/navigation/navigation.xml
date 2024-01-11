@@ -3,16 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_incomes_outcomes">
+    app:startDestination="@+id/bottom_nav_databoard">
 
     <fragment
-        android:id="@+id/navigation_incomes_outcomes"
-        android:name="com.example.coin.ui.incomesOutcomes.IncomesOutcomesFragment"
-        tools:layout="@layout/fragment_incomes_outcomes" />
+        android:id="@+id/bottom_nav_databoard"
+        android:name="com.example.coin.view.DataBoardFragment"
+        tools:layout="@layout/fragment_databoard" />
 
     <fragment
-        android:id="@+id/navigation_settings"
-        android:name="com.example.coin.ui.settings.SettingsFragment"
-        tools:layout="@layout/fragment_settings" />
+        android:id="@+id/bottom_nav_stats"
+        android:name="com.example.coin.view.StatsFragment"
+        tools:layout="@layout/fragment_stats" />
+
+    <fragment
+        android:id="@+id/bottom_nav_history"
+        android:name="com.example.coin.view.HistoryFragment"
+        tools:layout="@layout/fragment_history" />
 
 </navigation>

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Coin</string>
-    <string name="title_bottom_nav_outcomes">Расходы</string>
-    <string name="title_bottom_nav_incomes">Доходы</string>
-    <string name="title_bottom_nav_settings">Параметры</string>
+    <string name="tv_static_incomes_string">Доходы</string>
+    <string name="title_right_nav_settings">Параметры</string>
+    <string name="title_bottom_nav_more">Еще</string>
+    <string name="title_bottom_nav_databoard">Панель данных</string>
+    <string name="title_bottom_nav_stats">Статистика</string>
+    <string name="title_bottom_nav_history">История</string>
+    <string name="tv_static_total_balance_string">Итоговый баланс</string>
+    <string name="tv_static_outcomes_string">Расходы</string>
 </resources>
