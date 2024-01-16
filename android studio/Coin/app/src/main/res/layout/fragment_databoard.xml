@@ -19,32 +19,36 @@
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Expenses by category"
+            android:text="@string/tv_static_expenses_by_category"
+            android:textColor="?attr/colorText"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"/>
 
-        <include layout="@layout/layout_pie_chart_section"/>
+        <include layout="@layout/layout_expenses_pie_chart_section"/>
 
 
         <TextView
             android:id="@+id/textView83"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Incomes by category"
+            android:text="@string/tv_static_incomes_by_category"
+            android:textColor="?attr/colorText"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"/>
 
-        <include layout="@layout/layout_pie_chart_section"/>
+        <include layout="@layout/layout_incomes_pie_chart_section"/>
+
         <Space
             android:layout_width="match_parent"
             android:layout_height="50dp" />
 
         <TextView
-            android:id="@+id/hellotv"
+            android:id="@+id/tv_easter_egg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="?attr/colorText"
             android:gravity="center"
-            android:text="hello from mozyr"
+            android:text="@string/tv_static_easter_egg"
             android:layout_marginBottom="8dp"/>
 
     </LinearLayout>

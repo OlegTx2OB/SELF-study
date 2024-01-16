@@ -8,4 +8,8 @@
     <string name="tv_static_total_balance_string">Total balance</string>
     <string name="tv_static_incomes_string">Incomes</string>
     <string name="tv_static_outcomes_string">Outcomes</string>
+    <string name="tv_static_easter_egg">hello from mozyr</string>
+    <string name="tv_static_expenses_by_category">Expenses by category</string>
+    <string name="tv_static_incomes_by_category">Incomes by category</string>
+    <string name="et_amount">Amount</string>
 </resources>

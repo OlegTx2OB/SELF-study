@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.example.coin.R
 import com.example.coin.viewmodel.HistoryViewModel
 
-class HistoryFragment : Fragment() {
+class HistoryFragment : Fragment(R.layout.fragment_history) {
 
     companion object {
         fun newInstance() = HistoryFragment()
@@ -17,12 +17,6 @@ class HistoryFragment : Fragment() {
 
     private lateinit var viewModel: HistoryViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_history, container, false)
-    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

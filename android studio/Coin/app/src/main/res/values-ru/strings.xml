@@ -9,4 +9,8 @@
     <string name="title_bottom_nav_history">История</string>
     <string name="tv_static_total_balance_string">Итоговый баланс</string>
     <string name="tv_static_outcomes_string">Расходы</string>
+    <string name="tv_static_easter_egg">привет из мозыря</string>
+    <string name="tv_static_expenses_by_category">Траты по категориям</string>
+    <string name="tv_static_incomes_by_category">Заработки по категориям</string>
+    <string name="et_amount">Сумма</string>
 </resources>

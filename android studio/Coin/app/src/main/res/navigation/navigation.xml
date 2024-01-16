@@ -20,4 +20,9 @@
         android:name="com.example.coin.view.HistoryFragment"
         tools:layout="@layout/fragment_history" />
 
+    <fragment
+        android:id="@+id/add_note_fragment"
+        android:name="com.example.coin.view.AddNoteFragment"
+        tools:layout="@layout/fragment_add_note" />
+
 </navigation>

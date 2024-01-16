@@ -1,17 +1,20 @@
 package com.example.coin.view
 
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.coin.R
 import com.example.coin.databinding.ActivityMainBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity()
+{
 
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var bottomNavView: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -19,24 +22,26 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.bottomNavView
+        bottomNavView = binding.bottomNavView
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        navView.setupWithNavController(navController)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_frame_activity_main) as NavHostFragment
+        val navController = navHostFragment.navController
+        bottomNavView.setupWithNavController(navController)
 
-//        val bottomNavView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
-//        bottomNavView.setOnNavigationItemSelectedListener { item ->
-//            when(item.itemId)
-//            {
-//                R.id.bottom_nav_more -> {
-//                    val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
-//                    drawerLayout.openDrawer(GravityCompat.END)
-//                    true
-//                }
-//                else -> true
-//            }
-//        }
+        val fabAddNote: FloatingActionButton = binding.fabAddNote
+        fabAddNote.setOnClickListener {
+            bottomNavView.visibility = View.GONE
+            findViewById<FloatingActionButton>(R.id.fab_add_note).visibility = View.GONE
+            navController.navigate(R.id.add_note_fragment)
+        }
 
+    }
+    override fun onBackPressed()
+    {
+        bottomNavView.visibility = View.VISIBLE
+        findViewById<FloatingActionButton>(R.id.fab_add_note).visibility = View.VISIBLE
+
+        super.onBackPressed()
     }
 
 }
