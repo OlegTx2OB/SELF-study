@@ -1,56 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="none"
     tools:context=".view.DataBoardFragment">
 
-    <LinearLayout
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.coin.viewmodel.DataBoardViewModel" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:scrollbars="none">
 
-        <include layout="@layout/layout_top_section"/>
-
-        <TextView
-            android:id="@+id/textView8"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_static_expenses_by_category"
-            android:textColor="?attr/colorText"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <include layout="@layout/layout_expenses_pie_chart_section"/>
+            <include layout="@layout/layout_top_section" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_static_expenses_by_category"
+                android:textColor="?attr/colorText"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp" />
+
+            <include layout="@layout/layout_expenses_pie_chart_section" />
 
 
-        <TextView
-            android:id="@+id/textView83"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_static_incomes_by_category"
-            android:textColor="?attr/colorText"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"/>
+            <TextView
+                android:id="@+id/textView83"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_static_incomes_by_category"
+                android:textColor="?attr/colorText"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp" />
 
-        <include layout="@layout/layout_incomes_pie_chart_section"/>
+            <include layout="@layout/layout_incomes_pie_chart_section" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
 
-        <TextView
-            android:id="@+id/tv_easter_egg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="?attr/colorText"
-            android:gravity="center"
-            android:text="@string/tv_static_easter_egg"
-            android:layout_marginBottom="8dp"/>
+            <TextView
+                android:id="@+id/tv_easter_egg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorText"
+                android:gravity="center"
+                android:text="@string/tv_static_easter_egg"
+                android:layout_marginBottom="8dp" />
 
-    </LinearLayout>
+        </LinearLayout>
 
-</ScrollView>
+    </ScrollView>
+</layout>

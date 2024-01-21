@@ -1,7 +1,8 @@
-package com.example.coin.repository
+package com.example.coin.repository.sharedprefs
 import android.content.SharedPreferences
 
-class SharedPrefsRepositoryImpl(private val sharedPreferences: SharedPreferences) : SharedPrefsRepository
+class SharedPrefsRepositoryImpl(private val sharedPreferences: SharedPreferences) :
+    SharedPrefsRepository
 {
     override fun saveData(key: String, value: String)
     {

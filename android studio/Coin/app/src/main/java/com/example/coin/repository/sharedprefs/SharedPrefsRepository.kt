@@ -1,4 +1,4 @@
-package com.example.coin.repository
+package com.example.coin.repository.sharedprefs
 
 interface SharedPrefsRepository
 {
