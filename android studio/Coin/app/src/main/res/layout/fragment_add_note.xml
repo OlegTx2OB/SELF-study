@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="incomes"
-                android:onClick="@{() -> viewModel.onIncomes()}"
+                android:onClick="@{() -> viewModel.onIncomesOutcomes()}"
                 />
 
             <Button
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="@{() -> viewModel.onOutcomes()}"
+                android:onClick="@{() -> viewModel.onIncomesOutcomes()}"
                 android:text="outcomes" />
         </LinearLayout>
 

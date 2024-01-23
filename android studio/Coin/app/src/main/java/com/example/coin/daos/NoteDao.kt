@@ -1,4 +1,4 @@
-package com.example.coin.repository.room
+package com.example.coin.daos
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -9,7 +9,7 @@ import androidx.room.Update
 import com.example.coin.data.Note
 
 @Dao
-interface NotesDao
+interface NoteDao
 {
     @Query("SELECT * FROM Note")
     fun getAllNotes(): LiveData<MutableList<Note>>

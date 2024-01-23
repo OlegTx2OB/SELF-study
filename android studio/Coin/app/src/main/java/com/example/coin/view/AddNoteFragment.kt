@@ -6,15 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.example.coin.R
 import com.example.coin.databinding.FragmentAddNoteBinding
 import com.example.coin.viewmodel.AddNoteViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddNoteFragment : Fragment(R.layout.fragment_add_note)
 {
-
-    private val mViewModel by lazy { ViewModelProvider(this).get(AddNoteViewModel::class.java) }
+    private val mViewModel: AddNoteViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
