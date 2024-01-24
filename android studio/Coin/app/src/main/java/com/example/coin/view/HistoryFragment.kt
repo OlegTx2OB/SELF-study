@@ -7,9 +7,6 @@ import com.example.coin.viewmodel.HistoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HistoryFragment : Fragment(R.layout.fragment_history)
-{
+class HistoryFragment : Fragment(R.layout.fragment_history) {
     private val mViewModel: HistoryViewModel by viewModels()
-
-
 }

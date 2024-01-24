@@ -43,7 +43,7 @@
             android:id="@+id/iv_chosen_icon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_red_arrow_expenses"
+            android:src="@drawable/ic_green_arrow_incomes"
             android:onClick="@{(view) -> viewModel.onIcon(view)}"
             />
 
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="incomes"
-                android:onClick="@{() -> viewModel.onIncomesOutcomes()}"
+                android:onClick="@{(view) -> viewModel.onIncomesOutcomes(view)}"
                 />
 
             <Button
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="@{() -> viewModel.onIncomesOutcomes()}"
+                android:onClick="@{(view) -> viewModel.onIncomesOutcomes(view)}"
                 android:text="outcomes" />
         </LinearLayout>
 

@@ -10,17 +10,17 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
+
 @Module
 @InstallIn(SingletonComponent::class)
-object RoomModule
-{
+object RoomModule {
     @Singleton
     @Provides
-    fun provideRoomDB(@ApplicationContext context: Context): NoteDao
-    {
+    fun provideRoomDB(@ApplicationContext context: Context): NoteDao {
         return Room.databaseBuilder(
             context,
-            NotesDataBase::class.java, "roomDBNotes")
+            NotesDataBase::class.java, "roomDBNotes"
+        )
             .allowMainThreadQueries()
             .build()
             .notesDao()

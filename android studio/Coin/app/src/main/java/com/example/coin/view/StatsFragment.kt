@@ -7,7 +7,6 @@ import com.example.coin.viewmodel.StatsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class StatsFragment : Fragment(R.layout.fragment_stats)
-{
+class StatsFragment : Fragment(R.layout.fragment_stats) {
     private val mViewModel: StatsViewModel by viewModels()
 }

@@ -7,8 +7,6 @@ import com.example.coin.viewmodel.DataBoardViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DataBoardFragment : Fragment(R.layout.fragment_databoard)
-{
+class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
     private val mViewModel: DataBoardViewModel by viewModels()
-
 }

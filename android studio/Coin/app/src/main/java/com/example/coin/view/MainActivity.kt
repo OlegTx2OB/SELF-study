@@ -10,16 +10,17 @@ import com.example.coin.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity()
-{
-
-    private val binding by lazy(LazyThreadSafetyMode.NONE) { ActivityMainBinding.inflate(layoutInflater) }
+class MainActivity : AppCompatActivity() {
+    private val binding by lazy(LazyThreadSafetyMode.NONE) {
+        ActivityMainBinding.inflate(
+            layoutInflater
+        )
+    }
     private val bottomNavView by lazy(LazyThreadSafetyMode.NONE) { binding.bottomNavView }
     private val fab by lazy(LazyThreadSafetyMode.NONE) { binding.fabAddNote }
 
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
@@ -35,8 +36,8 @@ class MainActivity : AppCompatActivity()
         }
 
     }
-    override fun onBackPressed()
-    {
+
+    override fun onBackPressed() {
         bottomNavView.visibility = View.VISIBLE
         fab.visibility = View.VISIBLE
         super.onBackPressed()

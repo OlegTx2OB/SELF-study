@@ -10,12 +10,10 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object RepositoryModule
-{
+object RepositoryModule {
     @Singleton
     @Provides
-    fun provideNoteRepository(noteRepositoryImpl: NoteRepositoryImpl): NoteRepository
-    {
+    fun provideNoteRepository(noteRepositoryImpl: NoteRepositoryImpl): NoteRepository {
         return noteRepositoryImpl
     }
 }

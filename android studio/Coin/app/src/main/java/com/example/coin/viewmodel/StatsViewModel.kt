@@ -7,8 +7,7 @@ import com.example.coin.repository.room.NoteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-class StatsViewModel @Inject constructor(private val noteRepository: NoteRepository) : ViewModel()
-{
+class StatsViewModel @Inject constructor(private val noteRepository: NoteRepository) : ViewModel() {
     // TODO: Implement the ViewModel
 
 }

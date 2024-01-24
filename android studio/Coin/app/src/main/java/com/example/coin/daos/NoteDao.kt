@@ -9,8 +9,7 @@ import androidx.room.Update
 import com.example.coin.data.Note
 
 @Dao
-interface NoteDao
-{
+interface NoteDao {
     @Query("SELECT * FROM Note")
     fun getAllNotes(): LiveData<MutableList<Note>>
 
