@@ -6,11 +6,9 @@ import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import androidx.room.TypeConverter
-import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.ByteArrayOutputStream
-import javax.inject.Inject
 
-class Converters @Inject constructor(@ApplicationContext private val context: Context) {
+class Converters {
     @TypeConverter
     fun fromDrawable(drawable: Drawable): ByteArray {
         val bitmap = (drawable as BitmapDrawable).bitmap
