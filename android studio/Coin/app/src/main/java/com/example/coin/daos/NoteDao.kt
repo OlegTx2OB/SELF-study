@@ -11,7 +11,7 @@ import com.example.coin.data.Note
 @Dao
 interface NoteDao {
     @Query("SELECT * FROM Note")
-    fun getAllNotes(): LiveData<MutableList<Note>>
+    fun getAllNotes(): LiveData<List<Note>>
 
     @Insert
     fun insertNote(note: Note)

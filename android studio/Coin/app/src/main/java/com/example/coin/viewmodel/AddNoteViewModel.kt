@@ -1,11 +1,7 @@
 package com.example.coin.viewmodel
 
-import android.graphics.Color
 import android.graphics.ColorFilter
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
+import android.graphics.ColorMatrixColorFilter
 import android.view.View
 import android.widget.ImageView
 import androidx.lifecycle.LiveData
@@ -15,6 +11,7 @@ import com.example.coin.R
 import com.example.coin.data.Note
 import com.example.coin.repository.room.NoteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.time.LocalDate
 import javax.inject.Inject
 
 
@@ -22,29 +19,45 @@ import javax.inject.Inject
 class AddNoteViewModel @Inject constructor(private val noteRepository: NoteRepository) :
     ViewModel() {
 
-    private val _observerConfirmB: MutableLiveData<Unit> = MutableLiveData<Unit>()
-    val observerConfirmB: LiveData<Unit> = _observerConfirmB
+    private val _observerDatePickerB = MutableLiveData<Unit>()
+    private val _observerShowToast = MutableLiveData<String>()
+    private val _observerGetAmount = MutableLiveData<Unit>()
+
+    val observerDatePickerB: LiveData<Unit> = _observerDatePickerB
+    val observerShowToast: LiveData<String> = _observerShowToast
+    val observerGetAmount: LiveData<Unit> = _observerGetAmount
+
 
     private val newNote = Note()
+
+    fun setEpochDay(epochDay: Long) {
+        newNote.epochDay = epochDay
+    }
+
+    fun setAmount(string: String?){
+        if(string != null && string != "")
+            newNote.amount = string.toFloat()
+    }
     fun onConfirm() {
-//        //todo fix stub
-//        newNote.amount = 8008.5f
-//        noteRepository.insertNote(newNote)
+        _observerGetAmount.value = Unit
 
-        _observerConfirmB.value = Unit
+        if (newNote.epochDay == null) newNote.epochDay = LocalDate.now().toEpochDay()
 
+        if (newNote.amount == null)
+            _observerShowToast.value = "enter amount"
+        else if (newNote.imageName == null)
+            _observerShowToast.value = "choose icon"
+        else if (newNote.isIncomes == null)
+            _observerShowToast.value = "choose incomes or outcomes"
+        else
+        {
+            _observerShowToast.value = "all saved"
+            noteRepository.insertNote(newNote)
+        }
     }
 
     fun onIcon(view: View) {
-        //todo fix stub
-        view as ImageView
-
-        newNote.imageByteArray = view.drawable
-
-        val colorFilter: ColorFilter = PorterDuffColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN) // Создание ColorFilter из цвета
-
-        view.colorFilter = colorFilter
-
+        newNote.imageName = view.tag.toString()
     }
 
     fun onIncomesOutcomes(view: View) {
@@ -56,8 +69,6 @@ class AddNoteViewModel @Inject constructor(private val noteRepository: NoteRepos
     }
 
     fun onChooseData() {
-        //todo fix stub
-
-
+        _observerDatePickerB.value = Unit
     }
 }

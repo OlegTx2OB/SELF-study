@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import com.example.coin.data.Note
 
 interface NoteRepository {
-    fun getAllNotes(): LiveData<MutableList<Note>>
+    fun getAllNotes(): LiveData<List<Note>>
 
     fun insertNote(note: Note)
 

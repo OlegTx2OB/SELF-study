@@ -10,17 +10,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02eb92c2-104d-4d3b-a839-8b6cbac5124c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Coin/app/src/main/java/com/example/coin/ui/incomesOutcomes/IncomesOutcomesFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Coin/app/src/main/java/com/example/coin/ui/incomesOutcomes/IncomesOutcomesFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Coin/app/src/main/java/com/example/coin/Converters.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Coin/app/src/main/java/com/example/coin/NotesDataBase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Coin/app/src/main/java/com/example/coin/NotesDataBase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Coin/app/src/main/java/com/example/coin/data/Note.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Coin/app/src/main/java/com/example/coin/data/Note.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Coin/app/src/main/java/com/example/coin/view/AddNoteFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Coin/app/src/main/java/com/example/coin/view/AddNoteFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Coin/app/src/main/java/com/example/coin/view/DataBoardFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Coin/app/src/main/java/com/example/coin/view/DataBoardFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Coin/app/src/main/java/com/example/coin/viewmodel/AddNoteViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Coin/app/src/main/java/com/example/coin/viewmodel/AddNoteViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Coin/app/src/main/java/com/example/coin/viewmodel/DataBoardViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Coin/app/src/main/java/com/example/coin/viewmodel/DataBoardViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Coin/app/src/main/res/layout/fragment_add_note.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Coin/app/src/main/res/layout/fragment_add_note.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Coin/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Coin/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/info/fandroid/databindingsample/ui/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/info/fandroid/databindingsample/ui/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/tx2ob/.android/avd/Pixel_3a_API_34_extension_level_7_arm64-v8a.avd]" />
   <component name="ExternalProjectsData">
@@ -59,6 +66,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "last_opened_file_path": "/Users/tx2ob/Desktop/SELF-study/android studio/simpleTests/DataBindingTest"
   }
@@ -74,6 +82,7 @@
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
       <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
       <option name="CLEAR_LOGCAT" value="false" />

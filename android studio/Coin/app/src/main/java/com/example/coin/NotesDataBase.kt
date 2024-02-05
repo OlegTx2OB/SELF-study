@@ -7,7 +7,6 @@ import com.example.coin.daos.NoteDao
 import com.example.coin.data.Note
 
 @Database(entities = [Note::class], version = 1)
-@TypeConverters(Converters::class)
 abstract class NotesDataBase : RoomDatabase() {
     abstract fun notesDao(): NoteDao
 }
