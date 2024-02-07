@@ -13,4 +13,6 @@
     <string name="tv_static_expenses_by_category">Траты по категориям</string>
     <string name="tv_static_incomes_by_category">Заработки по категориям</string>
     <string name="et_amount">Сумма</string>
+    <string name="clear_expenses_list">Траты\nеще\nне\nбыли\nдобавлены</string>
+    <string name="clear_incomes_list">Заработки\nеще\nне\nбыли\nдобавлены</string>
 </resources>

@@ -40,7 +40,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="?attr/colorText"
-        android:text="{expenses}\n\n{TextView}\n\n{TextView}\n\n{TextView}"
+        android:text="@string/clear_expenses_list"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent"

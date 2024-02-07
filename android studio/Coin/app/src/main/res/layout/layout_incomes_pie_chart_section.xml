@@ -39,7 +39,7 @@
         android:id="@+id/tv_top_categories"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="{incomes}\n\n{TextView}\n\n{TextView}\n\n{TextView}"
+        android:text="@string/clear_incomes_list"
         app:layout_constraintRight_toRightOf="parent"
         android:textColor="?attr/colorText"
         app:layout_constraintLeft_toRightOf="@+id/guideline"

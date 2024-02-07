@@ -1,5 +1,6 @@
 package com.example.coin.di
 
+import android.util.Log
 import com.example.coin.repository.room.NoteRepository
 import com.example.coin.repository.room.NoteRepositoryImpl
 import dagger.Module
@@ -14,6 +15,7 @@ object RepositoryModule {
     @Singleton
     @Provides
     fun provideNoteRepository(noteRepositoryImpl: NoteRepositoryImpl): NoteRepository {
+        Log.d("testAllNotes", "2repository module ok")
         return noteRepositoryImpl
     }
 }

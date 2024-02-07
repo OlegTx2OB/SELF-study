@@ -19,14 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/iv_account_photo"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_margin="8dp"
-        app:layout_constraintLeft_toLeftOf="@id/frame_top_section"
-        app:layout_constraintTop_toTopOf="@id/frame_top_section"
-        android:src="@drawable/ic_account_user" />
+
 
     <TextView
         android:id="@+id/tv_period"
@@ -34,12 +27,11 @@
         android:layout_height="wrap_content"
         android:text="{All period}"
         android:textColor="?attr/colorText"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="8dp"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_account_photo"
         app:layout_constraintRight_toRightOf="@+id/frame_top_section"
         app:layout_constraintLeft_toLeftOf="@+id/frame_top_section"
-        app:layout_constraintTop_toTopOf="@+id/iv_account_photo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_static_total_balance_string"
@@ -59,7 +51,7 @@
         android:id="@+id/tv_total_balance_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="{$5,560.33}"
+        android:text="$0.0"
         android:textColor="?attr/colorText"
         android:textSize="40sp"
         app:layout_constraintRight_toRightOf="@+id/frame_top_section"
@@ -81,7 +73,8 @@
         android:src="@drawable/ic_green_arrow_incomes"
         app:layout_constraintBottom_toBottomOf="@+id/tv_incomes_value"
         app:layout_constraintLeft_toLeftOf="@id/frame_top_section"
-        app:layout_constraintTop_toTopOf="@+id/tv_static_incomes_string" />
+        app:layout_constraintTop_toTopOf="@+id/tv_static_incomes_string"
+        />
 
     <ImageView
         android:id="@+id/iv_icon_outcomes"
@@ -122,26 +115,47 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_total_balance_value" />
 
     <TextView
-        android:id="@+id/tv_incomes_value"
-        android:layout_width="0dp"
+        android:id="@+id/tv_incomes_dollar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="{$433.30}"
+        android:text="$"
         android:textColor="#74a02b"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/tv_static_incomes_string"
         app:layout_constraintLeft_toLeftOf="@id/tv_static_incomes_string"
+        android:paddingBottom="8dp"
+        />
+    <TextView
+        android:id="@+id/tv_incomes_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0.0"
+        android:textColor="#74a02b"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_static_incomes_string"
+        app:layout_constraintLeft_toRightOf="@id/tv_incomes_dollar"
         app:layout_constraintRight_toRightOf="@id/guideline"
         />
+
+    <TextView
+        android:id="@+id/tv_outcomes_dollar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$"
+        android:textSize="20sp"
+        android:textColor="#D45F5F"
+        app:layout_constraintLeft_toLeftOf="@id/tv_static_outcomes_string"
+        app:layout_constraintTop_toBottomOf="@id/tv_static_outcomes_string" />
 
     <TextView
         android:id="@+id/tv_outcomes_value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="{$682.30}"
+        android:text="0.0"
         android:textSize="20sp"
         android:textColor="#D45F5F"
         app:layout_constraintRight_toRightOf="@+id/frame_top_section"
-        app:layout_constraintLeft_toLeftOf="@id/tv_static_outcomes_string"
+        app:layout_constraintLeft_toRightOf="@id/tv_outcomes_dollar"
         app:layout_constraintTop_toBottomOf="@id/tv_static_outcomes_string" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

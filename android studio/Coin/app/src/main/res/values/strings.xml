@@ -12,4 +12,6 @@
     <string name="tv_static_expenses_by_category">Expenses by category</string>
     <string name="tv_static_incomes_by_category">Incomes by category</string>
     <string name="et_amount">Amount</string>
+    <string name="clear_expenses_list">Expenses\nhave\nnot\nbeen\nadded\nyet</string>
+    <string name="clear_incomes_list">Incomes\nhave\nnot\nbeen\nadded\nyet</string>
 </resources>

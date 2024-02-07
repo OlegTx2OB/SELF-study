@@ -1,6 +1,7 @@
 package com.example.coin.di
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Room
 import com.example.coin.daos.NoteDao
 import com.example.coin.NotesDataBase
@@ -17,11 +18,12 @@ object RoomModule {
     @Singleton
     @Provides
     fun provideRoomDB(@ApplicationContext context: Context): NoteDao {
+        Log.d("testAllNotes", "1room module ok")
+
         return Room.databaseBuilder(
             context,
             NotesDataBase::class.java, "roomDBNotes"
         )
-            .allowMainThreadQueries()
             .build()
             .notesDao()
     }
