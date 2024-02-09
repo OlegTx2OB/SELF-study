@@ -15,7 +15,6 @@ object RepositoryModule {
     @Singleton
     @Provides
     fun provideNoteRepository(noteRepositoryImpl: NoteRepositoryImpl): NoteRepository {
-        Log.d("testAllNotes", "2repository module ok")
         return noteRepositoryImpl
     }
 }

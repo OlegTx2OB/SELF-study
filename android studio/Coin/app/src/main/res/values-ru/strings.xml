@@ -15,4 +15,5 @@
     <string name="et_amount">Сумма</string>
     <string name="clear_expenses_list">Траты\nеще\nне\nбыли\nдобавлены</string>
     <string name="clear_incomes_list">Заработки\nеще\nне\nбыли\nдобавлены</string>
+    <string name="title_bottom_nav_add_note">Добавить</string>
 </resources>

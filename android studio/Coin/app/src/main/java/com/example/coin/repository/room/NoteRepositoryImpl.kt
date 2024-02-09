@@ -8,8 +8,7 @@ import com.example.coin.data.Note
 import javax.inject.Inject
 
 class NoteRepositoryImpl @Inject constructor(private val noteDao: NoteDao) : NoteRepository {
-    override fun getAllNotes(): LiveData<List<Note>>{
-        Log.d("testAllNotes", "3note rep impl ok")
+    override fun getAllNotes(): LiveData<List<Note>> {
         return noteDao.getAllNotes()
     }
 
