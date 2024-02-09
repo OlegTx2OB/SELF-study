@@ -37,7 +37,6 @@
             android:layout_height="wrap_content"
             android:text="@string/clear_incomes_list"
             app:layout_constraintRight_toRightOf="parent"
-            android:textColor="?attr/colorText"
             app:layout_constraintLeft_toRightOf="@+id/guideline"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -19,7 +19,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="{All period}"
-            android:textColor="?attr/colorText"
             android:layout_marginTop="8dp"
             android:textSize="20sp"
             app:layout_constraintRight_toRightOf="@+id/constraint_layout"
@@ -31,7 +30,6 @@
             android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="?attr/colorText"
 
             android:text="@string/tv_static_total_balance_string"
             android:fontFamily="@font/open_sans_400"
@@ -45,7 +43,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$0.0"
-            android:textColor="?attr/colorText"
             android:textSize="40sp"
             app:layout_constraintRight_toRightOf="@+id/constraint_layout"
             app:layout_constraintLeft_toLeftOf="@+id/constraint_layout"
@@ -67,6 +64,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv_incomes_value"
             app:layout_constraintLeft_toLeftOf="@id/constraint_layout"
             app:layout_constraintTop_toTopOf="@+id/tv_static_incomes_string"
+            app:tint="@color/green_500"
             />
 
         <ImageView
@@ -79,7 +77,8 @@
             android:src="@drawable/ic_red_arrow_expenses"
             app:layout_constraintBottom_toBottomOf="@id/tv_outcomes_value"
             app:layout_constraintLeft_toLeftOf="@id/guideline"
-            app:layout_constraintTop_toTopOf="@+id/tv_static_outcomes_string" />
+            app:layout_constraintTop_toTopOf="@+id/tv_static_outcomes_string"
+            app:tint="@color/red_300"/>
 
         <TextView
             android:id="@+id/tv_static_incomes_string"
@@ -87,7 +86,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/open_sans_400"
-            android:textColor="?attr/colorText"
             android:text="@string/tv_static_incomes_string"
             android:textSize="12sp"
             app:layout_constraintRight_toLeftOf="@+id/guideline"
@@ -101,7 +99,6 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/open_sans_400"
             android:text="@string/tv_static_outcomes_string"
-            android:textColor="?attr/colorText"
             android:textSize="12sp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@id/iv_icon_outcomes"
@@ -112,7 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$"
-            android:textColor="#74a02b"
+            android:textColor="@color/green_500"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@id/tv_static_incomes_string"
             app:layout_constraintLeft_toLeftOf="@id/tv_static_incomes_string"
@@ -123,8 +120,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="0.0"
-            android:textColor="#74a02b"
             android:textSize="20sp"
+            android:textColor="@color/green_500"
             app:layout_constraintTop_toBottomOf="@id/tv_static_incomes_string"
             app:layout_constraintLeft_toRightOf="@id/tv_incomes_dollar"
             app:layout_constraintRight_toRightOf="@id/guideline"
@@ -136,7 +133,7 @@
             android:layout_height="wrap_content"
             android:text="$"
             android:textSize="20sp"
-            android:textColor="#D45F5F"
+            android:textColor="@color/red_300"
             app:layout_constraintLeft_toLeftOf="@id/tv_static_outcomes_string"
             app:layout_constraintTop_toBottomOf="@id/tv_static_outcomes_string" />
 
@@ -146,7 +143,7 @@
             android:layout_height="wrap_content"
             android:text="0.0"
             android:textSize="20sp"
-            android:textColor="#D45F5F"
+            android:textColor="@color/red_300"
             app:layout_constraintRight_toRightOf="@+id/constraint_layout"
             app:layout_constraintLeft_toRightOf="@id/tv_outcomes_dollar"
             app:layout_constraintTop_toBottomOf="@id/tv_static_outcomes_string" />

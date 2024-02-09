@@ -21,23 +21,23 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        val fragmentBinding: FragmentDataboardBinding =
+        val binding: FragmentDataboardBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_databoard, container, false)
-        fragmentBinding.viewModel = mViewModel
+        binding.viewModel = mViewModel
 
-        val expensesPie = fragmentBinding.expensesLayout.pieChart
-        val incomesPie = fragmentBinding.incomesLayout.pieChart
+        val expensesPie = binding.expensesLayout.pieChart
+        val incomesPie = binding.incomesLayout.pieChart
         setPieOptions(expensesPie)
         setPieOptions(incomesPie)
 
         mViewModel.setEntranceValues()
 
         mViewModel.setIncomesBalance.observe(viewLifecycleOwner){
-            fragmentBinding.dataSectionLayout.tvIncomesValue.text = it.toString()
+            binding.dataSectionLayout.tvIncomesValue.text = it.toString()
         }
 
         mViewModel.setExpensesBalance.observe(viewLifecycleOwner){
-            fragmentBinding.dataSectionLayout.tvOutcomesValue.text = it.toString()
+            binding.dataSectionLayout.tvOutcomesValue.text = it.toString()
         }
 
         mViewModel.expensesPieData.observe(viewLifecycleOwner) {
@@ -53,14 +53,14 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
         }
 
         mViewModel.expensesTopCategoriesText.observe(viewLifecycleOwner) {
-            fragmentBinding.expensesLayout.tvTopCategories.text = it
+            binding.expensesLayout.tvTopCategories.text = it
         }
 
         mViewModel.incomesTopCategoriesText.observe(viewLifecycleOwner) {
-            fragmentBinding.incomesLayout.tvTopCategories.text = it
+            binding.incomesLayout.tvTopCategories.text = it
         }
 
-        return fragmentBinding.root
+        return binding.root
     }
 
     private fun setPieOptions(pieChart: PieChart)
