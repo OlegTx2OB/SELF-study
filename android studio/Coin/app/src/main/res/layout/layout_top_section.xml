@@ -1,161 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="@color/gray_850"
+    app:cardCornerRadius="24dp">
 
-    <ImageView
-        android:id="@+id/frame_top_section"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/rounded_rectangle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_period"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="{All period}"
+            android:textColor="?attr/colorText"
+            android:layout_marginTop="8dp"
+            android:textSize="20sp"
+            app:layout_constraintRight_toRightOf="@+id/constraint_layout"
+            app:layout_constraintLeft_toLeftOf="@+id/constraint_layout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_static_total_balance_string"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/colorText"
+
+            android:text="@string/tv_static_total_balance_string"
+            android:fontFamily="@font/open_sans_400"
+            android:textSize="12sp"
+            app:layout_constraintRight_toRightOf="@+id/constraint_layout"
+            app:layout_constraintLeft_toLeftOf="@+id/constraint_layout"
+            app:layout_constraintTop_toBottomOf="@+id/tv_period" />
+
+        <TextView
+            android:id="@+id/tv_total_balance_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$0.0"
+            android:textColor="?attr/colorText"
+            android:textSize="40sp"
+            app:layout_constraintRight_toRightOf="@+id/constraint_layout"
+            app:layout_constraintLeft_toLeftOf="@+id/constraint_layout"
+            app:layout_constraintTop_toBottomOf="@+id/tv_static_total_balance_string" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <ImageView
+            android:id="@+id/iv_icon_incomes"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_green_arrow_incomes"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_incomes_value"
+            app:layout_constraintLeft_toLeftOf="@id/constraint_layout"
+            app:layout_constraintTop_toTopOf="@+id/tv_static_incomes_string"
+            />
+
+        <ImageView
+            android:id="@+id/iv_icon_outcomes"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_red_arrow_expenses"
+            app:layout_constraintBottom_toBottomOf="@id/tv_outcomes_value"
+            app:layout_constraintLeft_toLeftOf="@id/guideline"
+            app:layout_constraintTop_toTopOf="@+id/tv_static_outcomes_string" />
+
+        <TextView
+            android:id="@+id/tv_static_incomes_string"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/open_sans_400"
+            android:textColor="?attr/colorText"
+            android:text="@string/tv_static_incomes_string"
+            android:textSize="12sp"
+            app:layout_constraintRight_toLeftOf="@+id/guideline"
+            app:layout_constraintLeft_toRightOf="@id/iv_icon_incomes"
+            app:layout_constraintTop_toBottomOf="@+id/tv_total_balance_value" />
+
+        <TextView
+            android:id="@+id/tv_static_outcomes_string"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/open_sans_400"
+            android:text="@string/tv_static_outcomes_string"
+            android:textColor="?attr/colorText"
+            android:textSize="12sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/iv_icon_outcomes"
+            app:layout_constraintTop_toBottomOf="@+id/tv_total_balance_value" />
+
+        <TextView
+            android:id="@+id/tv_incomes_dollar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$"
+            android:textColor="#74a02b"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_static_incomes_string"
+            app:layout_constraintLeft_toLeftOf="@id/tv_static_incomes_string"
+            android:paddingBottom="8dp"
+            />
+        <TextView
+            android:id="@+id/tv_incomes_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="0.0"
+            android:textColor="#74a02b"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_static_incomes_string"
+            app:layout_constraintLeft_toRightOf="@id/tv_incomes_dollar"
+            app:layout_constraintRight_toRightOf="@id/guideline"
+            />
+
+        <TextView
+            android:id="@+id/tv_outcomes_dollar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$"
+            android:textSize="20sp"
+            android:textColor="#D45F5F"
+            app:layout_constraintLeft_toLeftOf="@id/tv_static_outcomes_string"
+            app:layout_constraintTop_toBottomOf="@id/tv_static_outcomes_string" />
+
+        <TextView
+            android:id="@+id/tv_outcomes_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="0.0"
+            android:textSize="20sp"
+            android:textColor="#D45F5F"
+            app:layout_constraintRight_toRightOf="@+id/constraint_layout"
+            app:layout_constraintLeft_toRightOf="@id/tv_outcomes_dollar"
+            app:layout_constraintTop_toBottomOf="@id/tv_static_outcomes_string" />
 
 
-
-    <TextView
-        android:id="@+id/tv_period"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="{All period}"
-        android:textColor="?attr/colorText"
-        android:layout_marginTop="8dp"
-        android:textSize="20sp"
-        app:layout_constraintRight_toRightOf="@+id/frame_top_section"
-        app:layout_constraintLeft_toLeftOf="@+id/frame_top_section"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_static_total_balance_string"
-        android:layout_marginTop="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="?attr/colorText"
-
-        android:text="@string/tv_static_total_balance_string"
-        android:fontFamily="@font/open_sans_400"
-        android:textSize="12sp"
-        app:layout_constraintRight_toRightOf="@+id/frame_top_section"
-        app:layout_constraintLeft_toLeftOf="@+id/frame_top_section"
-        app:layout_constraintTop_toBottomOf="@+id/tv_period" />
-
-    <TextView
-        android:id="@+id/tv_total_balance_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="$0.0"
-        android:textColor="?attr/colorText"
-        android:textSize="40sp"
-        app:layout_constraintRight_toRightOf="@+id/frame_top_section"
-        app:layout_constraintLeft_toLeftOf="@+id/frame_top_section"
-        app:layout_constraintTop_toBottomOf="@+id/tv_static_total_balance_string" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <ImageView
-        android:id="@+id/iv_icon_incomes"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="8dp"
-        android:src="@drawable/ic_green_arrow_incomes"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_incomes_value"
-        app:layout_constraintLeft_toLeftOf="@id/frame_top_section"
-        app:layout_constraintTop_toTopOf="@+id/tv_static_incomes_string"
-        />
-
-    <ImageView
-        android:id="@+id/iv_icon_outcomes"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:src="@drawable/ic_red_arrow_expenses"
-        app:layout_constraintBottom_toBottomOf="@id/tv_outcomes_value"
-        app:layout_constraintLeft_toLeftOf="@id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/tv_static_outcomes_string" />
-
-    <TextView
-        android:id="@+id/tv_static_incomes_string"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/open_sans_400"
-        android:textColor="?attr/colorText"
-        android:text="@string/tv_static_incomes_string"
-        android:textSize="12sp"
-        app:layout_constraintRight_toLeftOf="@+id/guideline"
-        app:layout_constraintLeft_toRightOf="@id/iv_icon_incomes"
-        app:layout_constraintTop_toBottomOf="@+id/tv_total_balance_value" />
-
-    <TextView
-        android:id="@+id/tv_static_outcomes_string"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/open_sans_400"
-        android:text="@string/tv_static_outcomes_string"
-        android:textColor="?attr/colorText"
-        android:textSize="12sp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/iv_icon_outcomes"
-        app:layout_constraintTop_toBottomOf="@+id/tv_total_balance_value" />
-
-    <TextView
-        android:id="@+id/tv_incomes_dollar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="$"
-        android:textColor="#74a02b"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/tv_static_incomes_string"
-        app:layout_constraintLeft_toLeftOf="@id/tv_static_incomes_string"
-        android:paddingBottom="8dp"
-        />
-    <TextView
-        android:id="@+id/tv_incomes_value"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="0.0"
-        android:textColor="#74a02b"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/tv_static_incomes_string"
-        app:layout_constraintLeft_toRightOf="@id/tv_incomes_dollar"
-        app:layout_constraintRight_toRightOf="@id/guideline"
-        />
-
-    <TextView
-        android:id="@+id/tv_outcomes_dollar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="$"
-        android:textSize="20sp"
-        android:textColor="#D45F5F"
-        app:layout_constraintLeft_toLeftOf="@id/tv_static_outcomes_string"
-        app:layout_constraintTop_toBottomOf="@id/tv_static_outcomes_string" />
-
-    <TextView
-        android:id="@+id/tv_outcomes_value"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="0.0"
-        android:textSize="20sp"
-        android:textColor="#D45F5F"
-        app:layout_constraintRight_toRightOf="@+id/frame_top_section"
-        app:layout_constraintLeft_toRightOf="@id/tv_outcomes_dollar"
-        app:layout_constraintTop_toBottomOf="@id/tv_static_outcomes_string" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
