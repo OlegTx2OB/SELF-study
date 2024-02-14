@@ -2,6 +2,7 @@ package com.example.coin.view
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +11,18 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.coin.R
 import com.example.coin.databinding.FragmentDataboardBinding
+import com.example.coin.repository.room.NoteRepository
 import com.example.coin.viewmodel.DataBoardViewModel
 import com.github.mikephil.charting.charts.PieChart
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
     private val mViewModel: DataBoardViewModel by viewModels()
+
+    @Inject
+    lateinit var noteRepository: NoteRepository
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -24,6 +30,11 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
         val binding: FragmentDataboardBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_databoard, container, false)
         binding.viewModel = mViewModel
+
+        noteRepository.getAllNotes().observe(viewLifecycleOwner) {
+            Log.wtf("noteRep", it.joinToString())
+
+        }
 
         val expensesPie = binding.expensesLayout.pieChart
         val incomesPie = binding.incomesLayout.pieChart
@@ -33,11 +44,15 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
         mViewModel.setEntranceValues()
 
         mViewModel.setIncomesBalance.observe(viewLifecycleOwner){
-            binding.dataSectionLayout.tvIncomesValue.text = it.toString()
+            binding.topSectionLayout.tvIncomesValue.text = it.toString()
         }
 
         mViewModel.setExpensesBalance.observe(viewLifecycleOwner){
-            binding.dataSectionLayout.tvOutcomesValue.text = it.toString()
+            binding.topSectionLayout.tvOutcomesValue.text = it.toString()
+        }
+
+        mViewModel.setTotalBalance.observe(viewLifecycleOwner){
+            binding.topSectionLayout.tvTotalBalanceValue.text = it.toString()
         }
 
         mViewModel.expensesPieData.observe(viewLifecycleOwner) {

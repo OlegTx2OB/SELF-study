@@ -1,9 +1,6 @@
 package com.example.coin.viewmodel
 
-import android.graphics.ColorFilter
-import android.graphics.ColorMatrixColorFilter
 import android.view.View
-import android.widget.ImageView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -34,10 +31,11 @@ class AddNoteViewModel @Inject constructor(private val noteRepository: NoteRepos
         newNote.epochDay = epochDay
     }
 
-    fun setAmount(string: String?){
-        if(string != null && string != "")
+    fun setAmount(string: String?) {
+        if (string != null && string != "")
             newNote.amount = string.toFloat()
     }
+
     fun onConfirm() {
         _observerGetAmount.value = Unit
 
@@ -49,8 +47,7 @@ class AddNoteViewModel @Inject constructor(private val noteRepository: NoteRepos
             _observerShowToast.value = "choose icon"
         else if (newNote.isIncomes == null)
             _observerShowToast.value = "choose incomes or outcomes"
-        else
-        {
+        else {
             _observerShowToast.value = "all saved"
             noteRepository.insertNote(newNote)
         }

@@ -30,11 +30,20 @@ class DataBoardViewModel @Inject constructor(private val noteRepository: NoteRep
     val setIncomesBalance: LiveData<String> = _setIncomesBalance
     val setTotalBalance: LiveData<String> = _setTotalBalance
 
-    val notes = noteRepository.getAllNotes().value//todo мб менять компоновку кода нужно будет, если данные не обновятся с появлением новой записи
+    val notes = noteRepository.getAllNotes().value//todo нахуй
     val incomesNotes = notes?.filter { it.isIncomes == true }
     val expensesNotes = notes?.filter { it.isIncomes == false }
 
-    fun setEntranceValues()//todo мб потом название сменить
+//    init{
+//        noteRepository.getAllNotes().observe(l )
+//    }
+
+
+    fun testHYU()//todo
+    {
+
+    }
+    fun setEntranceValues()
     {
         setBalances(incomesNotes, expensesNotes)
         updatePieChart(incomesNotes, true)
