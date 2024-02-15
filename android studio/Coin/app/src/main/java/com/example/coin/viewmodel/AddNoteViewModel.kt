@@ -49,6 +49,7 @@ class AddNoteViewModel @Inject constructor(private val noteRepository: NoteRepos
             _observerShowToast.value = "choose incomes or outcomes"
         else {
             _observerShowToast.value = "all saved"
+            newNote.categoryName = "some category name3"//todo удалить
             noteRepository.insertNote(newNote)
         }
     }

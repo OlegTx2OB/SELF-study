@@ -1,5 +1,6 @@
 package com.example.coin.viewmodel
 
+import android.graphics.Color
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,25 +26,27 @@ class DataBoardViewModel @Inject constructor(private val noteRepository: NoteRep
     val expensesPieData: LiveData<PieData> = _expensesPieData
     val incomesPieData: LiveData<PieData> = _incomesPieData
     val expensesTopCategoriesText: LiveData<String> = _expensesTopCategoriesText
-    val incomesTopCategoriesText: LiveData<String> = _expensesTopCategoriesText
+    val incomesTopCategoriesText: LiveData<String> = _incomesTopCategoriesText
     val setExpensesBalance: LiveData<String> = _setExpensesBalance
     val setIncomesBalance: LiveData<String> = _setIncomesBalance
     val setTotalBalance: LiveData<String> = _setTotalBalance
 
-    val notes = noteRepository.getAllNotes().value//todo нахуй
-    val incomesNotes = notes?.filter { it.isIncomes == true }
-    val expensesNotes = notes?.filter { it.isIncomes == false }
+//    val notes = noteRepository.getAllNotes().value//todo нахуй
+//    val incomesNotes = notes?.filter { it.isIncomes == true }
+//    val expensesNotes = notes?.filter { it.isIncomes == false }
 
 //    init{
 //        noteRepository.getAllNotes().observe(l )
 //    }
 
 
-    fun testHYU()//todo
+    fun testHYU(notes: List<Note>?)//todo убрать нахуй
     {
-
+        val incomesNotes = notes?.filter { it.isIncomes == true }
+        val expensesNotes = notes?.filter { it.isIncomes == false }
+        setEntranceValues(incomesNotes, expensesNotes)
     }
-    fun setEntranceValues()
+    fun setEntranceValues(incomesNotes: List<Note>?, expensesNotes: List<Note>?)
     {
         setBalances(incomesNotes, expensesNotes)
         updatePieChart(incomesNotes, true)
@@ -61,13 +64,14 @@ class DataBoardViewModel @Inject constructor(private val noteRepository: NoteRep
             for (note in expensesNotes) expensesBalance += note.amount!!
             _setExpensesBalance.value = expensesBalance.toString()
         }
-        if(incomesBalance != 0f && expensesBalance != 0f) {
-            _setTotalBalance.value = (incomesBalance + expensesBalance).toString()
-        }
+        _setTotalBalance.value = "$" + (incomesBalance - expensesBalance).toString()
     }
 
     private fun updatePieChart(notes: List<Note>?, isIncomes: Boolean) {
         val pieDataSet = PieDataSet(listOf(), "pie")
+        pieDataSet.colors = arrayListOf(Color.RED, Color.GREEN, Color.BLUE, Color.MAGENTA) //todo переделать
+
+
         if (notes == null) {
             if (isIncomes) _incomesPieData.value = PieData(pieDataSet)
             else _expensesPieData.value = PieData(pieDataSet)
@@ -80,11 +84,11 @@ class DataBoardViewModel @Inject constructor(private val noteRepository: NoteRep
 
             if (isIncomes) {
                 _incomesPieData.value = PieData(pieDataSet)
-                _incomesTopCategoriesText.value = descriptionStr
+                if(descriptionStr != "") _incomesTopCategoriesText.value = descriptionStr
             }
             else {
                 _expensesPieData.value = PieData(pieDataSet)
-                _expensesTopCategoriesText.value = descriptionStr
+                if(descriptionStr != "") _expensesTopCategoriesText.value = descriptionStr
             }
         }
     }

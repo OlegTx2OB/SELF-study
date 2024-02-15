@@ -29,8 +29,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tv_static_expenses_by_category"
                 android:textColor="?attr/colorText"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp" />
 
             <include
                 android:id="@+id/expenses_layout"
@@ -42,8 +42,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tv_static_incomes_by_category"
                 android:textColor="?attr/colorText"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp" />
 
             <include
                 android:id="@+id/incomes_layout"

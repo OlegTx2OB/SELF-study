@@ -32,8 +32,8 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
         binding.viewModel = mViewModel
 
         noteRepository.getAllNotes().observe(viewLifecycleOwner) {
-            Log.wtf("noteRep", it.joinToString())
-
+            Log.wtf("noteRep", it.joinToString())//todo вырезать и сделать не через жопу
+                mViewModel.testHYU(it)
         }
 
         val expensesPie = binding.expensesLayout.pieChart
@@ -41,14 +41,14 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
         setPieOptions(expensesPie)
         setPieOptions(incomesPie)
 
-        mViewModel.setEntranceValues()
+        //mViewModel.setEntranceValues()
 
         mViewModel.setIncomesBalance.observe(viewLifecycleOwner){
             binding.topSectionLayout.tvIncomesValue.text = it.toString()
         }
 
         mViewModel.setExpensesBalance.observe(viewLifecycleOwner){
-            binding.topSectionLayout.tvOutcomesValue.text = it.toString()
+            binding.topSectionLayout.tvExpensesValue.text = it.toString()
         }
 
         mViewModel.setTotalBalance.observe(viewLifecycleOwner){
@@ -88,7 +88,6 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
         pieChart.setTransparentCircleAlpha(50)
         pieChart.invalidate()
     }
-
 
 }
 
