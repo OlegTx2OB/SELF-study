@@ -1,9 +1,10 @@
 package com.example.coin.viewmodel
 
+import android.app.Application
 import android.graphics.Color
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.coin.data.Note
 import com.example.coin.repository.room.NoteRepository
 import com.github.mikephil.charting.data.PieData
@@ -12,8 +13,8 @@ import com.github.mikephil.charting.data.PieEntry
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 @HiltViewModel
-class DataBoardViewModel @Inject constructor(private val noteRepository: NoteRepository) :
-    ViewModel() {
+class DataBoardViewModel @Inject constructor(private val noteRepository: NoteRepository, app: Application) :
+    AndroidViewModel(app) {
 
     private val _expensesPieData = MutableLiveData<PieData>()
     private val _incomesPieData = MutableLiveData<PieData>()
@@ -22,6 +23,7 @@ class DataBoardViewModel @Inject constructor(private val noteRepository: NoteRep
     private val _setExpensesBalance = MutableLiveData<String>()
     private val _setIncomesBalance = MutableLiveData<String>()
     private val _setTotalBalance = MutableLiveData<String>()
+    private val _notes = MutableLiveData<List<Note>>()
 
     val expensesPieData: LiveData<PieData> = _expensesPieData
     val incomesPieData: LiveData<PieData> = _incomesPieData
@@ -30,28 +32,27 @@ class DataBoardViewModel @Inject constructor(private val noteRepository: NoteRep
     val setExpensesBalance: LiveData<String> = _setExpensesBalance
     val setIncomesBalance: LiveData<String> = _setIncomesBalance
     val setTotalBalance: LiveData<String> = _setTotalBalance
-
-//    val notes = noteRepository.getAllNotes().value//todo нахуй
-//    val incomesNotes = notes?.filter { it.isIncomes == true }
-//    val expensesNotes = notes?.filter { it.isIncomes == false }
-
-//    init{
-//        noteRepository.getAllNotes().observe(l )
-//    }
+    val notes: LiveData<List<Note>> = _notes
 
 
-    fun testHYU(notes: List<Note>?)//todo убрать нахуй
+    init {
+        noteRepository.getAllNotes().observeForever {
+            _notes.value = it
+            updateData(it)
+        }
+    }
+
+    private fun updateData(notes: List<Note>?)//todo убрать нахуй
     {
         val incomesNotes = notes?.filter { it.isIncomes == true }
         val expensesNotes = notes?.filter { it.isIncomes == false }
-        setEntranceValues(incomesNotes, expensesNotes)
-    }
-    fun setEntranceValues(incomesNotes: List<Note>?, expensesNotes: List<Note>?)
-    {
+
         setBalances(incomesNotes, expensesNotes)
+
         updatePieChart(incomesNotes, true)
         updatePieChart(expensesNotes, false)
     }
+
     private fun setBalances(incomesNotes: List<Note>?, expensesNotes: List<Note>?)
     {
         var incomesBalance = 0f

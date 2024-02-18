@@ -31,17 +31,15 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
             DataBindingUtil.inflate(inflater, R.layout.fragment_databoard, container, false)
         binding.viewModel = mViewModel
 
-        noteRepository.getAllNotes().observe(viewLifecycleOwner) {
-            Log.wtf("noteRep", it.joinToString())//todo вырезать и сделать не через жопу
-                mViewModel.testHYU(it)
-        }
+//        noteRepository.getAllNotes().observe(viewLifecycleOwner) {
+//            Log.wtf("noteRep", it.joinToString())//todo вырезать и сделать не через жопу
+//                mViewModel.testHYU(it)
+//        }
 
         val expensesPie = binding.expensesLayout.pieChart
         val incomesPie = binding.incomesLayout.pieChart
         setPieOptions(expensesPie)
         setPieOptions(incomesPie)
-
-        //mViewModel.setEntranceValues()
 
         mViewModel.setIncomesBalance.observe(viewLifecycleOwner){
             binding.topSectionLayout.tvIncomesValue.text = it.toString()
@@ -59,6 +57,7 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
             expensesPie.data = it
             expensesPie.notifyDataSetChanged()
             expensesPie.invalidate()
+
         }
 
         mViewModel.incomesPieData.observe(viewLifecycleOwner) {
