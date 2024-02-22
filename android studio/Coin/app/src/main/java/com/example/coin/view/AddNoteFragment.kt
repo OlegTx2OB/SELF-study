@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -30,9 +29,11 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
         mViewModel.observerDatePickerB.observe(viewLifecycleOwner) {
 
             val currT = LocalDate.now()
-            val datePickerDialog = DatePickerDialog(requireContext(), { _, y, m, d ->
-                mViewModel.setEpochDay(LocalDate.of(y, m + 1, d).toEpochDay())
-            }, currT.year, currT.monthValue - 1, currT.dayOfMonth)//m+1 выбери, месяц неправильно показывается
+            val datePickerDialog = DatePickerDialog(
+                requireContext(), { _, y, m, d ->
+                    mViewModel.setEpochDay(LocalDate.of(y, m + 1, d).toEpochDay())
+                }, currT.year, currT.monthValue - 1, currT.dayOfMonth
+            )//m+1 выбери, месяц неправильно показывается
             datePickerDialog.show()
         }
 
@@ -40,7 +41,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         }
 
-        mViewModel.observerGetAmount.observe(viewLifecycleOwner){
+        mViewModel.observerGetAmount.observe(viewLifecycleOwner) {
             mViewModel.setAmount(binding.tilAmount.text?.toString())
         }
 

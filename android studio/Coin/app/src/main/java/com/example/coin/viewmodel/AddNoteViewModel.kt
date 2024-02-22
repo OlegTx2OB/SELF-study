@@ -1,6 +1,8 @@
 package com.example.coin.viewmodel
 
 import android.view.View
+import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -43,19 +45,25 @@ class AddNoteViewModel @Inject constructor(private val noteRepository: NoteRepos
 
         if (newNote.amount == null)
             _observerShowToast.value = "enter amount"
-        else if (newNote.imageName == null)
-            _observerShowToast.value = "choose icon"
+        else if (newNote.imageName == null || newNote.categoryName == null)
+            _observerShowToast.value = "choose category"
         else if (newNote.isIncomes == null)
             _observerShowToast.value = "choose incomes or outcomes"
         else {
             _observerShowToast.value = "all saved"
-            newNote.categoryName = "some category name3"//todo удалить
             noteRepository.insertNote(newNote)
         }
     }
 
-    fun onIcon(view: View) {
+    fun onCardViewIcon(view: View) {
         newNote.imageName = view.tag.toString()
+    }
+    fun onCardViewText(view: View) {
+        view as TextView
+        newNote.categoryName = view.text.toString()
+
+        view as CardView
+        view.findViewWithTag<>()
     }
 
     fun onIncomesOutcomes(view: View) {
