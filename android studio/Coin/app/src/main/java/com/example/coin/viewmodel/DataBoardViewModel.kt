@@ -70,6 +70,7 @@ class DataBoardViewModel @Inject constructor(private val noteRepository: NoteRep
 
     private fun updatePieChart(notes: List<Note>?, isIncomes: Boolean) {
         val pieDataSet = PieDataSet(listOf(), "pie")
+        pieDataSet.setDrawValues(false)
         pieDataSet.colors = arrayListOf(Color.RED, Color.GREEN, Color.BLUE, Color.MAGENTA) //todo переделать
 
 
@@ -110,9 +111,9 @@ class DataBoardViewModel @Inject constructor(private val noteRepository: NoteRep
             for (i in 0 until minOf(sortedPairs.size, 3)) {
                 entries.add(PieEntry(sortedPairs[i].second, ""))
                 if (descriptionStr == "") {
-                    descriptionStr = "${sortedPairs[i].first}(${sortedPairs[i].second})"
+                    descriptionStr = "${sortedPairs[i].first} - ${sortedPairs[i].second}"
                 } else {
-                    descriptionStr += "\n\n${sortedPairs[i].first}(${sortedPairs[i].second})"
+                    descriptionStr += "\n\n${sortedPairs[i].first} - ${sortedPairs[i].second}"
                 }
             }
             if (sortedPairs.size > 3) {
@@ -121,7 +122,7 @@ class DataBoardViewModel @Inject constructor(private val noteRepository: NoteRep
                     sum += sortedPairs[i].second
                 }
                 entries.add(PieEntry(sum, ""))
-                descriptionStr += "\n\nother($sum)"
+                descriptionStr += "\n\nother - $sum"
             }
         }
         return Pair(entries, descriptionStr)

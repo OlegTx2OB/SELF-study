@@ -2,7 +2,6 @@ package com.example.coin.view
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,15 +40,15 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
         setPieOptions(expensesPie)
         setPieOptions(incomesPie)
 
-        mViewModel.setIncomesBalance.observe(viewLifecycleOwner){
+        mViewModel.setIncomesBalance.observe(viewLifecycleOwner) {
             binding.topSectionLayout.tvIncomesValue.text = it.toString()
         }
 
-        mViewModel.setExpensesBalance.observe(viewLifecycleOwner){
+        mViewModel.setExpensesBalance.observe(viewLifecycleOwner) {
             binding.topSectionLayout.tvExpensesValue.text = it.toString()
         }
 
-        mViewModel.setTotalBalance.observe(viewLifecycleOwner){
+        mViewModel.setTotalBalance.observe(viewLifecycleOwner) {
             binding.topSectionLayout.tvTotalBalanceValue.text = it.toString()
         }
 
@@ -77,8 +76,7 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
         return binding.root
     }
 
-    private fun setPieOptions(pieChart: PieChart)
-    {
+    private fun setPieOptions(pieChart: PieChart) {
         pieChart.description.isEnabled = false
         pieChart.animateY(400)
         pieChart.legend.isEnabled = false

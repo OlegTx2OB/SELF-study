@@ -50,7 +50,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 app:cardBackgroundColor="@color/gray_850"
-                app:cardCornerRadius="24dp">
+                app:cardCornerRadius="24dp"
+                android:onClick="@{(view) -> viewModel.onCardView(view)}">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -65,7 +66,7 @@
                         android:src="@drawable/ic_account_user"
                         android:layout_margin="4dp"
                         android:tag="ic_account_user"
-                        android:onClick="@{(view) -> viewModel.onCardViewIcon(view)}"/>
+                        />
 
                     <TextView
                         android:id="@+id/textView2"
@@ -73,7 +74,7 @@
                         android:layout_height="wrap_content"
                         android:text="Shawarma"
                         android:gravity="center"
-                        android:onClick="@{(view) -> viewModel.onCardViewText(view)}"/>
+                        />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -83,7 +84,42 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 app:cardBackgroundColor="@color/gray_850"
-                app:cardCornerRadius="24dp">
+                app:cardCornerRadius="24dp"
+                android:onClick="@{(view) -> viewModel.onCardView(view)}">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_red_arrow_expenses"
+                        android:layout_margin="4dp"
+                        android:tag="ic_red_arrow_expenses"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView43"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Shlukhi"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                app:cardBackgroundColor="@color/gray_850"
+                app:cardCornerRadius="24dp"
+                android:onClick="@{(view) -> viewModel.onCardView(view)}">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -97,16 +133,14 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_green_arrow_incomes"
                         android:layout_margin="4dp"
-                        android:tag="ic_green_arrow_incomes"
-                        android:onClick="@{(view) -> viewModel.onCardViewIcon(view)}"/>
+                        android:tag="ic_green_arrow_incomes" />
 
                     <TextView
                         android:id="@+id/textView6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Taxi"
-                        android:gravity="center"
-                        android:onClick="@{(view) -> viewModel.onCardViewText(view)}"/>
+                        android:gravity="center" />
 
                 </LinearLayout>
 
