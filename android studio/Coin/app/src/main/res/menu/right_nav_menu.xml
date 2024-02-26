@@ -3,5 +3,5 @@
     <item
         android:id="@+id/right_nav_settings"
         android:icon="@drawable/ic_settings"
-        android:title="@string/title_right_nav_settings"/>
+        android:title="@string/title_right_nav_settings" />
 </menu>

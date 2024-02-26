@@ -28,6 +28,6 @@
     <fragment
         android:id="@+id/right_nav_settings"
         android:name="com.example.coin.view.SettingsFragment"
-        android:label="SettingsFragment" />
+        tools:layout="@layout/fragment_settings" />
 
 </navigation>

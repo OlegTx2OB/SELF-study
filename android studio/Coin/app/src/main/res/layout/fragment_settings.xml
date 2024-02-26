@@ -5,6 +5,7 @@
     tools:context=".view.StatsFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.coin.viewmodel.StatsViewModel" />

@@ -5,6 +5,7 @@
     tools:context=".view.HistoryFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.coin.viewmodel.HistoryViewModel" />
@@ -17,7 +18,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <Button
             android:id="@+id/button"

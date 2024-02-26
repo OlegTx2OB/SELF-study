@@ -45,6 +45,8 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
             mViewModel.setAmount(binding.tilAmount.text?.toString())
         }
 
+        binding.imageView3.setOnClickListener()
+
         return binding.root
     }
 }
