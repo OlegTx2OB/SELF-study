@@ -28,7 +28,6 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
     ): View {
         val binding: FragmentDataboardBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_databoard, container, false)
-        binding.viewModel = mViewModel
 
 //        noteRepository.getAllNotes().observe(viewLifecycleOwner) {
 //            Log.wtf("noteRep", it.joinToString())//todo вырезать и сделать не через жопу

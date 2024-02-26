@@ -27,7 +27,6 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
     ): View {
         val binding: FragmentHistoryBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_history, container, false)
-        binding.viewModel = mViewModel
 
         with(binding) {
             recyclerView.layoutManager = LinearLayoutManager(context)

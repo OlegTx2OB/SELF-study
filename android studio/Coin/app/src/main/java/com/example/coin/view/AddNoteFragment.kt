@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -24,7 +25,12 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
     ): View {
         val binding: FragmentAddNoteBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_note, container, false)
-        binding.viewModel = mViewModel
+
+        //setupClickListeners(binding, mViewModel)
+
+        binding.cardviewIncExp.cardviewExpenses.setOnClickListener {
+            val x = 5
+        }
 
         mViewModel.observerDatePickerB.observe(viewLifecycleOwner) {
 
@@ -45,8 +51,16 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
             mViewModel.setAmount(binding.tilAmount.text?.toString())
         }
 
-        binding.imageView3.setOnClickListener()
-
         return binding.root
     }
+
+    fun setupClickListeners(binding: FragmentAddNoteBinding, mViewModel: AddNoteViewModel) {
+
+
+
+        binding.cardviewIncExp.cardviewIncomes.setOnClickListener {
+
+        }
+    }
+
 }

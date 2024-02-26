@@ -34,9 +34,35 @@ class AddNoteViewModel @Inject constructor(
     val observerShowToast: LiveData<String> = _observerShowToast
     val observerGetAmount: LiveData<Unit> = _observerGetAmount
 
-
-
     private val newNote = Note()
+
+    private val gray800 = app.getColor(R.color.gray_800)
+    private val gray200 = app.getColor(R.color.gray_200)
+
+    fun onCardViewIncExp(isIncomes: Boolean) {
+        newNote.isIncomes = isIncomes
+    }
+
+    fun paintPressedCardView(cardView: CardView) {
+        cardView.setCardBackgroundColor(gray200)
+        val rootLayout = cardView.getChildAt(0) as ViewGroup
+
+        for (i in 0 until rootLayout.childCount) {
+            val childView = rootLayout.getChildAt(i)
+            if (childView is TextView) {
+                childView.setTextColor(gray800)
+            }
+        }
+    }
+
+    fun paintUnpressedCardViews(viewList: List<CardView>) {
+
+    }
+
+
+
+
+
 
     fun setEpochDay(epochDay: Long) {
         newNote.epochDay = epochDay
@@ -76,45 +102,6 @@ class AddNoteViewModel @Inject constructor(
             }
         }
 
-    }
-
-    fun onIncomesOutcomes(view: View, event: MotionEvent) {
-        view as CardView
-
-        val cardRootLayout = view.getChildAt(0) as ViewGroup
-
-        val incomesTag = "incomes_card"
-        val expensesTag = "expenses_card"
-
-        val incomesCardView: CardView? = cardRootLayout.findViewWithTag(incomesTag)
-        val expensesCardView: CardView? = cardRootLayout.findViewWithTag(expensesTag)
-
-        if (incomesCardView == null || expensesCardView == null) {
-            Log.e("Error", "AddNoteViewModel fun onIncomesOutcomes incomesCardView or expensesCardView not found")
-        } else {
-            val colorForSelectedCard = app.applicationContext.getColor(R.color.gray_200)
-            val colorForNotSelectedCard = app.applicationContext.getColor(R.color.gray_800)
-
-           // val iks = event.x
-            val igrik = view.y
-
-            val vidz = view.width
-            val fds = 5
-            // the click was made on the right side, where the EXPENSES button is located
-            if (view.x > (view.width / 2)) {
-                expensesCardView.setCardBackgroundColor(colorForSelectedCard)
-                incomesCardView.setCardBackgroundColor(colorForNotSelectedCard)
-                //todo доделать реакцию на нажатие
-            }
-            // the click was made on the left side, where the INCOMES button is located
-            else {
-                expensesCardView.setCardBackgroundColor(colorForNotSelectedCard)
-                incomesCardView.setCardBackgroundColor(colorForSelectedCard)
-            }
-        }
-    }
-
-    fun onTest() { // todo убрать
     }
 
     fun onChooseData() {
