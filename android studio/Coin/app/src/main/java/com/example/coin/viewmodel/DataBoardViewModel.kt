@@ -12,32 +12,35 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+
 @HiltViewModel
-class DataBoardViewModel @Inject constructor(private val noteRepository: NoteRepository, app: Application) :
-    AndroidViewModel(app) {
+class DataBoardViewModel @Inject constructor(
+    private val mNoteRepository: NoteRepository, private val mApp: Application
+) : AndroidViewModel(mApp) {
 
-    private val _expensesPieData = MutableLiveData<PieData>()
-    private val _incomesPieData = MutableLiveData<PieData>()
-    private val _expensesTopCategoriesText = MutableLiveData<String>()
-    private val _incomesTopCategoriesText = MutableLiveData<String>()
-    private val _setExpensesBalance = MutableLiveData<String>()
-    private val _setIncomesBalance = MutableLiveData<String>()
-    private val _setTotalBalance = MutableLiveData<String>()
-    private val _notes = MutableLiveData<List<Note>>()
+    // Exp = Expenses, Inc = Incomes
+    private val _ldExpPieData = MutableLiveData<PieData>()
+    private val _ldIncPieData = MutableLiveData<PieData>()
+    private val _ldExpTopCategoriesText = MutableLiveData<String>()
+    private val _ldIncTopCategoriesText = MutableLiveData<String>()
+    private val _ldSetExpBalance = MutableLiveData<String>()
+    private val _ldSetIncBalance = MutableLiveData<String>()
+    private val _ldSetTotalBalance = MutableLiveData<String>()
+    private val _ldNotes = MutableLiveData<List<Note>>()
 
-    val expensesPieData: LiveData<PieData> = _expensesPieData
-    val incomesPieData: LiveData<PieData> = _incomesPieData
-    val expensesTopCategoriesText: LiveData<String> = _expensesTopCategoriesText
-    val incomesTopCategoriesText: LiveData<String> = _incomesTopCategoriesText
-    val setExpensesBalance: LiveData<String> = _setExpensesBalance
-    val setIncomesBalance: LiveData<String> = _setIncomesBalance
-    val setTotalBalance: LiveData<String> = _setTotalBalance
-    val notes: LiveData<List<Note>> = _notes
+    val ldExpensesPieData: LiveData<PieData> = _ldExpPieData
+    val ldIncomesPieData: LiveData<PieData> = _ldIncPieData
+    val ldExpensesTopCategoriesText: LiveData<String> = _ldExpTopCategoriesText
+    val ldIncomesTopCategoriesText: LiveData<String> = _ldIncTopCategoriesText
+    val ldSetExpensesBalance: LiveData<String> = _ldSetExpBalance
+    val ldSetIncomesBalance: LiveData<String> = _ldSetIncBalance
+    val ldSetTotalBalance: LiveData<String> = _ldSetTotalBalance
+    val ldNotes: LiveData<List<Note>> = _ldNotes
 
 
     init {
-        noteRepository.getAllNotes().observeForever {
-            _notes.value = it
+        mNoteRepository.getAllNotes().observeForever {
+            _ldNotes.value = it
             updateData(it)
         }
     }
@@ -53,44 +56,42 @@ class DataBoardViewModel @Inject constructor(private val noteRepository: NoteRep
         updatePieChart(expensesNotes, false)
     }
 
-    private fun setBalances(incomesNotes: List<Note>?, expensesNotes: List<Note>?)
-    {
+    private fun setBalances(incomesNotes: List<Note>?, expensesNotes: List<Note>?) {
         var incomesBalance = 0f
         var expensesBalance = 0f
-        if(incomesNotes != null) {
+        if (incomesNotes != null) {
             for (note in incomesNotes) incomesBalance += note.amount!!
-            _setIncomesBalance.value = incomesBalance.toString()
+            _ldSetIncBalance.value = incomesBalance.toString()
         }
-        if(expensesNotes != null) {
+        if (expensesNotes != null) {
             for (note in expensesNotes) expensesBalance += note.amount!!
-            _setExpensesBalance.value = expensesBalance.toString()
+            _ldSetExpBalance.value = expensesBalance.toString()
         }
-        _setTotalBalance.value = "$" + (incomesBalance - expensesBalance).toString()
+        _ldSetTotalBalance.value = "$" + (incomesBalance - expensesBalance).toString()
     }
 
     private fun updatePieChart(notes: List<Note>?, isIncomes: Boolean) {
         val pieDataSet = PieDataSet(listOf(), "pie")
         pieDataSet.setDrawValues(false)
-        pieDataSet.colors = arrayListOf(Color.RED, Color.GREEN, Color.BLUE, Color.MAGENTA) //todo переделать
+        pieDataSet.colors =
+            arrayListOf(Color.RED, Color.GREEN, Color.BLUE, Color.MAGENTA) //todo переделать
 
 
         if (notes == null) {
-            if (isIncomes) _incomesPieData.value = PieData(pieDataSet)
-            else _expensesPieData.value = PieData(pieDataSet)
-        }
-        else {
+            if (isIncomes) _ldIncPieData.value = PieData(pieDataSet)
+            else _ldExpPieData.value = PieData(pieDataSet)
+        } else {
             val totalAmountMap = calculateTotalAmount(notes)
             val sortedTopCategoriesPairs = totalAmountMap.toList().sortedByDescending { it.second }
             val (entries, descriptionStr) = createPieChartEntries(sortedTopCategoriesPairs)
             pieDataSet.values = entries
 
             if (isIncomes) {
-                _incomesPieData.value = PieData(pieDataSet)
-                if(descriptionStr != "") _incomesTopCategoriesText.value = descriptionStr
-            }
-            else {
-                _expensesPieData.value = PieData(pieDataSet)
-                if(descriptionStr != "") _expensesTopCategoriesText.value = descriptionStr
+                _ldIncPieData.value = PieData(pieDataSet)
+                if (descriptionStr != "") _ldIncTopCategoriesText.value = descriptionStr
+            } else {
+                _ldExpPieData.value = PieData(pieDataSet)
+                if (descriptionStr != "") _ldExpTopCategoriesText.value = descriptionStr
             }
         }
     }

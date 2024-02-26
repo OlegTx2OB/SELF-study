@@ -14,13 +14,12 @@ import com.example.coin.data.Note
 import com.example.coin.databinding.FragmentHistoryBinding
 import com.example.coin.viewmodel.HistoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class HistoryFragment : Fragment(R.layout.fragment_history) {
-    private val mViewModel: HistoryViewModel by viewModels()
 
-    val adapter: NoteAdapter = NoteAdapter()
+    private val mVM: HistoryViewModel by viewModels()
+    private val mAdapter: NoteAdapter = NoteAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -30,14 +29,13 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
 
         with(binding) {
             recyclerView.layoutManager = LinearLayoutManager(context)
-            recyclerView.adapter = adapter
-
+            recyclerView.adapter = mAdapter
 
             button.setOnClickListener {
-                adapter.addNote(Note(21, "pidor", false, 32.43f, "ic_history", 32000))
-
+                mAdapter.addNote(Note(21, "pidor", false, 32.43f, "ic_history", 32000))
             }
         }
+
         return binding.root
     }
 

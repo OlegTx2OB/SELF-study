@@ -8,5 +8,5 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
-    private val mViewModel: SettingsViewModel by viewModels()
+    private val mVM: SettingsViewModel by viewModels()
 }

@@ -18,7 +18,7 @@ import java.time.LocalDate
 
 @AndroidEntryPoint
 class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
-    private val mViewModel: AddNoteViewModel by viewModels()
+    private val mVM: AddNoteViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -26,40 +26,47 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
         val binding: FragmentAddNoteBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_note, container, false)
 
-        //setupClickListeners(binding, mViewModel)
+        setupClickListeners(binding, mVM)
+        setupObservers(binding, mVM)
+
+        return binding.root
+    }
+
+    fun setupClickListeners(binding: FragmentAddNoteBinding, mVM: AddNoteViewModel) {
 
         binding.cardviewIncExp.cardviewExpenses.setOnClickListener {
-            val x = 5
+            mVM.onCardViewIncExp(false)
+            mVM.paintUnpressedCardViews(listOf(binding.cardviewIncExp.cardviewIncomes))
+            mVM.paintPressedCardView(it as CardView)
+
         }
 
-        mViewModel.observerDatePickerB.observe(viewLifecycleOwner) {
+        binding.cardviewIncExp.cardviewIncomes.setOnClickListener {
+            mVM.onCardViewIncExp(true)
+            mVM.paintUnpressedCardViews(listOf(binding.cardviewIncExp.cardviewExpenses))
+            mVM.paintPressedCardView(it as CardView)
+        }
+
+    }
+
+    fun setupObservers(binding: FragmentAddNoteBinding, mVM: AddNoteViewModel) {
+        this.mVM.ldDatePickerB.observe(viewLifecycleOwner) {
 
             val currT = LocalDate.now()
             val datePickerDialog = DatePickerDialog(
                 requireContext(), { _, y, m, d ->
-                    mViewModel.setEpochDay(LocalDate.of(y, m + 1, d).toEpochDay())
+                    this.mVM.setEpochDay(LocalDate.of(y, m + 1, d).toEpochDay())
                 }, currT.year, currT.monthValue - 1, currT.dayOfMonth
             )//m+1 выбери, месяц неправильно показывается
             datePickerDialog.show()
         }
 
-        mViewModel.observerShowToast.observe(viewLifecycleOwner) {
+        this.mVM.ldShowToast.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         }
 
-        mViewModel.observerGetAmount.observe(viewLifecycleOwner) {
-            mViewModel.setAmount(binding.tilAmount.text?.toString())
-        }
-
-        return binding.root
-    }
-
-    fun setupClickListeners(binding: FragmentAddNoteBinding, mViewModel: AddNoteViewModel) {
-
-
-
-        binding.cardviewIncExp.cardviewIncomes.setOnClickListener {
-
+        this.mVM.ldGetAmount.observe(viewLifecycleOwner) {
+            this.mVM.setAmount(binding.tilAmount.text?.toString())
         }
     }
 

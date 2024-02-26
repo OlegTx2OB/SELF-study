@@ -9,8 +9,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.coin.R
+import com.example.coin.databinding.FragmentAddNoteBinding
 import com.example.coin.databinding.FragmentDataboardBinding
 import com.example.coin.repository.room.NoteRepository
+import com.example.coin.viewmodel.AddNoteViewModel
 import com.example.coin.viewmodel.DataBoardViewModel
 import com.github.mikephil.charting.charts.PieChart
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,10 +20,10 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
-    private val mViewModel: DataBoardViewModel by viewModels()
+    private val mVM: DataBoardViewModel by viewModels()
 
     @Inject
-    lateinit var noteRepository: NoteRepository
+    lateinit var noteRepository: NoteRepository // todo вроде как нигде не используется, проверь не влияет ли на добавление элементов
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -29,50 +31,50 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
         val binding: FragmentDataboardBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_databoard, container, false)
 
-//        noteRepository.getAllNotes().observe(viewLifecycleOwner) {
-//            Log.wtf("noteRep", it.joinToString())//todo вырезать и сделать не через жопу
-//                mViewModel.testHYU(it)
-//        }
+        setupObservers(binding, mVM)
 
-        val expensesPie = binding.expensesLayout.pieChart
-        val incomesPie = binding.incomesLayout.pieChart
-        setPieOptions(expensesPie)
-        setPieOptions(incomesPie)
+        setPieOptions(binding.expensesLayout.pieChart)
+        setPieOptions(binding.incomesLayout.pieChart)
 
-        mViewModel.setIncomesBalance.observe(viewLifecycleOwner) {
+        return binding.root
+    }
+
+    fun setupObservers(binding: FragmentDataboardBinding, mVM: DataBoardViewModel) {
+
+        mVM.ldSetIncomesBalance.observe(viewLifecycleOwner) {
             binding.topSectionLayout.tvIncomesValue.text = it.toString()
         }
 
-        mViewModel.setExpensesBalance.observe(viewLifecycleOwner) {
+        mVM.ldSetExpensesBalance.observe(viewLifecycleOwner) {
             binding.topSectionLayout.tvExpensesValue.text = it.toString()
         }
 
-        mViewModel.setTotalBalance.observe(viewLifecycleOwner) {
+        mVM.ldSetTotalBalance.observe(viewLifecycleOwner) {
             binding.topSectionLayout.tvTotalBalanceValue.text = it.toString()
         }
 
-        mViewModel.expensesPieData.observe(viewLifecycleOwner) {
+        mVM.ldExpensesTopCategoriesText.observe(viewLifecycleOwner) {
+            binding.expensesLayout.tvTopCategories.text = it
+        }
+
+        mVM.ldIncomesTopCategoriesText.observe(viewLifecycleOwner) {
+            binding.incomesLayout.tvTopCategories.text = it
+        }
+
+        mVM.ldExpensesPieData.observe(viewLifecycleOwner) {
+            val expensesPie = binding.expensesLayout.pieChart
             expensesPie.data = it
             expensesPie.notifyDataSetChanged()
             expensesPie.invalidate()
 
         }
 
-        mViewModel.incomesPieData.observe(viewLifecycleOwner) {
+        mVM.ldIncomesPieData.observe(viewLifecycleOwner) {
+            val incomesPie = binding.incomesLayout.pieChart
             incomesPie.data = it
             incomesPie.notifyDataSetChanged()
             incomesPie.invalidate()
         }
-
-        mViewModel.expensesTopCategoriesText.observe(viewLifecycleOwner) {
-            binding.expensesLayout.tvTopCategories.text = it
-        }
-
-        mViewModel.incomesTopCategoriesText.observe(viewLifecycleOwner) {
-            binding.incomesLayout.tvTopCategories.text = it
-        }
-
-        return binding.root
     }
 
     private fun setPieOptions(pieChart: PieChart) {
@@ -86,39 +88,3 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
     }
 
 }
-
-
-//        val pieChart = fragmentBinding.expensesLayout.pieChart
-//
-//
-//        val entiers = ArrayList<PieEntry>()
-//        entiers.add(PieEntry(80f, "Physics"))
-//        entiers.add(PieEntry(80f, "Mathfds"))
-//        entiers.add(PieEntry(80f, "Physics"))
-//
-//        val colors = ArrayList<Int>()
-//        colors.add(Color.RED)
-//        colors.add(resources.getColor(R.color.purple_700))
-//        val pieDataSet = PieDataSet(entiers, "Pizdets")
-//        pieDataSet.colors = colors
-//
-//        val pieData = PieData(pieDataSet)
-//        pieChart.data = pieData
-//
-//        pieChart.description.isEnabled = false
-//        pieChart.animateY(400)
-//        pieChart.legend.isEnabled = false
-//        pieChart.setDrawEntryLabels(false)
-//        pieDataSet.setDrawValues(false)
-//        pieChart.setHoleColor(Color.TRANSPARENT)
-//        pieChart.setTransparentCircleAlpha(50)
-//
-//        pieChart.invalidate()
-//
-//
-//        val resourceId = resources.getIdentifier("IMAGE NAME", "drawable", context?.packageName)
-//        val bitmap = BitmapFactory.decodeResource(resources, resourceId)
-//
-//        Palette.Builder(bitmap).generate { it?.let { palette ->
-//            val dominantColor = palette.getDominantColor(ContextCompat.getColor(requireContext(), R.color.white))
-//        } }
