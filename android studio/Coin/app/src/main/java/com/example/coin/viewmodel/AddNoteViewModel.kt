@@ -1,6 +1,7 @@
 package com.example.coin.viewmodel
 
 import android.app.Application
+import android.app.DatePickerDialog
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -23,46 +24,28 @@ class AddNoteViewModel @Inject constructor(
     private val mApp: Application,
 ) : AndroidViewModel(mApp) {
 
-    private val _ldDatePickerButton = MutableLiveData<Unit>()
     private val _ldShowToast = MutableLiveData<String>()
     private val _ldGetAmount = MutableLiveData<Unit>()
 
-    val ldDatePickerB: LiveData<Unit> = _ldDatePickerButton
     val ldShowToast: LiveData<String> = _ldShowToast
     val ldGetAmount: LiveData<Unit> = _ldGetAmount
 
     private val mNewNote = Note()
 
     private val mGray800 = mApp.getColor(R.color.gray_800)
-    private val mGray200 = mApp.getColor(R.color.gray_200)
+    private val mGray400 = mApp.getColor(R.color.gray_400)
 
     fun onCardViewIncExp(isIncomes: Boolean) {
         mNewNote.isIncomes = isIncomes
     }
 
     fun paintPressedCardView(cardView: CardView) {
-        cardView.setCardBackgroundColor(mGray200)
-        val rootLayout = cardView.getChildAt(0) as ViewGroup
-
-        for (i in 0 until rootLayout.childCount) {
-            val childView = rootLayout.getChildAt(i)
-            if (childView is TextView) {
-                childView.setTextColor(mGray800)
-            }
-        }
+        cardView.setCardBackgroundColor(mGray400)
     }
 
     fun paintUnpressedCardViews(viewList: List<CardView>) {
         for (cardView in viewList) {
             cardView.setCardBackgroundColor(mGray800)
-            val rootLayout = cardView.getChildAt(0) as ViewGroup
-
-            for (i in 0 until rootLayout.childCount) {
-                val childView = rootLayout.getChildAt(i)
-                if (childView is TextView) {
-                    childView.setTextColor(mGray200)
-                }
-            }
         }
     }
 
@@ -108,6 +91,16 @@ class AddNoteViewModel @Inject constructor(
     }
 
     fun onChooseData() {
-        _ldDatePickerButton.value = Unit
+        val currT = LocalDate.now()
+        val datePickerDialog = DatePickerDialog(
+            mApp.applicationContext, { _, y, m, d ->
+                mNewNote.epochDay = LocalDate.of(y, m + 1, d).toEpochDay()
+            }, currT.year, currT.monthValue - 1, currT.dayOfMonth
+        )//m+1 выбери, месяц неправильно показывается
+        datePickerDialog.show()
+    }
+
+    fun onTodayMinusDays(daysCount: Int) {
+        mNewNote.epochDay = LocalDate.now().toEpochDay() - daysCount
     }
 }

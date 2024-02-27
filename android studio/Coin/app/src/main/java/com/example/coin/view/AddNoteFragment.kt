@@ -34,39 +34,29 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
     fun setupClickListeners(binding: FragmentAddNoteBinding, mVM: AddNoteViewModel) {
 
-        binding.cardviewIncExp.cardviewExpenses.setOnClickListener {
+        binding.cardviewAmountIncExp.cardviewExpenses.setOnClickListener {
             mVM.onCardViewIncExp(false)
-            mVM.paintUnpressedCardViews(listOf(binding.cardviewIncExp.cardviewIncomes))
+            mVM.paintUnpressedCardViews(listOf(binding.cardviewAmountIncExp.cardviewIncomes))
             mVM.paintPressedCardView(it as CardView)
 
         }
 
-        binding.cardviewIncExp.cardviewIncomes.setOnClickListener {
+        binding.cardviewAmountIncExp.cardviewIncomes.setOnClickListener {
             mVM.onCardViewIncExp(true)
-            mVM.paintUnpressedCardViews(listOf(binding.cardviewIncExp.cardviewExpenses))
+            mVM.paintUnpressedCardViews(listOf(binding.cardviewAmountIncExp.cardviewExpenses))
             mVM.paintPressedCardView(it as CardView)
         }
 
     }
 
     fun setupObservers(binding: FragmentAddNoteBinding, mVM: AddNoteViewModel) {
-        this.mVM.ldDatePickerB.observe(viewLifecycleOwner) {
-
-            val currT = LocalDate.now()
-            val datePickerDialog = DatePickerDialog(
-                requireContext(), { _, y, m, d ->
-                    this.mVM.setEpochDay(LocalDate.of(y, m + 1, d).toEpochDay())
-                }, currT.year, currT.monthValue - 1, currT.dayOfMonth
-            )//m+1 выбери, месяц неправильно показывается
-            datePickerDialog.show()
-        }
 
         this.mVM.ldShowToast.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         }
 
         this.mVM.ldGetAmount.observe(viewLifecycleOwner) {
-            this.mVM.setAmount(binding.tilAmount.text?.toString())
+            //this.mVM.setAmount(binding.tilAmount.text?.toString()) todo поправить
         }
     }
 

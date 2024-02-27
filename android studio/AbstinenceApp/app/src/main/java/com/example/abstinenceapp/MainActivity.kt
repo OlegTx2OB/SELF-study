@@ -57,7 +57,6 @@ import java.time.ZoneOffset
         arrayList = loadArrayList(this)
         viewsInitialization()
     }
-
     override fun onStart()
     {
         super.onStart()
@@ -143,6 +142,7 @@ import java.time.ZoneOffset
         super.onStop()
         isLoopActive = false
     }
+
     private fun viewsInitialization()
     {
         mChroniclesBtn = findViewById(R.id.chroniclesBtn)

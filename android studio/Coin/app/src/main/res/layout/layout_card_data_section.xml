@@ -30,7 +30,7 @@
             android:layout_marginTop="16dp"
 
             android:fontFamily="@font/open_sans_400"
-            android:text="@string/tv_static_total_balance_string"
+            android:text="@string/total_balance"
             android:textSize="12sp"
             app:layout_constraintLeft_toLeftOf="@+id/constraint_layout"
             app:layout_constraintRight_toRightOf="@+id/constraint_layout"
@@ -44,7 +44,9 @@
             android:textSize="40sp"
             app:layout_constraintLeft_toLeftOf="@+id/constraint_layout"
             app:layout_constraintRight_toRightOf="@+id/constraint_layout"
-            app:layout_constraintTop_toBottomOf="@+id/tv_static_total_balance_string" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_static_total_balance_string"
+            android:maxLines="3"
+            android:ellipsize="none"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -83,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/open_sans_400"
-            android:text="@string/tv_static_incomes_string"
+            android:text="@string/incomes"
             android:textSize="12sp"
             app:layout_constraintLeft_toRightOf="@id/iv_icon_incomes"
             app:layout_constraintRight_toLeftOf="@+id/guideline"
@@ -95,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/open_sans_400"
-            android:text="@string/tv_static_expenses_string"
+            android:text="@string/expenses"
             android:textSize="12sp"
             app:layout_constraintLeft_toRightOf="@id/iv_icon_outcomes"
             app:layout_constraintRight_toRightOf="parent"
@@ -121,7 +123,9 @@
             android:textSize="20sp"
             app:layout_constraintLeft_toRightOf="@id/tv_incomes_dollar"
             app:layout_constraintRight_toRightOf="@id/guideline"
-            app:layout_constraintTop_toBottomOf="@id/tv_static_incomes_string" />
+            app:layout_constraintTop_toBottomOf="@id/tv_static_incomes_string"
+            android:maxLines="3"
+            android:ellipsize="none"/>
 
         <TextView
             android:id="@+id/tv_outcomes_dollar"
@@ -142,7 +146,9 @@
             android:textSize="20sp"
             app:layout_constraintLeft_toRightOf="@id/tv_outcomes_dollar"
             app:layout_constraintRight_toRightOf="@+id/constraint_layout"
-            app:layout_constraintTop_toBottomOf="@id/tv_static_outcomes_string" />
+            app:layout_constraintTop_toBottomOf="@id/tv_static_outcomes_string"
+            android:maxLines="3"
+            android:ellipsize="none"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

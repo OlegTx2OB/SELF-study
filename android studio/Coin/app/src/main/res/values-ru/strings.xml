@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Coin</string>
-    <string name="tv_static_incomes_string">Доходы</string>
-    <string name="title_right_nav_settings">Параметры</string>
-    <string name="title_bottom_nav_more">Еще</string>
-    <string name="title_bottom_nav_databoard">Панель данных</string>
-    <string name="title_bottom_nav_stats">Статистика</string>
-    <string name="title_bottom_nav_history">История</string>
-    <string name="tv_static_total_balance_string">Итоговый баланс</string>
-    <string name="tv_static_expenses_string">Расходы</string>
-    <string name="tv_static_easter_egg">привет из мозыря</string>
-    <string name="tv_static_expenses_by_category">Траты по категориям</string>
-    <string name="tv_static_incomes_by_category">Заработки по категориям</string>
-    <string name="et_amount">Сумма</string>
-    <string name="clear_expenses_list">Траты\nеще\nне\nбыли\nдобавлены</string>
-    <string name="clear_incomes_list">Заработки\nеще\nне\nбыли\nдобавлены</string>
-    <string name="title_bottom_nav_add_note">Добавить</string>
+    <string name="incomes">Доходы</string>
+    <string name="settings">Параметры</string>
+    <string name="more">Еще</string>
+    <string name="databoard">Панель данных</string>
+    <string name="stats">Статистика</string>
+    <string name="history">История</string>
+    <string name="total_balance">Итоговый баланс</string>
+    <string name="expenses">Расходы</string>
+    <string name="easter_egg">привет из мозыря</string>
+    <string name="expenses_by_category">Траты по категориям</string>
+    <string name="incomes_by_category">Заработки по категориям</string>
+    <string name="amount">Сумма</string>
+    <string name="clear_expenses_list_text">Траты\nеще\nне\nбыли\nдобавлены</string>
+    <string name="clear_incomes_list_text">Заработки\nеще\nне\nбыли\nдобавлены</string>
+    <string name="add">Добавить</string>
+    <string name="today">Сегодня</string>
 </resources>

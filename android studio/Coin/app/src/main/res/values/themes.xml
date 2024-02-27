@@ -19,6 +19,8 @@
 
         <item name="android:fontFamily">@font/open_sans_600</item>
         <item name="android:textColor">?attr/colorText</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
 
 
     </style>
