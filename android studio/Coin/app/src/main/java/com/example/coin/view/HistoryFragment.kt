@@ -26,13 +26,12 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
     ): View {
         val binding: FragmentHistoryBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_history, container, false)
-
         with(binding) {
             recyclerView.layoutManager = LinearLayoutManager(context)
             recyclerView.adapter = mAdapter
 
             button.setOnClickListener {
-                mAdapter.addNote(Note(21, "pidor", false, 32.43f, "ic_history", 32000))
+                mAdapter.addNote(Note(21, "NEW note", false, 32.43f, "ic_history", 32000))
             }
         }
 

@@ -26,7 +26,6 @@ class DataBoardViewModel @Inject constructor(
     private val _ldSetExpBalance = MutableLiveData<String>()
     private val _ldSetIncBalance = MutableLiveData<String>()
     private val _ldSetTotalBalance = MutableLiveData<String>()
-    private val _ldNotes = MutableLiveData<List<Note>>()
 
     val ldExpensesPieData: LiveData<PieData> = _ldExpPieData
     val ldIncomesPieData: LiveData<PieData> = _ldIncPieData
@@ -35,17 +34,15 @@ class DataBoardViewModel @Inject constructor(
     val ldSetExpensesBalance: LiveData<String> = _ldSetExpBalance
     val ldSetIncomesBalance: LiveData<String> = _ldSetIncBalance
     val ldSetTotalBalance: LiveData<String> = _ldSetTotalBalance
-    val ldNotes: LiveData<List<Note>> = _ldNotes
 
 
     init {
         mNoteRepository.getAllNotes().observeForever {
-            _ldNotes.value = it
             updateData(it)
         }
     }
 
-    private fun updateData(notes: List<Note>?)//todo убрать нахуй
+    private fun updateData(notes: List<Note>?)
     {
         val incomesNotes = notes?.filter { it.isIncomes == true }
         val expensesNotes = notes?.filter { it.isIncomes == false }
@@ -72,6 +69,7 @@ class DataBoardViewModel @Inject constructor(
 
     private fun updatePieChart(notes: List<Note>?, isIncomes: Boolean) {
         val pieDataSet = PieDataSet(listOf(), "pie")
+
         pieDataSet.setDrawValues(false)
         pieDataSet.colors =
             arrayListOf(Color.RED, Color.GREEN, Color.BLUE, Color.MAGENTA) //todo переделать
@@ -109,7 +107,7 @@ class DataBoardViewModel @Inject constructor(
         val entries = mutableListOf<PieEntry>()
         var descriptionStr = ""
         if (sortedPairs.isNotEmpty()) {
-            for (i in 0 until minOf(sortedPairs.size, 3)) {
+            for (i in 0 until minOf(sortedPairs.size, 4)) {
                 entries.add(PieEntry(sortedPairs[i].second, ""))
                 if (descriptionStr == "") {
                     descriptionStr = "${sortedPairs[i].first} - ${sortedPairs[i].second}"
@@ -117,7 +115,7 @@ class DataBoardViewModel @Inject constructor(
                     descriptionStr += "\n\n${sortedPairs[i].first} - ${sortedPairs[i].second}"
                 }
             }
-            if (sortedPairs.size > 3) {
+            if (sortedPairs.size > 4) {
                 var sum = 0f
                 for (i in 3 until sortedPairs.size) {
                     sum += sortedPairs[i].second

@@ -2,6 +2,7 @@ package com.example.coin.view
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.coin.R
 import com.example.coin.databinding.FragmentAddNoteBinding
+import com.example.coin.paintPressedCardView
+import com.example.coin.paintUnpressedCardViews
 import com.example.coin.viewmodel.AddNoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
@@ -36,27 +39,85 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
         binding.cardviewAmountIncExp.cardviewExpenses.setOnClickListener {
             mVM.onCardViewIncExp(false)
-            mVM.paintUnpressedCardViews(listOf(binding.cardviewAmountIncExp.cardviewIncomes))
-            mVM.paintPressedCardView(it as CardView)
-
+            paintUnpressedCardViews(
+                listOf(binding.cardviewAmountIncExp.cardviewIncomes), requireContext()
+            )
+            paintPressedCardView(it as CardView, requireContext())
         }
 
         binding.cardviewAmountIncExp.cardviewIncomes.setOnClickListener {
             mVM.onCardViewIncExp(true)
-            mVM.paintUnpressedCardViews(listOf(binding.cardviewAmountIncExp.cardviewExpenses))
-            mVM.paintPressedCardView(it as CardView)
+            paintUnpressedCardViews(
+                listOf(binding.cardviewAmountIncExp.cardviewExpenses), requireContext()
+            )
+            paintPressedCardView(it as CardView, requireContext())
+        }
+
+        binding.cardviewAdd.setOnClickListener {
+            mVM.onAdd()
+        }
+
+        binding.cardviewsCategories.cardCategoryShlukhi.setOnClickListener {
+            mVM.onCategory(it)
+        }
+
+        binding.cardviewsCategories.cardCategoryShawarma.setOnClickListener {
+            mVM.onCategory(it)
+        }
+
+        binding.cardviewsCategories.cardCategoryTaxi.setOnClickListener {
+            mVM.onCategory(it)
+        }
+
+        binding.cardviewDatepicker.cardviewToday.setOnClickListener {
+            mVM.setTodayMinusDays(0)
+            paintUnpressedCardViews(
+                listOf(
+                    binding.cardviewDatepicker.cardviewYesterday,
+                    binding.cardviewDatepicker.cardviewChoose,
+                ), requireContext()
+            )
+            paintPressedCardView(it as CardView, requireContext())
+        }
+
+        binding.cardviewDatepicker.cardviewYesterday.setOnClickListener {
+            mVM.setTodayMinusDays(1)
+            paintUnpressedCardViews(
+                listOf(
+                    binding.cardviewDatepicker.cardviewToday,
+                    binding.cardviewDatepicker.cardviewChoose,
+                ), requireContext()
+            )
+            paintPressedCardView(it as CardView, requireContext())
+        }
+
+        binding.cardviewDatepicker.cardviewChoose.setOnClickListener {
+            val currT = LocalDate.now()
+            val datePickerDialog = DatePickerDialog(
+                requireContext(), { _, y, m, d ->
+                    mVM.setEpochDay(LocalDate.of(y, m + 1, d).toEpochDay())
+                }, currT.year, currT.monthValue - 1, currT.dayOfMonth
+            )//m+1 выбери, месяц неправильно показывается
+            datePickerDialog.show()
+            paintUnpressedCardViews(
+                listOf(
+                    binding.cardviewDatepicker.cardviewToday,
+                    binding.cardviewDatepicker.cardviewYesterday,
+                ), requireContext()
+            )
+            paintPressedCardView(it as CardView, requireContext())
         }
 
     }
 
     fun setupObservers(binding: FragmentAddNoteBinding, mVM: AddNoteViewModel) {
 
-        this.mVM.ldShowToast.observe(viewLifecycleOwner) {
+        mVM.ldShowToast.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         }
 
-        this.mVM.ldGetAmount.observe(viewLifecycleOwner) {
-            //this.mVM.setAmount(binding.tilAmount.text?.toString()) todo поправить
+        mVM.ldGetAmount.observe(viewLifecycleOwner) {
+            this.mVM.setAmount(binding.cardviewAmountIncExp.tilAmount.text?.toString())
         }
     }
 

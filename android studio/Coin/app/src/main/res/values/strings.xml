@@ -16,4 +16,6 @@
     <string name="clear_incomes_list_text">Incomes\nhave\nnot\nbeen\nadded\nyet</string>
     <string name="add">Add</string>
     <string name="today">Today</string>
+    <string name="date">Date</string>
+    <string name="categories">Categories</string>
 </resources>

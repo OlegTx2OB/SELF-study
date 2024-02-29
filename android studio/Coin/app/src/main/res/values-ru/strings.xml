@@ -4,7 +4,7 @@
     <string name="incomes">Доходы</string>
     <string name="settings">Параметры</string>
     <string name="more">Еще</string>
-    <string name="databoard">Панель данных</string>
+    <string name="databoard">Главная</string>
     <string name="stats">Статистика</string>
     <string name="history">История</string>
     <string name="total_balance">Итоговый баланс</string>
@@ -17,4 +17,6 @@
     <string name="clear_incomes_list_text">Заработки\nеще\nне\nбыли\nдобавлены</string>
     <string name="add">Добавить</string>
     <string name="today">Сегодня</string>
+    <string name="date">Дата</string>
+    <string name="categories">Категории</string>
 </resources>

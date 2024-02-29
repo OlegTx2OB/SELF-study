@@ -7,7 +7,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray_200">#BBBBBB</color>
     <color name="gray_400">#707070</color>
-    <color name="gray_950">#1c1d1f</color>
     <color name="gray_800">#444444</color>
     <color name="green_500">#74a02b</color>
     <color name="green_400">#64800b</color>
@@ -16,6 +15,12 @@
 
     <!-- МОИ НОВЫЕ ЦВЕТА -->
     <color name="gray_990">#131313</color>
+    <color name="gray_950">#1c1d1f</color>
+    <color name="gray_900">#2c2d2f</color>
+
+    <color name="blue_green_800">#004a77</color>
+    <color name="gray_purple_800">#35343a</color>
+    <color name="gray_purple_650">#55545f</color>
 
 
 

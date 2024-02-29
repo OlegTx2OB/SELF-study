@@ -41,4 +41,10 @@ class NoteAdapter() : RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
         noteArray.add(note)
         notifyItemInserted(noteArray.size)
     }
+
+//    fun updateData(notes: List<Note>) {
+//        noteArray.clear()
+//        noteArray.addAll(notes)
+//        notifyDataSetChanged()
+//    }
 }

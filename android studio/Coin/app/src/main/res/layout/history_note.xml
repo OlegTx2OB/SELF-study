@@ -91,7 +91,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/imageView"
             app:layout_constraintRight_toLeftOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:maxLines="10"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

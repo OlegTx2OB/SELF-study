@@ -1,7 +1,6 @@
 package com.example.coin.viewmodel
 
 import android.app.Application
-import android.app.DatePickerDialog
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -32,44 +31,31 @@ class AddNoteViewModel @Inject constructor(
 
     private val mNewNote = Note()
 
-    private val mGray800 = mApp.getColor(R.color.gray_800)
-    private val mGray400 = mApp.getColor(R.color.gray_400)
-
     fun onCardViewIncExp(isIncomes: Boolean) {
         mNewNote.isIncomes = isIncomes
-    }
-
-    fun paintPressedCardView(cardView: CardView) {
-        cardView.setCardBackgroundColor(mGray400)
-    }
-
-    fun paintUnpressedCardViews(viewList: List<CardView>) {
-        for (cardView in viewList) {
-            cardView.setCardBackgroundColor(mGray800)
-        }
-    }
-
-
-    fun setEpochDay(epochDay: Long) {
-        mNewNote.epochDay = epochDay
     }
 
     fun setAmount(string: String?) {
         if (string != null && string != "") mNewNote.amount = string.toFloat()
     }
 
-    fun onConfirm() {
+    fun onAdd() {
         _ldGetAmount.value = Unit
 
-        if (mNewNote.epochDay == null) mNewNote.epochDay = LocalDate.now().toEpochDay()
+        val todayEpochDay = LocalDate.now().toEpochDay()
+        if (mNewNote.epochDay == null) {
+            mNewNote.epochDay = todayEpochDay
+        }
 
-        if (mNewNote.amount == null) _ldShowToast.value = "enter amount"
-        else if (mNewNote.imageName == null || mNewNote.categoryName == null) _ldShowToast.value =
+        _ldShowToast.value = if (mNewNote.amount == null) {
+            "enter amount"
+        } else if (mNewNote.isIncomes == null) {
+            "choose incomes or outcomes"
+        } else if (mNewNote.imageName == null || mNewNote.categoryName == null) {
             "choose category"
-        else if (mNewNote.isIncomes == null) _ldShowToast.value = "choose incomes or outcomes"
-        else {
-            _ldShowToast.value = "all saved"
+        } else {
             mNoteRepository.insertNote(mNewNote)
+            "all saved"
         }
     }
 
@@ -90,17 +76,22 @@ class AddNoteViewModel @Inject constructor(
 
     }
 
-    fun onChooseData() {
-        val currT = LocalDate.now()
-        val datePickerDialog = DatePickerDialog(
-            mApp.applicationContext, { _, y, m, d ->
-                mNewNote.epochDay = LocalDate.of(y, m + 1, d).toEpochDay()
-            }, currT.year, currT.monthValue - 1, currT.dayOfMonth
-        )//m+1 выбери, месяц неправильно показывается
-        datePickerDialog.show()
-    }
-
-    fun onTodayMinusDays(daysCount: Int) {
+    fun setTodayMinusDays(daysCount: Int) {
         mNewNote.epochDay = LocalDate.now().toEpochDay() - daysCount
     }
+
+    fun setEpochDay(daysCount: Long) {
+        mNewNote.epochDay = daysCount
+    }
 }
+
+//// Получаем цвет фона CardView
+//val typedValue = TypedValue()
+//context.theme.resolveAttribute(R.attr.cardBackgroundColor, typedValue, true)
+//val colorCardView = typedValue.data
+//
+//// Добавляем 50% альфа-канал к цвету фона
+//val alphaColor = ColorUtils.setAlphaComponent(colorCardView, (255 * 0.5).toInt())
+//
+//// Устанавливаем новый цвет с альфа-каналом для CardView
+//cardView.setCardBackgroundColor(alphaColor)

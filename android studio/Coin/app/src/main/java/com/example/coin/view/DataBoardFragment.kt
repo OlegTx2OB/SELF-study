@@ -78,6 +78,7 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
     }
 
     private fun setPieOptions(pieChart: PieChart) {
+        pieChart.holeRadius = 65f
         pieChart.description.isEnabled = false
         pieChart.animateY(400)
         pieChart.legend.isEnabled = false
