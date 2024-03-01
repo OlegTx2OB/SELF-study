@@ -19,4 +19,5 @@
     <string name="today">Сегодня</string>
     <string name="date">Дата</string>
     <string name="categories">Категории</string>
+    <string name="swipe_left_to_delete">Проведите пальцем влево, чтобы удалить</string>
 </resources>

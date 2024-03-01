@@ -2,26 +2,28 @@ package com.example.coin
 
 import android.content.Context
 import android.util.TypedValue
+import androidx.annotation.AttrRes
 import androidx.cardview.widget.CardView
 
 
-fun getUnpressedCardColor(context: Context): Int {
+/*
+    com.google.android.material.R.attr.colorSurfaceContainerHighest unpressed cardview
+    com.google.android.material.R.attr.colorPrimaryContainer pressed cardview
+*/
+
+fun getColorAttribute(@AttrRes attributeId: Int, context: Context): Int {
     val typedValue = TypedValue()
-    context.theme.resolveAttribute(com.google.android.material.R.attr.colorSurfaceContainerHighest, typedValue, true)
+    context.theme.resolveAttribute(attributeId, typedValue, true)
     return typedValue.data
 }
 
-fun getPressedCardColor(context: Context): Int {
-    val typedValue = TypedValue()
-    context.theme.resolveAttribute(com.google.android.material.R.attr.colorPrimaryContainer, typedValue, true)
-    return typedValue.data
-}
-fun paintPressedCardView(cardView: CardView, context: Context) {
-    cardView.setCardBackgroundColor(getPressedCardColor(context))
-}
-
-fun paintUnpressedCardViews(viewList: List<CardView>, context: Context) {
+fun paintCardViews(viewList: List<CardView>, @AttrRes attributeId: Int, context: Context) {
     for (cardView in viewList) {
-        cardView.setCardBackgroundColor(getUnpressedCardColor(context))
+        cardView.setCardBackgroundColor(
+            getColorAttribute(
+                attributeId,
+                context
+            )
+        )
     }
 }

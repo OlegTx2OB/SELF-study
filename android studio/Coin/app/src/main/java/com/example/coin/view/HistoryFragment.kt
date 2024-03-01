@@ -1,25 +1,25 @@
 package com.example.coin.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.coin.NoteAdapter
 import com.example.coin.R
-import com.example.coin.data.Note
-import com.example.coin.databinding.FragmentAddNoteBinding
+import com.example.coin.SwipeToDeleteCallback
 import com.example.coin.databinding.FragmentHistoryBinding
 import com.example.coin.repository.room.NoteRepository
-import com.example.coin.repository.room.NoteRepositoryImpl
-import com.example.coin.viewmodel.AddNoteViewModel
 import com.example.coin.viewmodel.HistoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -38,6 +38,15 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
 
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = mAdapter
+
+        val swipeHandler = object : SwipeToDeleteCallback(requireContext()) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val adapter = binding.recyclerView.adapter as NoteAdapter
+                adapter.removeAt(viewHolder.adapterPosition)
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeHandler)
+        itemTouchHelper.attachToRecyclerView(binding.recyclerView)
         setupObservers(binding, mVM)
 
         return binding.root
@@ -45,10 +54,16 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
 
 
 
-    fun setupObservers(binding: FragmentHistoryBinding, mVM: HistoryViewModel) {4
+    fun setupObservers(binding: FragmentHistoryBinding, mVM: HistoryViewModel) {
 
         mNoteRepository.getAllNotes().observe(viewLifecycleOwner) {
-            mAdapter.updateData(it)
+            mAdapter.addNotes(it)
+        }
+
+        mAdapter.ldDeleteNoteFromRoom.observe(viewLifecycleOwner) {
+            CoroutineScope(Dispatchers.IO).launch {
+                mNoteRepository.deleteNote(it)
+            }
         }
     }
 }

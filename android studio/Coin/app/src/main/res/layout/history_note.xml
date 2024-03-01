@@ -28,7 +28,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             app:cardBackgroundColor="?attr/colorIncomes"
-            app:cardCornerRadius="24dp"
+            app:cardCornerRadius="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/guideline"
             app:layout_constraintTop_toTopOf="parent" />

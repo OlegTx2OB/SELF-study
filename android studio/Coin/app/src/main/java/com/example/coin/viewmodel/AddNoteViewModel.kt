@@ -14,6 +14,9 @@ import com.example.coin.R
 import com.example.coin.data.Note
 import com.example.coin.repository.room.NoteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import javax.inject.Inject
 
@@ -55,7 +58,9 @@ class AddNoteViewModel @Inject constructor(
         } else if (mNewNote.imageName == null || mNewNote.categoryName == null) {
             "choose category"
         } else {
-            mNoteRepository.insertNote(mNewNote)
+            CoroutineScope(Dispatchers.IO).launch {
+                mNoteRepository.insertNote(mNewNote)
+            }
             "all saved"
         }
     }

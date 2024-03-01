@@ -3,12 +3,17 @@ package com.example.coin
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coin.data.Note
 import com.example.coin.databinding.HistoryNoteBinding
 import java.time.LocalDate
 
 class NoteAdapter() : RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
+
+    private val _ldDeleteNoteFromRoom = MutableLiveData<Note>()
+    val ldDeleteNoteFromRoom: LiveData<Note> = _ldDeleteNoteFromRoom
 
     private val noteArray = ArrayList<Note>()
     class NoteHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -38,12 +43,13 @@ class NoteAdapter() : RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
         return noteArray.size
     }
 
-    fun addNote(note: Note) {
-        noteArray.add(note)
-        notifyItemInserted(noteArray.size)
+    fun removeAt(position: Int) {
+        _ldDeleteNoteFromRoom.value = noteArray[position]
+        noteArray.removeAt(position)
+        notifyItemRemoved(position)
     }
 
-    fun updateData(notes: List<Note>) { //todo тут всё вытирается и всё прям с нуля переписывается. это оч по производительности должно быть нехорошо
+    fun addNotes(notes: List<Note>) {
         noteArray.clear()
         noteArray.addAll(notes.reversed())
         notifyDataSetChanged()

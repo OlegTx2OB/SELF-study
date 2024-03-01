@@ -2,7 +2,6 @@ package com.example.coin.view
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.coin.R
 import com.example.coin.databinding.FragmentAddNoteBinding
-import com.example.coin.paintPressedCardView
-import com.example.coin.paintUnpressedCardViews
+import com.example.coin.paintCardViews
 import com.example.coin.viewmodel.AddNoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
@@ -22,6 +20,8 @@ import java.time.LocalDate
 @AndroidEntryPoint
 class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
     private val mVM: AddNoteViewModel by viewModels()
+    private val colorUnpressedCard = com.google.android.material.R.attr.colorSurfaceContainerHighest
+    private val colorPressedCard = com.google.android.material.R.attr.colorPrimaryContainer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -35,22 +35,25 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
         return binding.root
     }
 
-    fun setupClickListeners(binding: FragmentAddNoteBinding, mVM: AddNoteViewModel) {
+    private fun setupClickListeners(binding: FragmentAddNoteBinding, mVM: AddNoteViewModel) {
 
         binding.cardviewAmountIncExp.cardviewExpenses.setOnClickListener {
             mVM.onCardViewIncExp(false)
-            paintUnpressedCardViews(
-                listOf(binding.cardviewAmountIncExp.cardviewIncomes), requireContext()
+            paintCardViews(
+                listOf(binding.cardviewAmountIncExp.cardviewIncomes),
+                colorUnpressedCard,
+                requireContext()
             )
-            paintPressedCardView(it as CardView, requireContext())
+            paintCardViews(listOf(it as CardView), colorPressedCard, requireContext())
         }
-
         binding.cardviewAmountIncExp.cardviewIncomes.setOnClickListener {
             mVM.onCardViewIncExp(true)
-            paintUnpressedCardViews(
-                listOf(binding.cardviewAmountIncExp.cardviewExpenses), requireContext()
+            paintCardViews(
+                listOf(binding.cardviewAmountIncExp.cardviewExpenses),
+                colorUnpressedCard,
+                requireContext()
             )
-            paintPressedCardView(it as CardView, requireContext())
+            paintCardViews(listOf(it as CardView), colorPressedCard, requireContext())
         }
 
         binding.cardviewAdd.setOnClickListener {
@@ -71,24 +74,24 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
         binding.cardviewDatepicker.cardviewToday.setOnClickListener {
             mVM.setTodayMinusDays(0)
-            paintUnpressedCardViews(
+            paintCardViews(
                 listOf(
                     binding.cardviewDatepicker.cardviewYesterday,
                     binding.cardviewDatepicker.cardviewChoose,
-                ), requireContext()
+                ), colorUnpressedCard, requireContext()
             )
-            paintPressedCardView(it as CardView, requireContext())
+            paintCardViews(listOf(it as CardView), colorPressedCard, requireContext())
         }
 
         binding.cardviewDatepicker.cardviewYesterday.setOnClickListener {
             mVM.setTodayMinusDays(1)
-            paintUnpressedCardViews(
+            paintCardViews(
                 listOf(
                     binding.cardviewDatepicker.cardviewToday,
                     binding.cardviewDatepicker.cardviewChoose,
-                ), requireContext()
+                ), colorUnpressedCard, requireContext()
             )
-            paintPressedCardView(it as CardView, requireContext())
+            paintCardViews(listOf(it as CardView), colorPressedCard, requireContext())
         }
 
         binding.cardviewDatepicker.cardviewChoose.setOnClickListener {
@@ -99,18 +102,18 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                 }, currT.year, currT.monthValue - 1, currT.dayOfMonth
             )//m+1 выбери, месяц неправильно показывается
             datePickerDialog.show()
-            paintUnpressedCardViews(
+            paintCardViews(
                 listOf(
                     binding.cardviewDatepicker.cardviewToday,
                     binding.cardviewDatepicker.cardviewYesterday,
-                ), requireContext()
+                ), colorUnpressedCard, requireContext()
             )
-            paintPressedCardView(it as CardView, requireContext())
+            paintCardViews(listOf(it as CardView), colorPressedCard, requireContext())
         }
 
     }
 
-    fun setupObservers(binding: FragmentAddNoteBinding, mVM: AddNoteViewModel) {
+    private fun setupObservers(binding: FragmentAddNoteBinding, mVM: AddNoteViewModel) {
 
         mVM.ldShowToast.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()

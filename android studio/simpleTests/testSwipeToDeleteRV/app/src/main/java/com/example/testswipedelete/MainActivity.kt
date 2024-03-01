@@ -13,8 +13,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class MainActivity : AppCompatActivity() {
 
     private val simpleAdapter = SimpleAdapter((1..5).map { "Item: $it" }.toMutableList())
-    lateinit var recyclerView: RecyclerView
-    lateinit var fab: FloatingActionButton
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var fab: FloatingActionButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
