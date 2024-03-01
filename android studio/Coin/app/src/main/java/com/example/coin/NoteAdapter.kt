@@ -18,6 +18,7 @@ class NoteAdapter() : RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
             val resourceId = binding.root.resources.getIdentifier(note.imageName, "drawable", binding.root.context.packageName)
             val date = LocalDate.ofEpochDay(note.epochDay!!)
 
+            //cardView.setCardBackgroundColor()
             tvDate.text = "${date.dayOfMonth}.${date.monthValue}.${date.year}"
             binding.imageView.setImageResource(resourceId)
             tvCategoryName.text = note.categoryName
@@ -42,9 +43,10 @@ class NoteAdapter() : RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
         notifyItemInserted(noteArray.size)
     }
 
-//    fun updateData(notes: List<Note>) {
-//        noteArray.clear()
-//        noteArray.addAll(notes)
-//        notifyDataSetChanged()
-//    }
+    fun updateData(notes: List<Note>) { //todo тут всё вытирается и всё прям с нуля переписывается. это оч по производительности должно быть нехорошо
+        noteArray.clear()
+        noteArray.addAll(notes.reversed())
+        notifyDataSetChanged()
+    }
+
 }

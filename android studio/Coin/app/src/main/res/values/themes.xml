@@ -4,14 +4,13 @@
         <item name="colorSurface">@color/gray_990</item>
         <item name="colorSurfaceContainer">@color/gray_950</item>
         <item name="colorSurfaceContainerHigh">@color/gray_900</item>
-
         <item name="colorOnSurface">@color/gray_200</item>
-        <item name="colorError">@color/red_300</item>
-
         <item name="colorSecondaryContainer">@color/blue_green_800</item> <!--Цвет выбранного овала в bottom nav view-->
         <item name="colorOnSecondaryContainer">@color/gray_200</item> <!--Цвет выбранного значка в bottom nav view-->
         <item name="colorSurfaceContainerHighest">@color/gray_purple_800</item> <!--Цвет контейнера edit text amount-->
         <item name="colorPrimaryContainer">@color/gray_purple_650</item> <!--todo Цвет, в который окрашиваются нажатые кнопки-cardview -->
+        <item name="colorIncomes">@color/green_500</item>
+        <item name="colorExpenses">@color/red_300</item>
 
     </style>
 
