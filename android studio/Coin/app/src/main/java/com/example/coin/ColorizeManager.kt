@@ -5,11 +5,10 @@ import android.util.TypedValue
 import androidx.annotation.AttrRes
 import androidx.cardview.widget.CardView
 
-
-/*
-    com.google.android.material.R.attr.colorSurfaceContainerHighest unpressed cardview
-    com.google.android.material.R.attr.colorPrimaryContainer pressed cardview
-*/
+val COLOR_ATTR_UNPRESSED_CARD = com.google.android.material.R.attr.colorSurfaceContainerHighest
+val COLOR_ATTR_PRESSED_CARD: Int = com.google.android.material.R.attr.colorPrimaryContainer
+val COLOR_ATTR_INCOMES_CARD: Int = R.attr.colorIncomes
+val COLOR_ATTR_EXPENSES_CARD: Int = R.attr.colorExpenses
 
 fun getColorAttribute(@AttrRes attributeId: Int, context: Context): Int {
     val typedValue = TypedValue()

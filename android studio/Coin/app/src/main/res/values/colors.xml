@@ -1,26 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- МОИ НОВЫЕ ЦВЕТА -->
+    <color name="gray_990">#191c1e</color>
+    <color name="gray_950">#1d2529</color>
+    <color name="gray_900">#20303c</color>
+    <color name="gray_200">#c0c7cd</color>
 
-    <color name="dynamic_card_color">#4400FF</color>
-
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="gray_200">#BBBBBB</color>
-    <color name="gray_400">#707070</color>
-    <color name="gray_800">#444444</color>
+    <color name="blue_gray_500">#374955</color>
+    <color name="gray_purple_800">#40484d</color>
+    <color name="blue_800">#004c69</color>
+    <color name="purple_700">#484264</color>
+    <color name="purple_400">#e6deff</color>
     <color name="green_500">#74a02b</color>
     <color name="red_300">#D45F5F</color>
-
-
-    <!-- МОИ НОВЫЕ ЦВЕТА -->
-    <color name="gray_990">#131313</color>
-    <color name="gray_950">#1c1d1f</color>
-    <color name="gray_900">#2c2d2f</color>
-
-    <color name="blue_green_800">#004a77</color>
-    <color name="gray_purple_800">#35343a</color>
-    <color name="gray_purple_650">#55545f</color>
-
 
 
     <color name="md_theme_light_primary">#6750A4</color>

@@ -3,7 +3,7 @@ package com.example.coin.di
 import android.content.Context
 import androidx.room.Room
 import com.example.coin.daos.NoteDao
-import com.example.coin.NotesDataBase
+import com.example.coin.repository.room.NotesDataBase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -10,6 +10,8 @@ import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.coin.COLOR_ATTR_PRESSED_CARD
+import com.example.coin.COLOR_ATTR_UNPRESSED_CARD
 import com.example.coin.R
 import com.example.coin.databinding.FragmentAddNoteBinding
 import com.example.coin.paintCardViews
@@ -20,8 +22,6 @@ import java.time.LocalDate
 @AndroidEntryPoint
 class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
     private val mVM: AddNoteViewModel by viewModels()
-    private val colorUnpressedCard = com.google.android.material.R.attr.colorSurfaceContainerHighest
-    private val colorPressedCard = com.google.android.material.R.attr.colorPrimaryContainer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -31,7 +31,6 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
         setupClickListeners(binding, mVM)
         setupObservers(binding, mVM)
-
         return binding.root
     }
 
@@ -41,19 +40,19 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
             mVM.onCardViewIncExp(false)
             paintCardViews(
                 listOf(binding.cardviewAmountIncExp.cardviewIncomes),
-                colorUnpressedCard,
+                COLOR_ATTR_UNPRESSED_CARD,
                 requireContext()
             )
-            paintCardViews(listOf(it as CardView), colorPressedCard, requireContext())
+            paintCardViews(listOf(it as CardView), COLOR_ATTR_PRESSED_CARD, requireContext())
         }
         binding.cardviewAmountIncExp.cardviewIncomes.setOnClickListener {
             mVM.onCardViewIncExp(true)
             paintCardViews(
                 listOf(binding.cardviewAmountIncExp.cardviewExpenses),
-                colorUnpressedCard,
+                COLOR_ATTR_UNPRESSED_CARD,
                 requireContext()
             )
-            paintCardViews(listOf(it as CardView), colorPressedCard, requireContext())
+            paintCardViews(listOf(it as CardView), COLOR_ATTR_PRESSED_CARD, requireContext())
         }
 
         binding.cardviewAdd.setOnClickListener {
@@ -78,9 +77,9 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                 listOf(
                     binding.cardviewDatepicker.cardviewYesterday,
                     binding.cardviewDatepicker.cardviewChoose,
-                ), colorUnpressedCard, requireContext()
+                ), COLOR_ATTR_UNPRESSED_CARD, requireContext()
             )
-            paintCardViews(listOf(it as CardView), colorPressedCard, requireContext())
+            paintCardViews(listOf(it as CardView), COLOR_ATTR_PRESSED_CARD, requireContext())
         }
 
         binding.cardviewDatepicker.cardviewYesterday.setOnClickListener {
@@ -89,9 +88,9 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                 listOf(
                     binding.cardviewDatepicker.cardviewToday,
                     binding.cardviewDatepicker.cardviewChoose,
-                ), colorUnpressedCard, requireContext()
+                ), COLOR_ATTR_UNPRESSED_CARD, requireContext()
             )
-            paintCardViews(listOf(it as CardView), colorPressedCard, requireContext())
+            paintCardViews(listOf(it as CardView), COLOR_ATTR_PRESSED_CARD, requireContext())
         }
 
         binding.cardviewDatepicker.cardviewChoose.setOnClickListener {
@@ -106,9 +105,9 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                 listOf(
                     binding.cardviewDatepicker.cardviewToday,
                     binding.cardviewDatepicker.cardviewYesterday,
-                ), colorUnpressedCard, requireContext()
+                ), COLOR_ATTR_UNPRESSED_CARD, requireContext()
             )
-            paintCardViews(listOf(it as CardView), colorPressedCard, requireContext())
+            paintCardViews(listOf(it as CardView), COLOR_ATTR_PRESSED_CARD, requireContext())
         }
 
     }

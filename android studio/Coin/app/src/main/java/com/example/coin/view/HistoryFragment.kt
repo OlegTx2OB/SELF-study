@@ -10,9 +10,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.coin.NoteAdapter
+import com.example.coin.recyclerview.NoteAdapter
 import com.example.coin.R
-import com.example.coin.SwipeToDeleteCallback
+import com.example.coin.recyclerview.SwipeToDeleteCallback
 import com.example.coin.databinding.FragmentHistoryBinding
 import com.example.coin.repository.room.NoteRepository
 import com.example.coin.viewmodel.HistoryViewModel

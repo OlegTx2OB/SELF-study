@@ -1,4 +1,4 @@
-package com.example.coin
+package com.example.coin.recyclerview
 
 import android.content.Context
 import android.graphics.Canvas
@@ -9,12 +9,15 @@ import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.example.coin.R
 
 
 abstract class SwipeToDeleteCallback(context: Context) :
     ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
 
-    private val deleteIcon: Drawable = ContextCompat.getDrawable(context, R.drawable.ic_delete_white_40)!!
+    private val deleteIcon: Drawable = ContextCompat.getDrawable(context,
+        R.drawable.ic_delete_white_40
+    )!!
     private val intrinsicWidth = deleteIcon.intrinsicWidth
     private val intrinsicHeight = deleteIcon.intrinsicHeight
     private val backgroundColor = Color.parseColor("#f44336")
