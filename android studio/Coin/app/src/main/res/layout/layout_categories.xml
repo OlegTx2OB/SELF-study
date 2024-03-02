@@ -16,7 +16,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_category_shawarma"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             app:cardBackgroundColor="?attr/colorSurfaceContainerHighest"
@@ -47,8 +48,9 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_category_shlukhi"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_margin="4dp"
             app:cardBackgroundColor="?attr/colorSurfaceContainerHighest"
             app:cardCornerRadius="24dp">
@@ -78,8 +80,9 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_category_taxi"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_margin="4dp"
             app:cardBackgroundColor="?attr/colorSurfaceContainerHighest"
             app:cardCornerRadius="24dp">
