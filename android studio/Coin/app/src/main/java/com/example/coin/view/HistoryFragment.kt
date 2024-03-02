@@ -39,6 +39,8 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = mAdapter
 
+        setupObservers(binding, mVM)
+
         val swipeHandler = object : SwipeToDeleteCallback(requireContext()) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val adapter = binding.recyclerView.adapter as NoteAdapter
@@ -47,8 +49,6 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
         }
         val itemTouchHelper = ItemTouchHelper(swipeHandler)
         itemTouchHelper.attachToRecyclerView(binding.recyclerView)
-        setupObservers(binding, mVM)
-
         return binding.root
     }
 

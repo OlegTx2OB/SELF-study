@@ -13,7 +13,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object RoomModule {
+object RoomNoteModule {
     @Singleton
     @Provides
     fun provideRoomDB(@ApplicationContext context: Context): NoteDao {

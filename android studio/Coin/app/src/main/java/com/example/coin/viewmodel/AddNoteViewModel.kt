@@ -1,7 +1,6 @@
 package com.example.coin.viewmodel
 
 import android.app.Application
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -10,7 +9,6 @@ import androidx.cardview.widget.CardView
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.coin.R
 import com.example.coin.data.Note
 import com.example.coin.repository.room.NoteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -55,7 +53,7 @@ class AddNoteViewModel @Inject constructor(
             "enter amount"
         } else if (mNewNote.isIncomes == null) {
             "choose incomes or outcomes"
-        } else if (mNewNote.imageName == null || mNewNote.categoryName == null) {
+        } else if (mNewNote.imageName == null || mNewNote.categoryName == null || mNewNote.color == null) {
             "choose category"
         } else {
             CoroutineScope(Dispatchers.IO).launch {
@@ -73,8 +71,10 @@ class AddNoteViewModel @Inject constructor(
         for (i in 0 until cardRootLayout.childCount) {
             val childView = cardRootLayout.getChildAt(i)
 
-            if (childView is ImageView) {
-                mNewNote.imageName = childView.tag.toString()
+            if (childView is CardView) {
+                mNewNote.color = childView.cardBackgroundColor.defaultColor
+                val imageView = childView.getChildAt(0) as ImageView
+                mNewNote.imageName = imageView.tag.toString()
             } else if (childView is TextView) {
                 mNewNote.categoryName = childView.text.toString()
             }

@@ -13,5 +13,15 @@
     <color name="purple_400">#e6deff</color>
     <color name="green_500">#74a02b</color>
     <color name="red_300">#D45F5F</color>
-    
+
+    <color name="category_orange">#ffab91</color>
+    <color name="category_yellow">#ffe082</color>
+    <color name="category_green">#a5d6a7</color>
+    <color name="category_pink">#f48fb1</color>
+    <color name="category_light_blue">#90caf9</color>
+    <color name="category_blue">#9fa8da</color>
+    <color name="category_bright_blue">#8ce7f2</color>
+
+
+
 </resources>
