@@ -18,7 +18,7 @@
             android:layout_height="58dp"
             android:src="@drawable/ic_clock"
             android:layout_marginHorizontal="4dp"
-            app:tint="?attr/colorSurfaceContainerHighest"
+            app:tint="?attr/colorOnSurface"
             android:layout_gravity="center"/>
 
         <androidx.cardview.widget.CardView

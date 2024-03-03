@@ -9,10 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.coin.R
-import com.example.coin.databinding.FragmentAddNoteBinding
 import com.example.coin.databinding.FragmentDataboardBinding
 import com.example.coin.repository.room.NoteRepository
-import com.example.coin.viewmodel.AddNoteViewModel
 import com.example.coin.viewmodel.DataBoardViewModel
 import com.github.mikephil.charting.charts.PieChart
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,11 +39,11 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
 
     fun setupObservers(binding: FragmentDataboardBinding, mVM: DataBoardViewModel) {
 
-        mVM.ldSetIncomesBalance.observe(viewLifecycleOwner) {
+        mVM.ldSetIncBalance.observe(viewLifecycleOwner) {
             binding.topSectionLayout.tvIncomesValue.text = it.toString()
         }
 
-        mVM.ldSetExpensesBalance.observe(viewLifecycleOwner) {
+        mVM.ldSetExpBalance.observe(viewLifecycleOwner) {
             binding.topSectionLayout.tvExpensesValue.text = it.toString()
         }
 
@@ -53,15 +51,17 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
             binding.topSectionLayout.tvTotalBalanceValue.text = it.toString()
         }
 
-        mVM.ldExpensesTopCategoriesText.observe(viewLifecycleOwner) {
+        mVM.ldExpTopCategoriesText.observe(viewLifecycleOwner) {
+            binding.expensesLayout.imageCross.visibility = View.GONE
             binding.expensesLayout.tvTopCategories.text = it
         }
 
-        mVM.ldIncomesTopCategoriesText.observe(viewLifecycleOwner) {
+        mVM.ldIncTopCategoriesText.observe(viewLifecycleOwner) {
+            binding.incomesLayout.imageCross.visibility = View.GONE
             binding.incomesLayout.tvTopCategories.text = it
         }
 
-        mVM.ldExpensesPieData.observe(viewLifecycleOwner) {
+        mVM.ldExpPieData.observe(viewLifecycleOwner) {
             val expensesPie = binding.expensesLayout.pieChart
             expensesPie.data = it
             expensesPie.notifyDataSetChanged()
@@ -69,7 +69,7 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
 
         }
 
-        mVM.ldIncomesPieData.observe(viewLifecycleOwner) {
+        mVM.ldIncPieData.observe(viewLifecycleOwner) {
             val incomesPie = binding.incomesLayout.pieChart
             incomesPie.data = it
             incomesPie.notifyDataSetChanged()

@@ -2,7 +2,6 @@ package com.example.coin.viewmodel
 
 import android.app.Application
 import android.graphics.Color
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -28,12 +27,12 @@ class DataBoardViewModel @Inject constructor(
     private val _ldSetIncBalance = MutableLiveData<String>()
     private val _ldSetTotalBalance = MutableLiveData<String>()
 
-    val ldExpensesPieData: LiveData<PieData> = _ldExpPieData
-    val ldIncomesPieData: LiveData<PieData> = _ldIncPieData
-    val ldExpensesTopCategoriesText: LiveData<String> = _ldExpTopCategoriesText
-    val ldIncomesTopCategoriesText: LiveData<String> = _ldIncTopCategoriesText
-    val ldSetExpensesBalance: LiveData<String> = _ldSetExpBalance
-    val ldSetIncomesBalance: LiveData<String> = _ldSetIncBalance
+    val ldExpPieData: LiveData<PieData> = _ldExpPieData
+    val ldIncPieData: LiveData<PieData> = _ldIncPieData
+    val ldExpTopCategoriesText: LiveData<String> = _ldExpTopCategoriesText
+    val ldIncTopCategoriesText: LiveData<String> = _ldIncTopCategoriesText
+    val ldSetExpBalance: LiveData<String> = _ldSetExpBalance
+    val ldSetIncBalance: LiveData<String> = _ldSetIncBalance
     val ldSetTotalBalance: LiveData<String> = _ldSetTotalBalance
 
 
