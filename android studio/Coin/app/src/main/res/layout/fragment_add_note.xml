@@ -24,22 +24,6 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <com.google.android.material.appbar.AppBarLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-                    <!-- Элемент Toolbar представляет собой App Bar -->
-                    <androidx.appcompat.widget.Toolbar
-                        android:id="@+id/toolbar"
-                        android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize"
-                        app:title="Добавить"
-                        app:titleTextColor="?attr/colorOnSurface"
-                        android:background="@android:color/transparent"/>
-
-                </com.google.android.material.appbar.AppBarLayout>
-
                 <include
                     android:id="@+id/cardview_amount_inc_exp"
                     layout="@layout/layout_card_amount_inc_exp" />
@@ -98,7 +82,7 @@
                                 <ImageView
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
-                                    android:src="@drawable/ic_bnv_colored_plus"
+                                    android:src="@drawable/ic_bnv_colored_plus_200"
                                     app:tint="?attr/colorOnSurface" />
 
                                 <TextView
@@ -155,7 +139,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/ic_bnv_colored_plus"
+                    android:src="@drawable/ic_bnv_colored_plus_200"
                     app:tint="?attr/colorOnPrimary" />
 
                 <TextView

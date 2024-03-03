@@ -7,23 +7,18 @@
         android:title="@string/databoard" />
 
     <item
-        android:id="@+id/bottom_nav_stats"
-        android:icon="@drawable/selector_pie_chart"
-        android:title="@string/stats" />
-
-    <item
         android:id="@+id/bottom_nav_add_note"
         android:icon="@drawable/selector_plus"
         android:title="@string/add" />
 
     <item
+        android:id="@+id/bottom_nav_stats"
+        android:icon="@drawable/selector_pie_chart"
+        android:title="@string/stats" />
+
+    <item
         android:id="@+id/bottom_nav_history"
         android:icon="@drawable/selector_history"
         android:title="@string/history" />
-
-    <item
-        android:id="@+id/bottom_nav_more"
-        android:icon="@drawable/selector_more"
-        android:title="@string/more" />
 
 </menu>

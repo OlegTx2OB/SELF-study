@@ -19,30 +19,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:title="Главная"
-                    app:titleTextColor="?attr/colorOnSurface"
-                    android:background="@android:color/transparent">
-
-                    <ImageView
-                        android:id="@+id/menuButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_bnv_more"
-                        android:layout_gravity="end"/>
-
-                </androidx.appcompat.widget.Toolbar>
-
-            </com.google.android.material.appbar.AppBarLayout>
-
             <include
                 android:id="@+id/top_section_layout"
                 layout="@layout/layout_card_data_section" />
@@ -57,7 +33,6 @@
             <include
                 android:id="@+id/expenses_layout"
                 layout="@layout/layout_expenses_pie_chart_section" />
-
 
             <TextView
                 android:layout_width="match_parent"
