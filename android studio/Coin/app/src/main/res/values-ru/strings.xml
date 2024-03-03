@@ -20,4 +20,7 @@
     <string name="date">Дата</string>
     <string name="categories">Категории</string>
     <string name="swipe_left_to_delete">Проведите пальцем влево, чтобы удалить</string>
+    <string name="categories_list_is_clear">Список добавленных категорий пуст</string>
+    <string name="yesterday">Вчера</string>
+    <string name="choose">Выбрать</string>
 </resources>

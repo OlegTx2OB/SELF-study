@@ -60,11 +60,10 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="8dp"
-            android:src="@drawable/ic_green_arrow_incomes"
+            android:src="@drawable/ic_incomes"
             app:layout_constraintBottom_toBottomOf="@+id/tv_incomes_value"
             app:layout_constraintLeft_toLeftOf="@id/constraint_layout"
-            app:layout_constraintTop_toTopOf="@+id/tv_static_incomes_string"
-            app:tint="?attr/colorIncomes" />
+            app:layout_constraintTop_toTopOf="@+id/tv_static_incomes_string" />
 
         <ImageView
             android:id="@+id/iv_icon_outcomes"
@@ -73,11 +72,10 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:src="@drawable/ic_red_arrow_expenses"
+            android:src="@drawable/ic_expenses"
             app:layout_constraintBottom_toBottomOf="@id/tv_expenses_value"
             app:layout_constraintLeft_toLeftOf="@id/guideline"
-            app:layout_constraintTop_toTopOf="@+id/tv_static_outcomes_string"
-            app:tint="?attr/colorExpenses" />
+            app:layout_constraintTop_toTopOf="@+id/tv_static_outcomes_string" />
 
         <TextView
             android:id="@+id/tv_static_incomes_string"

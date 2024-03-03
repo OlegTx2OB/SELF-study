@@ -19,4 +19,7 @@
     <string name="date">Date</string>
     <string name="categories">Categories</string>
     <string name="swipe_left_to_delete">Swipe left to delete</string>
+    <string name="categories_list_is_clear">Categories list is clear</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="choose">Choose</string>
 </resources>

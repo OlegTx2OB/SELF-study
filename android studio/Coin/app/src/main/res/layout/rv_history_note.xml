@@ -16,7 +16,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="8dp"
-            android:src="@drawable/ic_green_arrow_incomes"
+            android:src="@drawable/ic_incomes"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

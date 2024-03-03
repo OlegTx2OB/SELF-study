@@ -63,6 +63,10 @@ class AddNoteViewModel @Inject constructor(
         }
     }
 
+    fun onAddCategory() {
+
+    }
+
     fun onCategory(view: View) {
         view as CardView
 

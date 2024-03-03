@@ -13,9 +13,9 @@
         android:layout_margin="8dp">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/innerCardView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:id="@+id/foreground"
+            android:layout_width="64dp"
+            android:layout_height="60dp"
             app:cardBackgroundColor="@color/category_blue"
             app:cardCornerRadius="24dp"
             app:layout_constraintDimensionRatio="1:1"
@@ -24,22 +24,26 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:id="@+id/icon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="6dp"
+                android:maxWidth="70dp"
+                android:maxHeight="70dp"
                 android:src="@drawable/ic_category_banana" />
 
         </androidx.cardview.widget.CardView>
 
         <TextView
+            android:id="@+id/category_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Category"
-            android:gravity="center"
             android:layout_marginVertical="8dp"
-            app:layout_constraintTop_toBottomOf="@id/innerCardView"
+            android:gravity="center"
+            android:text="Category"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/foreground" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

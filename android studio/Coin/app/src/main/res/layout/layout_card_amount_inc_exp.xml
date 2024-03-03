@@ -58,7 +58,7 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/ic_green_arrow_incomes" />
+                        android:src="@drawable/ic_incomes" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -90,7 +90,7 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/ic_red_arrow_expenses" />
+                        android:src="@drawable/ic_expenses" />
 
                     <TextView
                         android:layout_width="match_parent"
