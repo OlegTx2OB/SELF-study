@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
+
     private val mBinding by lazy(LazyThreadSafetyMode.NONE) {
         ActivityMainBinding.inflate(
             layoutInflater
@@ -38,8 +39,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mBinding.root)
-        mBottomNavView.setupWithNavController(mNavController)
-
         setSupportActionBar(mBinding.toolbar)
 
         val appBarConfiguration = AppBarConfiguration.Builder(
@@ -52,6 +51,12 @@ class MainActivity : AppCompatActivity() {
         ).build()
         setupActionBarWithNavController(mNavController, appBarConfiguration)
 
+        mBottomNavView.setOnNavigationItemSelectedListener {
+            val navController = findNavController(R.id.fragment_frame_activity_main)
+            navController.popBackStack(navController.graph.startDestinationId, false)
+            navController.navigate(it.itemId)
+            true
+        }
 
     }
 
@@ -61,10 +66,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val navController = findNavController(R.id.fragment_frame_activity_main)
         when (item.itemId) {
             R.id.right_nav_settings -> {
-                val navController = findNavController(R.id.fragment_frame_activity_main)
                 navController.navigate(R.id.right_nav_settings)
+                return true
             }
         }
         return super.onOptionsItemSelected(item)
@@ -76,11 +82,3 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
-//var previousDestinationId: Int? = null
-//        mNavController.addOnDestinationChangedListener { _, destination, _ ->
-//            if (previousDestinationId == R.id.right_nav_settings) {
-//                Log.d("MainActivity123", "Switched from Settings Fragment to Bottom Navigation Fragment")
-//                mNavController.popBackStack()
-//            }
-//            previousDestinationId = destination.id
-//        }

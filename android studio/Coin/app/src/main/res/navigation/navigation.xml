@@ -35,5 +35,4 @@
         android:label="@string/settings"
         tools:layout="@layout/fragment_settings" />
 
-
 </navigation>
