@@ -27,7 +27,6 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_color_yellow"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

@@ -10,5 +10,8 @@ class AddCategoryViewModel @Inject constructor(
     private val mNoteRepository: NoteRepository,
     private val mApp: Application,
 ) : AndroidViewModel(mApp) {
+    fun onSetCategoryColor() {
+        TODO("Not yet implemented")
+    }
 
 }

@@ -1,10 +1,10 @@
 package com.example.coin.viewmodel
 
 import android.app.Application
-import android.graphics.Color
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.coin.R
 import com.example.coin.data.Note
 import com.example.coin.repository.room.NoteRepository
 import com.github.mikephil.charting.data.PieData
@@ -43,8 +43,7 @@ class DataBoardViewModel @Inject constructor(
 
     }
 
-    private fun updateData(notes: List<Note>?)
-    {
+    private fun updateData(notes: List<Note>?) {
         val incomesNotes = notes?.filter { it.isIncomes == true }
         val expensesNotes = notes?.filter { it.isIncomes == false }
 
@@ -73,8 +72,12 @@ class DataBoardViewModel @Inject constructor(
 
         pieDataSet.setDrawValues(false)
         pieDataSet.colors =
-            arrayListOf(Color.RED, Color.GREEN, Color.BLUE, Color.MAGENTA) //todo переделать
-
+            arrayListOf(
+                mApp.getColor(R.color.category_light_blue),
+                mApp.getColor(R.color.category_green),
+                mApp.getColor(R.color.category_orange),
+                mApp.getColor(R.color.category_yellow),
+            ) //todo переделать
 
         if (notes == null) {
             if (isIncomes) _ldIncPieData.value = PieData(pieDataSet)

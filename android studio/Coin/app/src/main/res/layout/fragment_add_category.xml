@@ -6,24 +6,54 @@
 
     </data>
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/colorSurface"
-        android:scrollbars="none"
-        tools:context=".view.AddCategoryFragment">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:background="?attr/colorSurface"
+            android:scrollbars="none"
+            tools:context=".view.AddCategoryFragment">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/cardview_enter_text"
+                    layout="@layout/layout_card_text_input" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/background_colors" />
+
+                <include
+                    android:id="@+id/cardview_colors_test"
+                    layout="@layout/layout_card_colors" />
+
+                <include
+                    android:id="@+id/add_category_button2"
+                    layout="@layout/layout_card_all_categories" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp" />
 
 
-            <include
-                android:id="@+id/cardview_colors_test"
-                layout="@layout/layout_card_colors" />
+            </LinearLayout>
 
-        </LinearLayout>
+        </ScrollView>
+        <include
+            android:id="@+id/add_category_button"
+            layout="@layout/layout_add_button" />
 
-    </ScrollView>
+    </RelativeLayout>
 </layout>

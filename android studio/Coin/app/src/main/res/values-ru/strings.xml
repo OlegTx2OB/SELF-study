@@ -23,4 +23,6 @@
     <string name="categories_list_is_clear">Список добавленных категорий пуст</string>
     <string name="yesterday">Вчера</string>
     <string name="choose">Выбрать</string>
+    <string name="incomes_or_expenses">Доходы или расходы</string>
+    <string name="background_colors">Цвета фона</string>
 </resources>

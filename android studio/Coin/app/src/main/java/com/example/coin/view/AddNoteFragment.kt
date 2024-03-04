@@ -29,6 +29,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
     ): View {
         val binding: FragmentAddNoteBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_note, container, false)
+        binding.cardviewAmount.textInputLayout.hint = getString(R.string.choose)
 
         setupClickListeners(binding, mVM)
         setupObservers(binding, mVM)
@@ -37,26 +38,26 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
     private fun setupClickListeners(binding: FragmentAddNoteBinding, mVM: AddNoteViewModel) {
 
-        binding.cardviewAmountIncExp.cardviewExpenses.setOnClickListener {
+        binding.cardviewIncExp.cardviewExpenses.setOnClickListener {
             mVM.onCardViewIncExp(false)
             paintCardViews(
-                listOf(binding.cardviewAmountIncExp.cardviewIncomes),
+                listOf(binding.cardviewIncExp.cardviewIncomes),
                 COLOR_ATTR_UNPRESSED_CARD,
                 requireContext()
             )
             paintCardViews(listOf(it as CardView), COLOR_ATTR_PRESSED_CARD, requireContext())
         }
-        binding.cardviewAmountIncExp.cardviewIncomes.setOnClickListener {
+        binding.cardviewIncExp.cardviewIncomes.setOnClickListener {
             mVM.onCardViewIncExp(true)
             paintCardViews(
-                listOf(binding.cardviewAmountIncExp.cardviewExpenses),
+                listOf(binding.cardviewIncExp.cardviewExpenses),
                 COLOR_ATTR_UNPRESSED_CARD,
                 requireContext()
             )
             paintCardViews(listOf(it as CardView), COLOR_ATTR_PRESSED_CARD, requireContext())
         }
 
-        binding.cardviewAdd.setOnClickListener {
+        binding.addNoteButton.cardviewAdd.setOnClickListener {
             mVM.onAdd()
         }
 
@@ -112,7 +113,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
         }
 
         mVM.ldGetAmount.observe(viewLifecycleOwner) {
-            this.mVM.setAmount(binding.cardviewAmountIncExp.tilAmount.text?.toString())
+            this.mVM.setAmount(binding.cardviewAmount.tilAmount.text?.toString())
         }
     }
 

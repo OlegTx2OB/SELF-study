@@ -40,7 +40,6 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
         binding: FragmentAddCategoryBinding,
         mVM: AddCategoryViewModel
     ) {
-        val x =5
         colorCardsListener(binding, mVM)
     }
 
@@ -48,21 +47,24 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
         binding: FragmentAddCategoryBinding,
         mVM: AddCategoryViewModel
     ) {
-        val container = binding.cardviewColorsTest.colorCardsParent
-        val colorCards = ArrayList<CardView>()
+        val colorCardsRoot = binding.cardviewColorsTest.colorCardsParent
+        val colorCards = mutableListOf<View>()
 
-        for (i in 0 until container.childCount) {
-            val child = container.getChildAt(i)
-            colorCards.add(child as CardView)
+        for (i in 0 until colorCardsRoot.childCount) {
+            val child = colorCardsRoot.getChildAt(i)
+            colorCards.add(child)
         }
+
         val clickListener = View.OnClickListener {
             it as CardView
-
             for (colorCard in colorCards) {
-               colorCard.getChildAt(0).visibility = View.INVISIBLE
+                colorCard as CardView
+                colorCard.getChildAt(0).visibility = View.INVISIBLE
             }
             it.getChildAt(0).visibility = View.VISIBLE
+            mVM.onSetCategoryColor()
         }
+
         for (child in colorCards) {
             child.setOnClickListener(clickListener)
         }

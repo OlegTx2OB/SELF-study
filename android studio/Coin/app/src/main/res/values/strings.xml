@@ -22,4 +22,6 @@
     <string name="categories_list_is_clear">Categories list is clear</string>
     <string name="yesterday">Yesterday</string>
     <string name="choose">Choose</string>
+    <string name="incomes_or_expenses">Incomes or expenses</string>
+    <string name="background_colors">Background colors</string>
 </resources>
