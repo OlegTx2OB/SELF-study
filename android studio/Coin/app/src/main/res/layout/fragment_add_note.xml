@@ -49,11 +49,6 @@
                     android:id="@+id/cardview_datepicker"
                     layout="@layout/layout_card_datepicker" />
 
-                <include
-                    android:id="@+id/cardview_datepicker2"
-                    layout="@layout/layout_card_colors" />
-
-
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="90dp" />

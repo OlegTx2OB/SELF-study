@@ -1,21 +1,15 @@
 package com.example.coin.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.example.coin.R
 import com.example.coin.databinding.ActivityMainBinding
-import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,10 +37,10 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration = AppBarConfiguration.Builder(
             setOf(
-                R.id.bottom_nav_databoard,
-                R.id.bottom_nav_add_note,
-                R.id.bottom_nav_stats,
-                R.id.bottom_nav_history
+                R.id.databoard_fragment,
+                R.id.add_note_fragment,
+                R.id.stats_fragment,
+                R.id.history_fragment
             )
         ).build()
         setupActionBarWithNavController(mNavController, appBarConfiguration)
@@ -61,15 +55,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.right_nav_menu, menu)
+        menuInflater.inflate(R.menu.top_nav_menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val navController = findNavController(R.id.fragment_frame_activity_main)
         when (item.itemId) {
-            R.id.right_nav_settings -> {
-                navController.navigate(R.id.right_nav_settings)
+            R.id.settings_fragment -> {
+                navController.navigate(R.id.settings_fragment)
                 return true
             }
         }

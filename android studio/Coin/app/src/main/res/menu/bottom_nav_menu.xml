@@ -2,22 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/bottom_nav_databoard"
+        android:id="@+id/databoard_fragment"
         android:icon="@drawable/selector_home"
         android:title="@string/databoard" />
 
     <item
-        android:id="@+id/bottom_nav_add_note"
+        android:id="@+id/add_note_fragment"
         android:icon="@drawable/selector_plus"
         android:title="@string/add" />
 
     <item
-        android:id="@+id/bottom_nav_stats"
+        android:id="@+id/stats_fragment"
         android:icon="@drawable/selector_pie_chart"
         android:title="@string/stats" />
 
     <item
-        android:id="@+id/bottom_nav_history"
+        android:id="@+id/history_fragment"
         android:icon="@drawable/selector_history"
         android:title="@string/history" />
 

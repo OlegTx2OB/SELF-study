@@ -10,6 +10,7 @@ import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.coin.COLOR_ATTR_PRESSED_CARD
 import com.example.coin.COLOR_ATTR_UNPRESSED_CARD
 import com.example.coin.R
@@ -60,7 +61,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
         }
 
         binding.cardCategories.cardviewAddCategory.setOnClickListener{
-            mVM.onAddCategory()
+            findNavController().navigate(R.id.action_add_note_fragment_to_add_category_fragment)
         }
 
         binding.cardviewDatepicker.cardviewToday.setOnClickListener {

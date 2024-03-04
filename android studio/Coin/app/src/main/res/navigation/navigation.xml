@@ -3,36 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/bottom_nav_databoard">
+    app:startDestination="@+id/databoard_fragment">
 
     <fragment
-        android:id="@+id/bottom_nav_databoard"
+        android:id="@+id/databoard_fragment"
         android:name="com.example.coin.view.DataBoardFragment"
         android:label="@string/databoard"
         tools:layout="@layout/fragment_databoard" />
 
     <fragment
-        android:id="@+id/bottom_nav_stats"
+        android:id="@+id/stats_fragment"
         android:name="com.example.coin.view.StatsFragment"
         android:label="@string/stats"
         tools:layout="@layout/fragment_stats" />
 
     <fragment
-        android:id="@+id/bottom_nav_history"
+        android:id="@+id/history_fragment"
         android:name="com.example.coin.view.HistoryFragment"
         android:label="@string/history"
         tools:layout="@layout/fragment_history" />
 
     <fragment
-        android:id="@+id/bottom_nav_add_note"
+        android:id="@+id/add_note_fragment"
         android:name="com.example.coin.view.AddNoteFragment"
         android:label="@string/add"
-        tools:layout="@layout/fragment_add_note" />
+        tools:layout="@layout/fragment_add_note" >
+        <action
+            android:id="@+id/action_add_note_fragment_to_add_category_fragment"
+            app:destination="@id/add_category_fragment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/right_nav_settings"
+        android:id="@+id/settings_fragment"
         android:name="com.example.coin.view.SettingsFragment"
         android:label="@string/settings"
         tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/add_category_fragment"
+        android:name="com.example.coin.view.AddCategoryFragment"
+        android:label="@string/categories"
+        tools:layout="@layout/fragment_add_category">
+        <action
+            android:id="@+id/action_add_category_fragment_to_add_note_fragment"
+            app:destination="@id/add_note_fragment" />
+    </fragment>
 
 </navigation>

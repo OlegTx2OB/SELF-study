@@ -9,4 +9,3 @@ import com.example.coin.data.Category
 abstract class CategoriesDataBase : RoomDatabase() {
     abstract fun categoriesDao(): CategoryDao
 }
-
