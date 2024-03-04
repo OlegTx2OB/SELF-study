@@ -59,8 +59,8 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
             mVM.onAdd()
         }
 
-        binding.cardviewAddCategory.setOnClickListener{
-
+        binding.cardCategories.cardviewAddCategory.setOnClickListener{
+            mVM.onAddCategory()
         }
 
         binding.cardviewDatepicker.cardviewToday.setOnClickListener {

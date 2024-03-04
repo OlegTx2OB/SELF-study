@@ -3,7 +3,6 @@
     <color name="white">#ffffff</color>
     <color name="transparent">#ff000000</color>
 
-
     <color name="gray_990">#191c1e</color>
     <color name="gray_950">#1d2529</color>
     <color name="gray_900">#20303c</color>
@@ -19,13 +18,15 @@
     <color name="green_500">#84B03B</color>
     <color name="red_300">#DC6C6C</color>
 
+    <!-- Categories -->
     <color name="category_orange">#ffab91</color>
     <color name="category_yellow">#ffe082</color>
     <color name="category_green">#a5d6a7</color>
-    <color name="category_pink">#f48fb1</color>
-    <color name="category_light_blue">#90caf9</color>
     <color name="category_blue">#9fa8da</color>
+    <color name="category_light_blue">#90caf9</color>
     <color name="category_bright_blue">#8ce7f2</color>
+    <color name="category_pink">#f48fb1</color>
+
 
 
 
