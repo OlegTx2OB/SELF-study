@@ -3,6 +3,7 @@ package com.example.coin.recyclerview
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
@@ -38,7 +39,11 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
             tvCategoryName.text = note.categoryName
             tvAmount.text = note.amount.toString()
             paintCardViews(
-                listOf(cardView),
+                listOf(cardviewColor),
+                note.color!!
+            )
+            paintCardViews(
+                listOf(cardviewIncExp),
                 if (note.isIncomes!!) COLOR_ATTR_INCOMES_CARD else COLOR_ATTR_EXPENSES_CARD,
                 binding.root.context
             )

@@ -24,3 +24,9 @@ fun paintCardViews(viewList: List<CardView>, @AttrRes attributeId: Int, context:
         cardView.setCardBackgroundColor(color)
     }
 }
+
+fun paintCardViews(viewList: List<CardView>, color: Int) {
+    for (cardView in viewList) {
+        cardView.setCardBackgroundColor(color)
+    }
+}

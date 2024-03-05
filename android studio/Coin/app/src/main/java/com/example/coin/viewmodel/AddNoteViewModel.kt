@@ -62,10 +62,6 @@ class AddNoteViewModel @Inject constructor(
         }
     }
 
-    fun onAddCategory() {
-
-    }
-
     fun onCategory(view: View) {
         view as CardView
         val cardRootLayout = view.getChildAt(0) as ViewGroup
