@@ -4,8 +4,10 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.coin.COLOR_ATTR_UNPRESSED_CARD
 import com.example.coin.R
 import com.example.coin.data.Note
+import com.example.coin.getColorAttribute
 import com.example.coin.repository.room.NoteRepository
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -69,25 +71,29 @@ class DataBoardViewModel @Inject constructor(
 
     private fun updatePieChart(notes: List<Note>?, isIncomes: Boolean) {
         val pieDataSet = PieDataSet(listOf(), "pie")
-
         pieDataSet.setDrawValues(false)
-        pieDataSet.colors =
-            arrayListOf(
-                mApp.getColor(R.color.category_blue),
-                mApp.getColor(R.color.category_green),
-                mApp.getColor(R.color.category_orange),
-                mApp.getColor(R.color.category_yellow),
-            ) //todo переделать
 
         if (notes == null) {
             if (isIncomes) _ldIncPieData.value = PieData(pieDataSet)
             else _ldExpPieData.value = PieData(pieDataSet)
         } else {
+
+            //creating Map<String, Pair<Float, Int>>, where String is Category name, Float is total sum of this category and Int is color name of background of this category
             val totalAmountMap = calculateTotalAmount(notes)
-            val sortedTopCategoriesPairs = totalAmountMap.toList().sortedByDescending { it.second }
+            //converting map into the list and sorting by descending by total sum
+            val sortedTopCategoriesPairs = totalAmountMap.toList().sortedByDescending { it.second.first }
+
+            //set colorArray with background colors of top categories
+            val colorsList = mutableListOf<Int>()
+            for (i in 0 until minOf(sortedTopCategoriesPairs.size, 4)) {
+                colorsList.add(sortedTopCategoriesPairs[i].second.second)
+            }
+            colorsList.add(mApp.getColor(R.color.gray_600))
+            pieDataSet.colors = colorsList
+
+            //creating values which will be show in pie chart and description text with sums and category names
             val (entries, descriptionStr) = createPieChartEntries(sortedTopCategoriesPairs)
             pieDataSet.values = entries
-
             if (isIncomes) {
                 _ldIncPieData.value = PieData(pieDataSet)
                 if (descriptionStr != "") _ldIncTopCategoriesText.value = descriptionStr
@@ -98,34 +104,34 @@ class DataBoardViewModel @Inject constructor(
         }
     }
 
-    private fun calculateTotalAmount(notes: List<Note>?): Map<String, Float> {
-        val totalAmountMap = hashMapOf<String, Float>()
+    private fun calculateTotalAmount(notes: List<Note>?): Map<String, Pair<Float, Int>> {
+        val totalAmountMap = hashMapOf<String, Pair<Float, Int>>()
         for (note in notes!!) {
-            val currentTotalPrice = totalAmountMap.getOrDefault(note.categoryName, 0f)
-            totalAmountMap[note.categoryName!!] = currentTotalPrice + note.amount!!
+            val currentTotalPrice = totalAmountMap.getOrDefault(note.categoryName, 0f to 0)
+            totalAmountMap[note.categoryName!!] = (currentTotalPrice.first + note.amount!!) to note.color!!
         }
         return totalAmountMap
     }
 
-    private fun createPieChartEntries(sortedPairs: List<Pair<String, Float>>): Pair<List<PieEntry>, String> {
+    private fun createPieChartEntries(pairs: List<Pair<String, Pair<Float, Int>>>): Pair<List<PieEntry>, String> {
         val entries = mutableListOf<PieEntry>()
         var descriptionStr = ""
-        if (sortedPairs.isNotEmpty()) {
-            for (i in 0 until minOf(sortedPairs.size, 4)) {
-                entries.add(PieEntry(sortedPairs[i].second, ""))
+        if (pairs.isNotEmpty()) {
+            for (i in 0 until minOf(pairs.size, 4)) {
+                entries.add(PieEntry(pairs[i].second.first, ""))
                 if (descriptionStr == "") {
-                    descriptionStr = "${sortedPairs[i].first} - ${sortedPairs[i].second}"
+                    descriptionStr = "${pairs[i].second.first} - ${pairs[i].first}"
                 } else {
-                    descriptionStr += "\n\n${sortedPairs[i].first} - ${sortedPairs[i].second}"
+                    descriptionStr += "\n\n${pairs[i].second.first} - ${pairs[i].first}"
                 }
             }
-            if (sortedPairs.size > 4) {
+            if (pairs.size > 4) {
                 var sum = 0f
-                for (i in 3 until sortedPairs.size) {
-                    sum += sortedPairs[i].second
+                for (i in 3 until pairs.size) {
+                    sum += pairs[i].second.first
                 }
                 entries.add(PieEntry(sum, ""))
-                descriptionStr += "\n\nother - $sum"
+                descriptionStr += "\n\n$sum - other"
             }
         }
         return Pair(entries, descriptionStr)

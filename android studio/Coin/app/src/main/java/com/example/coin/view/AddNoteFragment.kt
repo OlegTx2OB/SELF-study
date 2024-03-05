@@ -34,7 +34,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), CategoryAdapter.Cl
 
     private val mVM: AddNoteViewModel by viewModels()
     private val mAdapter: CategoryAdapter = CategoryAdapter(this)
-    private var mRecyclerView: RecyclerView? = null
+    private lateinit var mRecyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -43,14 +43,14 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), CategoryAdapter.Cl
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_note, container, false)
 
         mRecyclerView = binding.cardCategories.recyclerView
-        binding.cardCategories.recyclerView.layoutManager = GridLayoutManager(context, 3)
-        binding.cardCategories.recyclerView.adapter = mAdapter
+        mRecyclerView.layoutManager = GridLayoutManager(context, 4)
+        mRecyclerView.adapter = mAdapter
 
         binding.cardviewAmount.textInputLayout.hint = getString(R.string.amount)
         binding.cardviewAmount.textInputEditText.inputType =
             InputType.TYPE_NUMBER_FLAG_DECIMAL or InputType.TYPE_CLASS_NUMBER
 
-        setupClickListeners(binding, mVM, this)
+        setupClickListeners(binding, mVM)
         setupObservers(binding, mVM)
         return binding.root
 
@@ -58,7 +58,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), CategoryAdapter.Cl
 
     override fun onClickCategory(view: CardView) {
         paintCardViews(
-            mRecyclerView!!.children.toList() as List<CardView>,
+            mRecyclerView.children.toList() as List<CardView>,
             COLOR_ATTR_UNPRESSED_CARD,
             requireContext()
         )
@@ -69,7 +69,6 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), CategoryAdapter.Cl
     private fun setupClickListeners(
         binding: FragmentAddNoteBinding,
         mVM: AddNoteViewModel,
-        clickListener: CategoryAdapter.ClickListener
     ) {
 
 

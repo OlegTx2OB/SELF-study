@@ -37,7 +37,7 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
         return binding.root
     }
 
-    fun setupObservers(binding: FragmentDataboardBinding, mVM: DataBoardViewModel) {
+    private fun setupObservers(binding: FragmentDataboardBinding, mVM: DataBoardViewModel) {
 
         mVM.ldSetIncBalance.observe(viewLifecycleOwner) {
             binding.topSectionLayout.tvIncomesValue.text = it.toString()
