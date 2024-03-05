@@ -56,6 +56,19 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            app:cardBackgroundColor="@color/category_purple">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_check_200"
+                android:visibility="invisible"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             app:cardBackgroundColor="@color/category_blue">
 
             <ImageView
@@ -70,19 +83,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             app:cardBackgroundColor="@color/category_light_blue">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_check_200"
-                android:visibility="invisible"/>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:cardBackgroundColor="@color/category_bright_blue">
 
             <ImageView
                 android:layout_width="match_parent"

@@ -2,41 +2,76 @@ package com.example.coin.view
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.core.view.children
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.coin.COLOR_ATTR_PRESSED_CARD
 import com.example.coin.COLOR_ATTR_UNPRESSED_CARD
 import com.example.coin.R
 import com.example.coin.databinding.FragmentAddNoteBinding
 import com.example.coin.paintCardViews
+import com.example.coin.recyclerview.CategoryAdapter
+import com.example.coin.repository.room.CategoryRepository
 import com.example.coin.viewmodel.AddNoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
+class AddNoteFragment : Fragment(R.layout.fragment_add_note), CategoryAdapter.ClickListener {
+    @Inject
+    lateinit var mCategoryRepository: CategoryRepository
+
     private val mVM: AddNoteViewModel by viewModels()
+    private val mAdapter: CategoryAdapter = CategoryAdapter(this)
+    private var mRecyclerView: RecyclerView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         val binding: FragmentAddNoteBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_note, container, false)
-        binding.cardviewAmount.textInputLayout.hint = getString(R.string.choose)
 
-        setupClickListeners(binding, mVM)
+        mRecyclerView = binding.cardCategories.recyclerView
+        binding.cardCategories.recyclerView.layoutManager = GridLayoutManager(context, 3)
+        binding.cardCategories.recyclerView.adapter = mAdapter
+
+        binding.cardviewAmount.textInputLayout.hint = getString(R.string.amount)
+        binding.cardviewAmount.textInputEditText.inputType =
+            InputType.TYPE_NUMBER_FLAG_DECIMAL or InputType.TYPE_CLASS_NUMBER
+
+        setupClickListeners(binding, mVM, this)
         setupObservers(binding, mVM)
         return binding.root
+
     }
 
-    private fun setupClickListeners(binding: FragmentAddNoteBinding, mVM: AddNoteViewModel) {
+    override fun onClickCategory(view: CardView) {
+        paintCardViews(
+            mRecyclerView!!.children.toList() as List<CardView>,
+            COLOR_ATTR_UNPRESSED_CARD,
+            requireContext()
+        )
+        paintCardViews(listOf(view), COLOR_ATTR_PRESSED_CARD, requireContext())
+        mVM.onCategory(view)
+    }
+
+    private fun setupClickListeners(
+        binding: FragmentAddNoteBinding,
+        mVM: AddNoteViewModel,
+        clickListener: CategoryAdapter.ClickListener
+    ) {
+
 
         binding.cardviewIncExp.cardviewExpenses.setOnClickListener {
             mVM.onCardViewIncExp(false)
@@ -58,10 +93,11 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
         }
 
         binding.addNoteButton.cardviewAdd.setOnClickListener {
-            mVM.onAdd()
+            val toast = mVM.onAdd()
+            Toast.makeText(requireContext(), toast, Toast.LENGTH_SHORT).show()
         }
 
-        binding.cardCategories.cardviewAddCategory.setOnClickListener{
+        binding.cardCategories.cardviewAddCategory.setOnClickListener {
             findNavController().navigate(R.id.action_add_note_fragment_to_add_category_fragment)
         }
 
@@ -108,12 +144,19 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
     private fun setupObservers(binding: FragmentAddNoteBinding, mVM: AddNoteViewModel) {
 
-        mVM.ldShowToast.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        mCategoryRepository.getAllCategories().observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                binding.cardCategories.recyclerView.visibility = View.VISIBLE
+                binding.cardCategories.tvCategoriesListClear.visibility = View.GONE
+            } else {
+                binding.cardCategories.recyclerView.visibility = View.GONE
+                binding.cardCategories.tvCategoriesListClear.visibility = View.VISIBLE
+            }
+            mAdapter.addCategories(it)
         }
 
         mVM.ldGetAmount.observe(viewLifecycleOwner) {
-            this.mVM.setAmount(binding.cardviewAmount.tilAmount.text?.toString())
+            this.mVM.setAmount(binding.cardviewAmount.textInputEditText.text?.toString())
         }
     }
 

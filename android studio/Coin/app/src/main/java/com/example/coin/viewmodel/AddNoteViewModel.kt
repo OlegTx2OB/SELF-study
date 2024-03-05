@@ -10,6 +10,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.coin.data.Note
+import com.example.coin.repository.room.CategoryRepository
 import com.example.coin.repository.room.NoteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -22,13 +23,11 @@ import javax.inject.Inject
 @HiltViewModel
 class AddNoteViewModel @Inject constructor(
     private val mNoteRepository: NoteRepository,
+    private val mCategoryRepository: CategoryRepository,
     private val mApp: Application,
 ) : AndroidViewModel(mApp) {
 
-    private val _ldShowToast = MutableLiveData<String>()
     private val _ldGetAmount = MutableLiveData<Unit>()
-
-    val ldShowToast: LiveData<String> = _ldShowToast
     val ldGetAmount: LiveData<Unit> = _ldGetAmount
 
     private val mNewNote = Note()
@@ -41,7 +40,7 @@ class AddNoteViewModel @Inject constructor(
         if (string != null && string != "") mNewNote.amount = string.toFloat()
     }
 
-    fun onAdd() {
+    fun onAdd(): String{
         _ldGetAmount.value = Unit
 
         val todayEpochDay = LocalDate.now().toEpochDay()
@@ -49,7 +48,7 @@ class AddNoteViewModel @Inject constructor(
             mNewNote.epochDay = todayEpochDay
         }
 
-        _ldShowToast.value = if (mNewNote.amount == null) {
+        return if (mNewNote.amount == null) {
             "enter amount"
         } else if (mNewNote.isIncomes == null) {
             "choose incomes or outcomes"
@@ -69,14 +68,13 @@ class AddNoteViewModel @Inject constructor(
 
     fun onCategory(view: View) {
         view as CardView
-
         val cardRootLayout = view.getChildAt(0) as ViewGroup
 
         for (i in 0 until cardRootLayout.childCount) {
             val childView = cardRootLayout.getChildAt(i)
 
             if (childView is CardView) {
-                mNewNote.color = childView.cardBackgroundColor.defaultColor
+               mNewNote.color = childView.cardBackgroundColor.defaultColor
                 val imageView = childView.getChildAt(0) as ImageView
                 mNewNote.imageName = imageView.tag.toString()
             } else if (childView is TextView) {

@@ -25,4 +25,5 @@
     <string name="choose">Выбрать</string>
     <string name="incomes_or_expenses">Доходы или расходы</string>
     <string name="background_colors">Цвета фона</string>
+    <string name="name">Название</string>
 </resources>

@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <GridLayout
+            android:id="@+id/cards_root_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="4dp"
@@ -34,11 +35,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_airport" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_airport"
+                    android:tag="ic_category_airport" />
 
             </androidx.cardview.widget.CardView>
 
@@ -55,11 +54,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_baby" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_baby"
+                    android:tag="ic_category_baby" />
 
             </androidx.cardview.widget.CardView>
 
@@ -76,11 +73,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_banana" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_banana"
+                    android:tag="ic_category_banana" />
 
             </androidx.cardview.widget.CardView>
 
@@ -97,11 +92,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_bandage" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_bandage"
+                    android:tag="ic_category_bandage" />
 
             </androidx.cardview.widget.CardView>
 
@@ -118,11 +111,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_bank" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_bank"
+                    android:tag="ic_category_bank" />
 
             </androidx.cardview.widget.CardView>
 
@@ -139,11 +130,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_bank_safe" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_bank_safe"
+                    android:tag="ic_category_bank_safe" />
 
             </androidx.cardview.widget.CardView>
 
@@ -160,11 +149,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_beer" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_beer"
+                    android:tag="ic_category_beer" />
 
             </androidx.cardview.widget.CardView>
 
@@ -181,11 +168,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_bill" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_bill"
+                    android:tag="ic_category_bill" />
 
             </androidx.cardview.widget.CardView>
 
@@ -202,11 +187,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_bitcoin" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_bitcoin"
+                    android:tag="ic_category_bitcoin" />
 
             </androidx.cardview.widget.CardView>
 
@@ -223,11 +206,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_brain" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_brain"
+                    android:tag="ic_category_brain" />
 
             </androidx.cardview.widget.CardView>
 
@@ -244,11 +225,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_bus" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_bus"
+                    android:tag="ic_category_bus" />
 
             </androidx.cardview.widget.CardView>
 
@@ -265,11 +244,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_car" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_car"
+                    android:tag="ic_category_car" />
 
             </androidx.cardview.widget.CardView>
 
@@ -286,11 +263,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_car_charger" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_car_charger"
+                    android:tag="ic_category_car_charger" />
 
             </androidx.cardview.widget.CardView>
 
@@ -307,11 +282,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_cards" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_cards"
+                    android:tag="ic_category_cards" />
 
             </androidx.cardview.widget.CardView>
 
@@ -328,11 +301,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_cash" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_cash"
+                    android:tag="ic_category_cash" />
 
             </androidx.cardview.widget.CardView>
 
@@ -349,11 +320,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_church" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_church"
+                    android:tag="ic_category_church" />
 
             </androidx.cardview.widget.CardView>
 
@@ -370,11 +339,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_coffee" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_coffee"
+                    android:tag="ic_category_coffee" />
 
             </androidx.cardview.widget.CardView>
 
@@ -391,11 +358,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_diamond" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_diamond"
+                    android:tag="ic_category_diamond" />
 
             </androidx.cardview.widget.CardView>
 
@@ -412,11 +377,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_dog_paw" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_dog_paw"
+                    android:tag="ic_category_dog_paw" />
 
             </androidx.cardview.widget.CardView>
 
@@ -433,11 +396,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_entertaiment" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_entertaiment"
+                    android:tag="ic_category_entertaiment" />
 
             </androidx.cardview.widget.CardView>
 
@@ -454,11 +415,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_family" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_family"
+                    android:tag="ic_category_family" />
 
             </androidx.cardview.widget.CardView>
 
@@ -475,11 +434,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_fish" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_fish"
+                    android:tag="ic_category_fish" />
 
             </androidx.cardview.widget.CardView>
 
@@ -496,11 +453,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_game_controller" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_game_controller"
+                    android:tag="ic_category_game_controller" />
 
             </androidx.cardview.widget.CardView>
 
@@ -517,11 +472,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_gas_station" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_gas_station"
+                    android:tag="ic_category_gas_station" />
 
             </androidx.cardview.widget.CardView>
 
@@ -538,11 +491,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_gift" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_gift"
+                    android:tag="ic_category_gift" />
 
             </androidx.cardview.widget.CardView>
 
@@ -559,11 +510,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_heart" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_heart"
+                    android:tag="ic_category_heart" />
 
             </androidx.cardview.widget.CardView>
 
@@ -580,11 +529,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_home_page" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_home_page"
+                    android:tag="ic_category_home_page" />
 
             </androidx.cardview.widget.CardView>
 
@@ -601,11 +548,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_hotel" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_hotel"
+                    android:tag="ic_category_hotel" />
 
             </androidx.cardview.widget.CardView>
 
@@ -622,11 +567,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_lipstick" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_lipstick"
+                    android:tag="ic_category_lipstick" />
 
             </androidx.cardview.widget.CardView>
 
@@ -643,11 +586,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_man" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_man"
+                    android:tag="ic_category_man" />
 
             </androidx.cardview.widget.CardView>
 
@@ -664,11 +605,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_mastercard" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_mastercard"
+                    android:tag="ic_category_mastercard" />
 
             </androidx.cardview.widget.CardView>
 
@@ -685,11 +624,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_metro" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_metro"
+                    android:tag="ic_category_metro" />
 
             </androidx.cardview.widget.CardView>
 
@@ -706,11 +643,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_mosque" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_mosque"
+                    android:tag="ic_category_mosque" />
 
             </androidx.cardview.widget.CardView>
 
@@ -727,11 +662,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_nails" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_nails"
+                    android:tag="ic_category_nails" />
 
             </androidx.cardview.widget.CardView>
 
@@ -748,11 +681,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_presents_birthday" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_presents_birthday"
+                    android:tag="ic_category_presents_birthday" />
 
             </androidx.cardview.widget.CardView>
 
@@ -769,11 +700,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_scooter" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_scooter"
+                    android:tag="ic_category_scooter" />
 
             </androidx.cardview.widget.CardView>
 
@@ -790,11 +719,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_shirt" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_shirt"
+                    android:tag="ic_category_shirt" />
 
             </androidx.cardview.widget.CardView>
 
@@ -811,11 +738,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_shopping" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_shopping"
+                    android:tag="ic_category_shopping" />
 
             </androidx.cardview.widget.CardView>
 
@@ -832,11 +757,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_shopping_cart" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_shopping_cart"
+                    android:tag="ic_category_shopping_cart" />
 
             </androidx.cardview.widget.CardView>
 
@@ -853,11 +776,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_smartphone" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_smartphone"
+                    android:tag="ic_category_smartphone" />
 
             </androidx.cardview.widget.CardView>
 
@@ -874,11 +795,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_smoking" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_smoking"
+                    android:tag="ic_category_smoking" />
 
             </androidx.cardview.widget.CardView>
 
@@ -895,11 +814,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_soap" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_soap"
+                    android:tag="ic_category_soap" />
 
             </androidx.cardview.widget.CardView>
 
@@ -916,11 +833,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_strawberry" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_strawberry"
+                    android:tag="ic_category_strawberry" />
 
             </androidx.cardview.widget.CardView>
 
@@ -937,11 +852,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_taxi" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_taxi"
+                    android:tag="ic_category_taxi" />
 
             </androidx.cardview.widget.CardView>
 
@@ -958,11 +871,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_toolbox" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_toolbox"
+                    android:tag="ic_category_toolbox" />
 
             </androidx.cardview.widget.CardView>
 
@@ -979,11 +890,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_tooth" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_tooth"
+                    android:tag="ic_category_tooth" />
 
             </androidx.cardview.widget.CardView>
 
@@ -1000,11 +909,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_video_card" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_video_card"
+                    android:tag="ic_category_video_card" />
 
             </androidx.cardview.widget.CardView>
 
@@ -1021,11 +928,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_wine_and_glass" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_wine_and_glass"
+                    android:tag="ic_category_wine_and_glass" />
 
             </androidx.cardview.widget.CardView>
 
@@ -1042,11 +947,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_woman" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_shawarma"
+                    android:tag="ic_category_shawarma" />
 
             </androidx.cardview.widget.CardView>
 
@@ -1063,11 +966,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_margin="4dp"
-                    android:src="@drawable/ic_category_airport" />
+                    android:padding="4dp"
+                    android:src="@drawable/ic_category_fork"
+                    android:tag="ic_category_fork" />
 
             </androidx.cardview.widget.CardView>
 

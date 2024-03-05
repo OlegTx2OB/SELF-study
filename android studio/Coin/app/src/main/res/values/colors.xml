@@ -22,9 +22,9 @@
     <color name="category_orange">#ff8b71</color>
     <color name="category_yellow">#ffe072</color>
     <color name="category_green">#85d687</color>
-    <color name="category_blue">#af78da</color>
-    <color name="category_light_blue">#609af9</color>
-    <color name="category_bright_blue">#6cf7f2</color>
+    <color name="category_purple">#af78da</color>
+    <color name="category_blue">#609af9</color>
+    <color name="category_light_blue">#6cf7f2</color>
     <color name="category_pink">#f47fb1</color>
 
 

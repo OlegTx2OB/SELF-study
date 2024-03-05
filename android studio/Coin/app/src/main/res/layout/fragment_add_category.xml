@@ -36,11 +36,18 @@
                     android:text="@string/background_colors" />
 
                 <include
-                    android:id="@+id/cardview_colors_test"
+                    android:id="@+id/cardview_colors"
                     layout="@layout/layout_card_colors" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/categories" />
+
                 <include
-                    android:id="@+id/add_category_button2"
+                    android:id="@+id/cardview_categories"
                     layout="@layout/layout_card_all_categories" />
 
                 <Space
@@ -51,6 +58,7 @@
             </LinearLayout>
 
         </ScrollView>
+
         <include
             android:id="@+id/add_category_button"
             layout="@layout/layout_add_button" />

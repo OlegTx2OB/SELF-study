@@ -24,4 +24,5 @@
     <string name="choose">Choose</string>
     <string name="incomes_or_expenses">Incomes or expenses</string>
     <string name="background_colors">Background colors</string>
+    <string name="name">Name</string>
 </resources>

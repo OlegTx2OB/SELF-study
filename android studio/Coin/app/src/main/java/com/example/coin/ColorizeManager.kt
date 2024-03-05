@@ -7,6 +7,8 @@ import androidx.cardview.widget.CardView
 
 val COLOR_ATTR_UNPRESSED_CARD = com.google.android.material.R.attr.colorSurfaceContainerHighest
 val COLOR_ATTR_PRESSED_CARD: Int = com.google.android.material.R.attr.colorPrimaryContainer
+val COLOR_ATTR_UNPRESSED_CATEGORY: Int = com.google.android.material.R.attr.colorOnPrimary
+val COLOR_ATTR_PRESSED_CATEGORY: Int = com.google.android.material.R.attr.colorPrimary
 val COLOR_ATTR_INCOMES_CARD: Int = R.attr.colorIncomes
 val COLOR_ATTR_EXPENSES_CARD: Int = R.attr.colorExpenses
 
@@ -17,12 +19,8 @@ fun getColorAttribute(@AttrRes attributeId: Int, context: Context): Int {
 }
 
 fun paintCardViews(viewList: List<CardView>, @AttrRes attributeId: Int, context: Context) {
+    val color = getColorAttribute(attributeId, context)
     for (cardView in viewList) {
-        cardView.setCardBackgroundColor(
-            getColorAttribute(
-                attributeId,
-                context
-            )
-        )
+        cardView.setCardBackgroundColor(color)
     }
 }

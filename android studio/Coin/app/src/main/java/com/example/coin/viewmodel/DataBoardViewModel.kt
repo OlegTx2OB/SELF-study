@@ -73,7 +73,7 @@ class DataBoardViewModel @Inject constructor(
         pieDataSet.setDrawValues(false)
         pieDataSet.colors =
             arrayListOf(
-                mApp.getColor(R.color.category_light_blue),
+                mApp.getColor(R.color.category_blue),
                 mApp.getColor(R.color.category_green),
                 mApp.getColor(R.color.category_orange),
                 mApp.getColor(R.color.category_yellow),

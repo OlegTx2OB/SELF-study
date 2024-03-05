@@ -15,7 +15,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:visibility="gone"/>
 
@@ -25,6 +25,7 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:gravity="center"
+            android:visibility="visible"
             android:maxLines="3"
             android:text="@string/categories_list_is_clear" />
 

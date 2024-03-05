@@ -12,6 +12,9 @@ import com.example.coin.R
 import com.example.coin.data.Note
 import com.example.coin.databinding.RvHistoryNoteBinding
 import com.example.coin.paintCardViews
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
@@ -62,8 +65,10 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
     }
 
     fun addNotes(notes: List<Note>) {
-        noteArray.clear()
-        noteArray.addAll(notes.reversed())
+        CoroutineScope(Dispatchers.IO).launch {
+            noteArray.clear()
+            noteArray.addAll(notes.reversed())
+        }
         notifyDataSetChanged()
     }
 
