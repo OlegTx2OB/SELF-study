@@ -4,11 +4,10 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.coin.COLOR_ATTR_UNPRESSED_CARD
 import com.example.coin.R
 import com.example.coin.data.Note
-import com.example.coin.getColorAttribute
 import com.example.coin.repository.room.NoteRepository
+import com.example.coin.repository.sharedprefs.spGetCurrencyName
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
@@ -42,7 +41,6 @@ class DataBoardViewModel @Inject constructor(
         mNoteRepository.getAllNotes().observeForever {
             updateData(it)
         }
-
     }
 
     private fun updateData(notes: List<Note>?) {
@@ -66,7 +64,8 @@ class DataBoardViewModel @Inject constructor(
             for (note in expensesNotes) expensesBalance += note.amount!!
             _ldSetExpBalance.value = expensesBalance.toString()
         }
-        _ldSetTotalBalance.value = "$" + (incomesBalance - expensesBalance).toString()
+        _ldSetTotalBalance.value =
+            (incomesBalance - expensesBalance).toString() + spGetCurrencyName(mApp)
     }
 
     private fun updatePieChart(notes: List<Note>?, isIncomes: Boolean) {
@@ -81,14 +80,16 @@ class DataBoardViewModel @Inject constructor(
             //creating Map<String, Pair<Float, Int>>, where String is Category name, Float is total sum of this category and Int is color name of background of this category
             val totalAmountMap = calculateTotalAmount(notes)
             //converting map into the list and sorting by descending by total sum
-            val sortedTopCategoriesPairs = totalAmountMap.toList().sortedByDescending { it.second.first }
+            val sortedTopCategoriesPairs =
+                totalAmountMap.toList().sortedByDescending { it.second.first }
 
             //set colorArray with background colors of top categories
             val colorsList = mutableListOf<Int>()
             for (i in 0 until minOf(sortedTopCategoriesPairs.size, 4)) {
                 colorsList.add(sortedTopCategoriesPairs[i].second.second)
             }
-            colorsList.add(mApp.getColor(R.color.gray_600))
+            colorsList.add(mApp.getColor(R.color.transparent))
+
             pieDataSet.colors = colorsList
 
             //creating values which will be show in pie chart and description text with sums and category names
@@ -108,7 +109,8 @@ class DataBoardViewModel @Inject constructor(
         val totalAmountMap = hashMapOf<String, Pair<Float, Int>>()
         for (note in notes!!) {
             val currentTotalPrice = totalAmountMap.getOrDefault(note.categoryName, 0f to 0)
-            totalAmountMap[note.categoryName!!] = (currentTotalPrice.first + note.amount!!) to note.color!!
+            totalAmountMap[note.categoryName!!] =
+                (currentTotalPrice.first + note.amount!!) to note.color!!
         }
         return totalAmountMap
     }

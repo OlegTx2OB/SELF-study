@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Гроші</string>
     <string name="incomes">Доходы</string>
-    <string name="settings">Параметры</string>
+    <string name="settings">Настройки</string>
     <string name="more">Еще</string>
     <string name="databoard">Главная</string>
     <string name="stats">Статистика</string>
@@ -26,4 +26,11 @@
     <string name="incomes_or_expenses">Доходы или расходы</string>
     <string name="background_colors">Цвета фона</string>
     <string name="name">Название</string>
+    <string name="save">Сохранить</string>
+    <string name="currency_name">Название валюты</string>
+    <string name="enter_amount">введите сумму</string>
+    <string name="choose_incomes_or_outcomes">выберите заработки или траты</string>
+    <string name="choose_category">выберите категорию</string>
+    <string name="saved">сохранено</string>
+    <string name="enter_value">введите значение</string>
 </resources>

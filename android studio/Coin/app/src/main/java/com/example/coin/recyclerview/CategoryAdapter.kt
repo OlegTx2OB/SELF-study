@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.coin.R
 import com.example.coin.data.Category
 import com.example.coin.data.Note
+import com.example.coin.databinding.FragmentAddNoteBinding
 import com.example.coin.databinding.RvCategoryBinding
 
 class CategoryAdapter(private val listener: ClickListener) : RecyclerView.Adapter<CategoryAdapter.CategoryHolder>() {

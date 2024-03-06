@@ -1,8 +1,16 @@
 package com.example.coin.repository.sharedprefs
 
-interface SharedPrefsRepository {
-    fun saveData(key: String, value: String)
-    fun loadData(key: String, defaultValue: String): String
-    fun clearData(key: String)
+import android.content.Context
+fun spGetCurrencyName(context: Context) : String
+{
+    val sP = context.getSharedPreferences("MySharedPrefs", Context.MODE_PRIVATE)
+    return sP.getString("currency_name", "$") ?: "$"
+}
 
+fun spSaveCurrencyName(value: String, context: Context)
+{
+    val sP = context.getSharedPreferences("MySharedPrefs", Context.MODE_PRIVATE)
+    val editor = sP.edit()
+    editor.putString("currency_name", value)
+    editor.apply()
 }

@@ -1,19 +1,22 @@
 package com.example.coin.view
 
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.coin.recyclerview.NoteAdapter
 import com.example.coin.R
-import com.example.coin.recyclerview.SwipeToDeleteCallback
+import com.example.coin.databinding.FragmentAddNoteBinding
 import com.example.coin.databinding.FragmentHistoryBinding
+import com.example.coin.recyclerview.NoteAdapter
+import com.example.coin.recyclerview.SwipeToDeleteCallback
 import com.example.coin.repository.room.NoteRepository
 import com.example.coin.viewmodel.HistoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,11 +39,18 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
         val binding: FragmentHistoryBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_history, container, false)
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        binding.recyclerView.adapter = mAdapter
-
+        setViewsPresets(binding)
         setupObservers(binding, mVM)
+        setupClickListeners(binding, mVM)
 
+        return binding.root
+    }
+
+
+    private fun setupClickListeners(
+        binding: FragmentHistoryBinding,
+        mVM: HistoryViewModel
+    ) {
         val swipeHandler = object : SwipeToDeleteCallback(requireContext()) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val adapter = binding.recyclerView.adapter as NoteAdapter
@@ -49,12 +59,9 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
         }
         val itemTouchHelper = ItemTouchHelper(swipeHandler)
         itemTouchHelper.attachToRecyclerView(binding.recyclerView)
-        return binding.root
     }
 
-
-
-    fun setupObservers(binding: FragmentHistoryBinding, mVM: HistoryViewModel) {
+    private fun setupObservers(binding: FragmentHistoryBinding, mVM: HistoryViewModel) {
 
         mNoteRepository.getAllNotes().observe(viewLifecycleOwner) {
             mAdapter.addNotes(it)
@@ -65,5 +72,10 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
                 mNoteRepository.deleteNote(it)
             }
         }
+    }
+
+    private fun setViewsPresets(binding: FragmentHistoryBinding) {
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.adapter = mAdapter
     }
 }

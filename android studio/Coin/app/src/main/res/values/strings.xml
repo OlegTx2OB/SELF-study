@@ -25,4 +25,11 @@
     <string name="incomes_or_expenses">Incomes or expenses</string>
     <string name="background_colors">Background colors</string>
     <string name="name">Name</string>
+    <string name="save">Save</string>
+    <string name="currency_name">Currency name</string>
+    <string name="enter_amount">enter amount</string>
+    <string name="choose_incomes_or_outcomes">choose incomes or outcomes</string>
+    <string name="choose_category">choose category</string>
+    <string name="saved">saved</string>
+    <string name="enter_value">enter value</string>
 </resources>

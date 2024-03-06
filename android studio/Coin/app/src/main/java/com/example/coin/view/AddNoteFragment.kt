@@ -43,17 +43,11 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), CategoryAdapter.Cl
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_note, container, false)
 
         mRecyclerView = binding.cardCategories.recyclerView
-        mRecyclerView.layoutManager = GridLayoutManager(context, 4)
-        mRecyclerView.adapter = mAdapter
 
-        binding.cardviewAmount.textInputLayout.hint = getString(R.string.amount)
-        binding.cardviewAmount.textInputEditText.inputType =
-            InputType.TYPE_NUMBER_FLAG_DECIMAL or InputType.TYPE_CLASS_NUMBER
-
+        setViewsPresets(binding)
         setupClickListeners(binding, mVM)
         setupObservers(binding, mVM)
         return binding.root
-
     }
 
     override fun onClickCategory(view: CardView) {
@@ -92,8 +86,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), CategoryAdapter.Cl
         }
 
         binding.addNoteButton.cardviewAdd.setOnClickListener {
-            val toast = mVM.onAdd()
-            Toast.makeText(requireContext(), toast, Toast.LENGTH_SHORT).show()
+            mVM.onAdd()
         }
 
         binding.cardCategories.cardviewAddCategory.setOnClickListener {
@@ -145,10 +138,10 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), CategoryAdapter.Cl
 
         mCategoryRepository.getAllCategories().observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
-                binding.cardCategories.recyclerView.visibility = View.VISIBLE
+                mRecyclerView.visibility = View.VISIBLE
                 binding.cardCategories.tvCategoriesListClear.visibility = View.GONE
             } else {
-                binding.cardCategories.recyclerView.visibility = View.GONE
+                mRecyclerView.visibility = View.GONE
                 binding.cardCategories.tvCategoriesListClear.visibility = View.VISIBLE
             }
             mAdapter.addCategories(it)
@@ -157,6 +150,18 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), CategoryAdapter.Cl
         mVM.ldGetAmount.observe(viewLifecycleOwner) {
             this.mVM.setAmount(binding.cardviewAmount.textInputEditText.text?.toString())
         }
+
+        mVM.ldShowToast.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun setViewsPresets(binding: FragmentAddNoteBinding) {
+        mRecyclerView.layoutManager = GridLayoutManager(context, 4)
+        mRecyclerView.adapter = mAdapter
+        binding.cardviewAmount.textInputLayout.hint = getString(R.string.amount)
+        binding.cardviewAmount.textInputEditText.inputType =
+            InputType.TYPE_NUMBER_FLAG_DECIMAL or InputType.TYPE_CLASS_NUMBER
     }
 
 }

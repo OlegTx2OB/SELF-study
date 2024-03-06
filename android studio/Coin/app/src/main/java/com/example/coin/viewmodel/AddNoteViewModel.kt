@@ -9,8 +9,8 @@ import androidx.cardview.widget.CardView
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.coin.R
 import com.example.coin.data.Note
-import com.example.coin.repository.room.CategoryRepository
 import com.example.coin.repository.room.NoteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -23,12 +23,15 @@ import javax.inject.Inject
 @HiltViewModel
 class AddNoteViewModel @Inject constructor(
     private val mNoteRepository: NoteRepository,
-    private val mCategoryRepository: CategoryRepository,
     private val mApp: Application,
 ) : AndroidViewModel(mApp) {
 
     private val _ldGetAmount = MutableLiveData<Unit>()
+    private val _ldShowToast = MutableLiveData<String>()
+
     val ldGetAmount: LiveData<Unit> = _ldGetAmount
+    val ldShowToast: LiveData<String> = _ldShowToast
+
 
     private val mNewNote = Note()
 
@@ -40,7 +43,7 @@ class AddNoteViewModel @Inject constructor(
         if (string != null && string != "") mNewNote.amount = string.toFloat()
     }
 
-    fun onAdd(): String{
+    fun onAdd() {
         _ldGetAmount.value = Unit
 
         val todayEpochDay = LocalDate.now().toEpochDay()
@@ -48,17 +51,17 @@ class AddNoteViewModel @Inject constructor(
             mNewNote.epochDay = todayEpochDay
         }
 
-        return if (mNewNote.amount == null) {
-            "enter amount"
+        _ldShowToast.value = if (mNewNote.amount == null) {
+            mApp.getString(R.string.enter_amount)
         } else if (mNewNote.isIncomes == null) {
-            "choose incomes or outcomes"
+            mApp.getString(R.string.choose_incomes_or_outcomes)
         } else if (mNewNote.imageName == null || mNewNote.categoryName == null || mNewNote.color == null) {
-            "choose category"
+            mApp.getString(R.string.choose_category)
         } else {
             CoroutineScope(Dispatchers.IO).launch {
                 mNoteRepository.insertNote(mNewNote)
             }
-            "all saved"
+            mApp.getString(R.string.saved)
         }
     }
 
@@ -70,7 +73,7 @@ class AddNoteViewModel @Inject constructor(
             val childView = cardRootLayout.getChildAt(i)
 
             if (childView is CardView) {
-               mNewNote.color = childView.cardBackgroundColor.defaultColor
+                mNewNote.color = childView.cardBackgroundColor.defaultColor
                 val imageView = childView.getChildAt(0) as ImageView
                 mNewNote.imageName = imageView.tag.toString()
             } else if (childView is TextView) {

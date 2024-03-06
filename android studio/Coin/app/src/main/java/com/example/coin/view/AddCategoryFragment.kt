@@ -14,6 +14,7 @@ import com.example.coin.COLOR_ATTR_PRESSED_CATEGORY
 import com.example.coin.COLOR_ATTR_UNPRESSED_CATEGORY
 import com.example.coin.R
 import com.example.coin.databinding.FragmentAddCategoryBinding
+import com.example.coin.databinding.FragmentAddNoteBinding
 import com.example.coin.paintCardViews
 import com.example.coin.viewmodel.AddCategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,9 +28,8 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
     ): View {
         val binding: FragmentAddCategoryBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_category, container, false)
-        binding.cardviewEnterText.textInputLayout.hint = getString(R.string.name)
 
-
+        setViewsPresets(binding)
         setupClickListeners(binding, mVM)
         setupObservers(binding, mVM)
 
@@ -76,7 +76,6 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
                 listOf(it), COLOR_ATTR_PRESSED_CATEGORY, requireContext()
             )
             mVM.onSetCategory(it)
-
         }
 
         for (child in categoryCards) {
@@ -115,5 +114,9 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
         mVM.ldGetAmount.observe(viewLifecycleOwner) {
             this.mVM.setAmount(binding.cardviewEnterText.textInputEditText.text?.toString())
         }
+    }
+
+    private fun setViewsPresets(binding: FragmentAddCategoryBinding) {
+        binding.cardviewEnterText.textInputLayout.hint = getString(R.string.name)
     }
 }

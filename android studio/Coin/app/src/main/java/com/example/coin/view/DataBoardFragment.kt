@@ -20,9 +20,6 @@ import javax.inject.Inject
 class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
     private val mVM: DataBoardViewModel by viewModels()
 
-    @Inject
-    lateinit var noteRepository: NoteRepository // todo вроде как нигде не используется, проверь не влияет ли на добавление элементов
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
