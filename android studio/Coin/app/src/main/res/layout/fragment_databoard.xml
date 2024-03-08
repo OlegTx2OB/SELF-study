@@ -32,7 +32,7 @@
 
             <include
                 android:id="@+id/expenses_layout"
-                layout="@layout/layout_expenses_pie_chart_section" />
+                layout="@layout/layout_pie_chart_section" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -43,7 +43,7 @@
 
             <include
                 android:id="@+id/incomes_layout"
-                layout="@layout/layout_incomes_pie_chart_section" />
+                layout="@layout/layout_pie_chart_section" />
 
             <Space
                 android:layout_width="match_parent"

@@ -14,7 +14,6 @@ import com.example.coin.COLOR_ATTR_PRESSED_CATEGORY
 import com.example.coin.COLOR_ATTR_UNPRESSED_CATEGORY
 import com.example.coin.R
 import com.example.coin.databinding.FragmentAddCategoryBinding
-import com.example.coin.databinding.FragmentAddNoteBinding
 import com.example.coin.paintCardViews
 import com.example.coin.viewmodel.AddCategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,7 +46,7 @@ class AddCategoryFragment : Fragment(R.layout.fragment_add_category) {
             val pairOfIsSavedAndToast = mVM.onAddCardviewAndReturnResult()
             Toast.makeText(requireContext(), pairOfIsSavedAndToast.second, Toast.LENGTH_SHORT).show()
             if (pairOfIsSavedAndToast.first == true) {
-                findNavController().navigate(R.id.action_add_category_fragment_to_add_note_fragment)
+                findNavController().navigate(R.id.action_addCategoryFragment_to_addNoteFragment)
             }
         }
 

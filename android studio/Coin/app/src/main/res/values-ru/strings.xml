@@ -13,8 +13,7 @@
     <string name="expenses_by_category">Траты по категориям</string>
     <string name="incomes_by_category">Заработки по категориям</string>
     <string name="amount">Сумма</string>
-    <string name="clear_expenses_list_text">Траты\nеще\nне\nбыли\nдобавлены</string>
-    <string name="clear_incomes_list_text">Заработки\nеще\nне\nбыли\nдобавлены</string>
+    <string name="clear_notes_list_text">Записи\nеще\nне\nбыли\nдобавлены</string>
     <string name="add">Добавить</string>
     <string name="today">Сегодня</string>
     <string name="date">Дата</string>
@@ -33,4 +32,18 @@
     <string name="choose_category">выберите категорию</string>
     <string name="saved">сохранено</string>
     <string name="enter_value">введите значение</string>
+    <string name="choose_date_period">Установите временной промежуток</string>
+    <string name="jan">Янв</string>
+    <string name="feb">Фев</string>
+    <string name="mar">Мар</string>
+    <string name="apr">Апр</string>
+    <string name="may">Май</string>
+    <string name="jun">Июн</string>
+    <string name="jul">Июл</string>
+    <string name="aug">Авг</string>
+    <string name="sep">Сен</string>
+    <string name="oct">Окт</string>
+    <string name="nov">Ноя</string>
+    <string name="dec">Дек</string>
+    <string name="cancel">Отмена</string>
 </resources>

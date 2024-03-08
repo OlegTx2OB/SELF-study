@@ -8,13 +8,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.coin.R
 import com.example.coin.databinding.FragmentDataboardBinding
-import com.example.coin.repository.room.NoteRepository
 import com.example.coin.viewmodel.DataBoardViewModel
 import com.github.mikephil.charting.charts.PieChart
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
@@ -27,25 +26,38 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
             DataBindingUtil.inflate(inflater, R.layout.fragment_databoard, container, false)
 
         setupObservers(binding, mVM)
-
+        setupClickListeners(binding, mVM)
         setPieOptions(binding.expensesLayout.pieChart)
         setPieOptions(binding.incomesLayout.pieChart)
 
         return binding.root
     }
 
+    private fun setupClickListeners(
+        binding: FragmentDataboardBinding,
+        mVM: DataBoardViewModel
+    ) {
+        binding.topSectionLayout.cardviewChoosePeriod.setOnClickListener {
+            findNavController().navigate(R.id.action_databoardFragment_to_choosePeriodDialogFragment)
+        }
+    }
+
     private fun setupObservers(binding: FragmentDataboardBinding, mVM: DataBoardViewModel) {
 
+        mVM.ldSetTimePeriod.observe(viewLifecycleOwner) {
+            binding.topSectionLayout.periodText.text = it
+        }
+
         mVM.ldSetIncBalance.observe(viewLifecycleOwner) {
-            binding.topSectionLayout.tvIncomesValue.text = it.toString()
+            binding.topSectionLayout.tvIncomesValue.text = it
         }
 
         mVM.ldSetExpBalance.observe(viewLifecycleOwner) {
-            binding.topSectionLayout.tvExpensesValue.text = it.toString()
+            binding.topSectionLayout.tvExpensesValue.text = it
         }
 
         mVM.ldSetTotalBalance.observe(viewLifecycleOwner) {
-            binding.topSectionLayout.tvTotalBalanceValue.text = it.toString()
+            binding.topSectionLayout.tvTotalBalanceValue.text = it
         }
 
         mVM.ldExpTopCategoriesText.observe(viewLifecycleOwner) {

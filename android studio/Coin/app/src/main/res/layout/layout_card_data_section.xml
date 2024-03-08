@@ -25,6 +25,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/period_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
@@ -32,7 +33,7 @@
                 android:layout_marginVertical="4dp"
                 android:layout_marginHorizontal="8dp"
                 android:gravity="center"
-                android:text="2024" />
+                android:text="" />
 
 
         </androidx.cardview.widget.CardView>

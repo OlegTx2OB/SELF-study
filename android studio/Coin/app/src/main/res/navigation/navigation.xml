@@ -9,7 +9,11 @@
         android:id="@+id/databoard_fragment"
         android:name="com.example.coin.view.DataBoardFragment"
         android:label="@string/databoard"
-        tools:layout="@layout/fragment_databoard" />
+        tools:layout="@layout/fragment_databoard" >
+        <action
+            android:id="@+id/action_databoardFragment_to_choosePeriodDialogFragment"
+            app:destination="@id/custom_dialog_fragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/stats_fragment"
@@ -29,7 +33,7 @@
         android:label="@string/add"
         tools:layout="@layout/fragment_add_note" >
         <action
-            android:id="@+id/action_add_note_fragment_to_add_category_fragment"
+            android:id="@+id/action_addNoteFragment_to_addCategoryFragment"
             app:destination="@id/add_category_fragment" />
     </fragment>
 
@@ -45,8 +49,18 @@
         android:label="@string/categories"
         tools:layout="@layout/fragment_add_category">
         <action
-            android:id="@+id/action_add_category_fragment_to_add_note_fragment"
+            android:id="@+id/action_addCategoryFragment_to_addNoteFragment"
             app:destination="@id/add_note_fragment" />
     </fragment>
+
+    <dialog
+        android:id="@+id/custom_dialog_fragment"
+        android:name="com.example.coin.view.ChoosePeriodDialogFragment"
+        android:label="ChoosePeriodDialogFragment"
+        tools:layout="@layout/dialog_fragment_choose_period">
+        <action
+            android:id="@+id/action_customDialogFragment_to_databoardFragment"
+            app:destination="@id/databoard_fragment" />
+    </dialog>
 
 </navigation>

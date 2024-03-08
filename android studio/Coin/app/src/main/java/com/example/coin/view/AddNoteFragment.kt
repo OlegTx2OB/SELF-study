@@ -90,7 +90,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), CategoryAdapter.Cl
         }
 
         binding.cardCategories.cardviewAddCategory.setOnClickListener {
-            findNavController().navigate(R.id.action_add_note_fragment_to_add_category_fragment)
+            findNavController().navigate(R.id.action_addNoteFragment_to_addCategoryFragment)
         }
 
         binding.cardviewDatepicker.cardviewToday.setOnClickListener {
