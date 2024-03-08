@@ -43,6 +43,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), CategoryAdapter.Cl
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_note, container, false)
 
         mRecyclerView = binding.cardCategories.recyclerView
+        val x = layoutInflater.inflate(R.layout.dialog_fragment_choose_period, null)
 
         setViewsPresets(binding)
         setupClickListeners(binding, mVM)

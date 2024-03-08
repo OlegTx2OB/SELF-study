@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.coin.R
 import com.example.coin.databinding.FragmentDataboardBinding
 import com.example.coin.viewmodel.DataBoardViewModel
@@ -16,7 +15,7 @@ import com.github.mikephil.charting.charts.PieChart
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
+class DataBoardFragment : Fragment(R.layout.fragment_databoard), ChoosePeriodDialog.DialogListener {
     private val mVM: DataBoardViewModel by viewModels()
 
     override fun onCreateView(
@@ -33,12 +32,27 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
         return binding.root
     }
 
+    override fun onDialogPositiveClick() {
+
+    }
+
     private fun setupClickListeners(
         binding: FragmentDataboardBinding,
         mVM: DataBoardViewModel
     ) {
         binding.topSectionLayout.cardviewChoosePeriod.setOnClickListener {
-            findNavController().navigate(R.id.action_databoardFragment_to_choosePeriodDialogFragment)
+            val choosePeriodDialog = ChoosePeriodDialog(
+                layoutInflater.inflate(
+                    R.layout.dialog_fragment_choose_period,
+                    null
+                ), requireContext()
+            )
+            choosePeriodDialog.setDialogListener(object : ChoosePeriodDialog.DialogListener {
+                override fun onDialogPositiveClick() {
+                    mVM.updateData(mVM.mNotes)
+                }
+            })
+            choosePeriodDialog.show()
         }
     }
 

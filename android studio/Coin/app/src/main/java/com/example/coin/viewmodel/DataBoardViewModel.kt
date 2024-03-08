@@ -42,13 +42,16 @@ class DataBoardViewModel @Inject constructor(
     val ldSetTimePeriod: LiveData<String> = _ldSetTimePeriod
 
 
+    var mNotes: List<Note>? = null
+
     init {
         mNoteRepository.getAllNotes().observeForever {
+            mNotes = it
             updateData(it)
         }
     }
 
-    private fun updateData(notes: List<Note>?) {
+    fun updateData(notes: List<Note>?) {
 
         val month = spGetMonth(mApp)
         val year = spGetYear(mApp)

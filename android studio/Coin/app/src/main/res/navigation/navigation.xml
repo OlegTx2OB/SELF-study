@@ -55,7 +55,7 @@
 
     <dialog
         android:id="@+id/custom_dialog_fragment"
-        android:name="com.example.coin.view.ChoosePeriodDialogFragment"
+        android:name="com.example.coin.view.ChoosePeriodDialog"
         android:label="ChoosePeriodDialogFragment"
         tools:layout="@layout/dialog_fragment_choose_period">
         <action
