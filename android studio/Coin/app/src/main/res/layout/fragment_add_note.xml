@@ -44,21 +44,22 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="8dp"
-                    android:text="@string/categories" />
+                    android:text="@string/date" />
 
-                <include android:id="@+id/card_categories"
-                    layout="@layout/layout_card_categories"/>
+                <include
+                    android:id="@+id/cardview_datepicker"
+                    layout="@layout/layout_card_datepicker" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="8dp"
-                    android:text="@string/date" />
+                    android:text="@string/categories" />
 
-                <include
-                    android:id="@+id/cardview_datepicker"
-                    layout="@layout/layout_card_datepicker" />
+                <include android:id="@+id/card_categories"
+                    layout="@layout/layout_card_categories"/>
+
 
                 <Space
                     android:layout_width="match_parent"

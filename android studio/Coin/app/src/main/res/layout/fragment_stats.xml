@@ -1,23 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="none"
-    tools:context=".view.StatsFragment"
-    android:background="?attr/colorSurface">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <data>
+
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:scrollbars="none"
+        tools:context=".view.DataBoardFragment"
+        android:background="?attr/colorSurface">
 
-
-        <Button
-            android:id="@+id/button3"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Stats" />
-    </LinearLayout>
+            android:orientation="vertical">
 
-</ScrollView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/incomes_or_expenses" />
+
+            <include
+                android:id="@+id/inc_pie_section"
+                layout="@layout/layout_vertical_pie_chart_section" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/incomes_or_expenses" />
+
+            <include
+                android:id="@+id/exp_pie_section"
+                layout="@layout/layout_vertical_pie_chart_section" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

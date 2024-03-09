@@ -144,10 +144,20 @@ class DataBoardViewModel @Inject constructor(
             pieDataSet.values = entries
             if (isIncomes) {
                 _ldIncPieData.value = PieData(pieDataSet)
-                if (descriptionStr != "") _ldIncTopCategoriesText.value = descriptionStr
+
+                if (descriptionStr != "") {
+                    _ldIncTopCategoriesText.value = descriptionStr
+                } else {
+                    _ldIncTopCategoriesText.value = mApp.getString(R.string.clear_notes_list_text)
+                }
             } else {
                 _ldExpPieData.value = PieData(pieDataSet)
-                if (descriptionStr != "") _ldExpTopCategoriesText.value = descriptionStr
+
+                if (descriptionStr != "") {
+                    _ldExpTopCategoriesText.value = descriptionStr
+                } else {
+                    _ldExpTopCategoriesText.value = mApp.getString(R.string.clear_notes_list_text)
+                }
             }
         }
     }

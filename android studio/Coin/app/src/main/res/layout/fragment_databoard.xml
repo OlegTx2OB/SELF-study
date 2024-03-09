@@ -31,8 +31,8 @@
                 android:text="@string/expenses_by_category" />
 
             <include
-                android:id="@+id/expenses_layout"
-                layout="@layout/layout_pie_chart_section" />
+                android:id="@+id/exp_layout"
+                layout="@layout/layout_horizontal_pie_chart_section" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -42,8 +42,8 @@
                 android:text="@string/incomes_by_category" />
 
             <include
-                android:id="@+id/incomes_layout"
-                layout="@layout/layout_pie_chart_section" />
+                android:id="@+id/inc_layout"
+                layout="@layout/layout_horizontal_pie_chart_section" />
 
             <Space
                 android:layout_width="match_parent"

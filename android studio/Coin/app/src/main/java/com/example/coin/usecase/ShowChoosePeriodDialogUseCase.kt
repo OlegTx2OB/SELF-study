@@ -1,4 +1,4 @@
-package com.example.coin.view
+package com.example.coin.usecase
 
 import android.content.Context
 import android.view.View
@@ -9,7 +9,7 @@ import com.example.coin.repository.sharedprefs.spSaveYear
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.time.LocalDate
 
-class ChoosePeriodDialog(private val layout: View, private val c: Context) {
+class ShowChoosePeriodDialogUseCase(private val layout: View, private val c: Context) {
 
     private var listener: DialogListener? = null
 
