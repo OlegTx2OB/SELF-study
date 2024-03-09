@@ -28,19 +28,16 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
         setViewsPresets(binding)
         setupObservers(binding, mVM)
         setupClickListeners(binding, mVM)
-        setPieOptions(binding.expLayout.pieChart)
-        setPieOptions(binding.incLayout.pieChart)
 
         return binding.root
     }
 
-    private fun setViewsPresets(binding: FragmentDataboardBinding) = with(binding){
+    private fun setViewsPresets(binding: FragmentDataboardBinding) = with(binding) {
         expLayout.pieChart.visibility = View.INVISIBLE
         incLayout.pieChart.visibility = View.INVISIBLE
-//        expLayout.imageCross.visibility = View.VISIBLE
-//        incLayout.imageCross.visibility = View.VISIBLE
-//        expLayout.tvTopCategories.text = getText(R.string.clear_notes_list_text)
-//        incLayout.tvTopCategories.text = getText(R.string.clear_notes_list_text)
+
+        setPieOptions(expLayout.pieChart)
+        setPieOptions(incLayout.pieChart)
     }
 
     private fun setupClickListeners(
@@ -68,27 +65,21 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
         mVM.ldSetTimePeriod.observe(viewLifecycleOwner) {
             topSectionLayout.periodText.text = it
         }
-
         mVM.ldSetIncBalance.observe(viewLifecycleOwner) {
             topSectionLayout.tvIncomesValue.text = it
         }
-
         mVM.ldSetExpBalance.observe(viewLifecycleOwner) {
             topSectionLayout.tvExpensesValue.text = it
         }
-
         mVM.ldSetTotalBalance.observe(viewLifecycleOwner) {
             topSectionLayout.tvTotalBalanceValue.text = it
         }
-
         mVM.ldExpTopCategoriesText.observe(viewLifecycleOwner) {
             expLayout.tvTopCategories.text = it
         }
-
         mVM.ldIncTopCategoriesText.observe(viewLifecycleOwner) {
             incLayout.tvTopCategories.text = it
         }
-
         mVM.ldExpPieData.observe(viewLifecycleOwner) {
             val expensesPie = expLayout.pieChart
             expensesPie.data = it
@@ -102,7 +93,6 @@ class DataBoardFragment : Fragment(R.layout.fragment_databoard) {
                 expLayout.imageCross.visibility = View.VISIBLE
             }
         }
-
         mVM.ldIncPieData.observe(viewLifecycleOwner) {
             val incomesPie = incLayout.pieChart
             incomesPie.data = it

@@ -4,21 +4,18 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.coin.R
 import com.example.coin.data.Note
 import com.example.coin.repository.room.NoteRepository
 import com.example.coin.repository.sharedprefs.spGetCurrencyName
 import com.example.coin.repository.sharedprefs.spGetMonth
 import com.example.coin.repository.sharedprefs.spGetYear
-import com.example.coin.usecase.UpdatePieChartUseCase
+import com.example.coin.usecase.getTimeBoundariesUseCase
+import com.example.coin.usecase.updatePieChartSectionData
 import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.data.PieDataSet
-import com.github.mikephil.charting.data.PieEntry
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.time.LocalDate
 import javax.inject.Inject
 
 @HiltViewModel
@@ -59,34 +56,43 @@ class DataBoardViewModel @Inject constructor(
 
         val month = spGetMonth(mApp)
         val year = spGetYear(mApp)
+        val (epochDayStartPeriod, epochDayEndPeriod) = getTimeBoundariesUseCase(month, year)
+        setPeriodText(month, year)
 
-        val (epochDayStartPeriod, epochDayEndPeriod) = getTimeBoundaries(month, year)
-
-        val incomesNotes = notes?.filter {
-            it.isIncomes == true &&
-                    it.epochDay!! in epochDayStartPeriod until epochDayEndPeriod
-        }
-        val expensesNotes = notes?.filter {
-            it.isIncomes == false &&
-                    it.epochDay!! in epochDayStartPeriod until epochDayEndPeriod
-        }
 
         CoroutineScope(Dispatchers.Main).launch {
-            setPeriodText(month, year)
-            setBalances(incomesNotes, expensesNotes)
+            val incomesNotes = notes?.filter {
+                it.isIncomes == true &&
+                        it.epochDay!! in epochDayStartPeriod until epochDayEndPeriod
+            }
+            val expensesNotes = notes?.filter {
+                it.isIncomes == false &&
+                        it.epochDay!! in epochDayStartPeriod until epochDayEndPeriod
+            }
 
-            val updatePieChartUseCase = UpdatePieChartUseCase(mApp)
+            CoroutineScope(Dispatchers.Main).launch {
+                setBalances(incomesNotes, expensesNotes)
+            }
 
-            val incomesPair = updatePieChartUseCase.updatePieChartSectionData(incomesNotes, true, 4)
-            val expensesPair = updatePieChartUseCase.updatePieChartSectionData(expensesNotes, false, 4)
+            var incomesPair: Pair<PieData, String>? = null
+            var expensesPair: Pair<PieData, String>? = null
 
-            _ldIncPieData.value = incomesPair.first
-            _ldIncTopCategoriesText.value = incomesPair.second
-            _ldExpPieData.value = expensesPair.first
-            _ldExpTopCategoriesText.value = expensesPair.second
+
+            val job = CoroutineScope(Dispatchers.Default).launch {
+                incomesPair = updatePieChartSectionData(incomesNotes, 4, mApp)
+                expensesPair = updatePieChartSectionData(expensesNotes, 4, mApp)
+            }
+
+            CoroutineScope(Dispatchers.Main).launch {
+                job.join()
+                _ldIncPieData.value = incomesPair!!.first
+                _ldIncTopCategoriesText.value = incomesPair!!.second
+                _ldExpPieData.value = expensesPair!!.first
+                _ldExpTopCategoriesText.value = expensesPair!!.second
+            }
         }
-    }
 
+    }
     private fun setPeriodText(month: Int, year: Int) {
         //month == 0 means that month is not chosen
         _ldSetTimePeriod.value = if (month == 0) {
@@ -96,22 +102,7 @@ class DataBoardViewModel @Inject constructor(
         }
     }
 
-    private fun getTimeBoundaries(month: Int, year: Int): Pair<Long, Long> {
-        //spGetMonth == 0 means that month has not been chosen
-        return if (month == 0) {
-            LocalDate.of(year, 1, 1).toEpochDay() to
-                    LocalDate.of(year + 1, 1, 1).toEpochDay()
-        } else {
-            //spGetMonth == 12 means december, and month + 1 will means year + 1 fnd january
-            if (month == 12) {
-                LocalDate.of(year, month, 1).toEpochDay() to
-                        LocalDate.of(year + 1, 1, 1).toEpochDay()
-            } else {
-                LocalDate.of(year, month, 1).toEpochDay() to
-                        LocalDate.of(year, month + 1, 1).toEpochDay()
-            }
-        }
-    }
+
 
     private fun setBalances(incomesNotes: List<Note>?, expensesNotes: List<Note>?) {
         var incomesBalance = 0f

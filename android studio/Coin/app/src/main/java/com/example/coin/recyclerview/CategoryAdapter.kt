@@ -12,6 +12,9 @@ import com.example.coin.data.Category
 import com.example.coin.data.Note
 import com.example.coin.databinding.FragmentAddNoteBinding
 import com.example.coin.databinding.RvCategoryBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class CategoryAdapter(private val listener: ClickListener) : RecyclerView.Adapter<CategoryAdapter.CategoryHolder>() {
 
@@ -60,9 +63,11 @@ class CategoryAdapter(private val listener: ClickListener) : RecyclerView.Adapte
     }
 
     fun addCategories(categories: List<Category>) {
-        categoryArray.clear()
-        categoryArray.addAll(categories.reversed())
-        notifyDataSetChanged()
+        CoroutineScope(Dispatchers.Main).launch {
+            categoryArray.clear()
+            categoryArray.addAll(categories.reversed())
+            notifyDataSetChanged()
+        }
     }
 
     interface ClickListener {

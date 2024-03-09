@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -24,10 +23,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/incomes_or_expenses" />
+                android:text="@string/expenses_by_category" />
 
             <include
-                android:id="@+id/inc_pie_section"
+                android:id="@+id/exp_layout"
                 layout="@layout/layout_vertical_pie_chart_section" />
 
             <TextView
@@ -35,10 +34,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/incomes_or_expenses" />
+                android:text="@string/incomes_by_category" />
 
             <include
-                android:id="@+id/exp_pie_section"
+                android:id="@+id/inc_layout"
                 layout="@layout/layout_vertical_pie_chart_section" />
 
         </LinearLayout>
