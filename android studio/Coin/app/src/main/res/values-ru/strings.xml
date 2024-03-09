@@ -13,7 +13,7 @@
     <string name="expenses_by_category">Траты по категориям</string>
     <string name="incomes_by_category">Заработки по категориям</string>
     <string name="amount">Сумма</string>
-    <string name="clear_notes_list_text">Записи\nеще\nне\nбыли\nдобавлены</string>
+    <string name="clear_notes_list_text">Записи еще не были добавлены</string>
     <string name="add">Добавить</string>
     <string name="today">Сегодня</string>
     <string name="date">Дата</string>

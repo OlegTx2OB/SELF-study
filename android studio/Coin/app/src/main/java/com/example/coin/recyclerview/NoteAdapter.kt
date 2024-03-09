@@ -73,8 +73,8 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
         CoroutineScope(Dispatchers.IO).launch {
             noteArray.clear()
             noteArray.addAll(notes.reversed())
+            notifyDataSetChanged()
         }
-        notifyDataSetChanged()
     }
 
 }

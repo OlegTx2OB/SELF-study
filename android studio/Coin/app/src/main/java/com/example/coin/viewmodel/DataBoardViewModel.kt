@@ -10,10 +10,14 @@ import com.example.coin.repository.room.NoteRepository
 import com.example.coin.repository.sharedprefs.spGetCurrencyName
 import com.example.coin.repository.sharedprefs.spGetMonth
 import com.example.coin.repository.sharedprefs.spGetYear
+import com.example.coin.usecase.UpdatePieChartUseCase
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import javax.inject.Inject
 
@@ -67,11 +71,20 @@ class DataBoardViewModel @Inject constructor(
                     it.epochDay!! in epochDayStartPeriod until epochDayEndPeriod
         }
 
-        setPeriodText(month, year)
-        setBalances(incomesNotes, expensesNotes)
+        CoroutineScope(Dispatchers.Main).launch {
+            setPeriodText(month, year)
+            setBalances(incomesNotes, expensesNotes)
 
-        updatePieChart(incomesNotes, true)
-        updatePieChart(expensesNotes, false)
+            val updatePieChartUseCase = UpdatePieChartUseCase(mApp)
+
+            val incomesPair = updatePieChartUseCase.updatePieChartSectionData(incomesNotes, true, 4)
+            val expensesPair = updatePieChartUseCase.updatePieChartSectionData(expensesNotes, false, 4)
+
+            _ldIncPieData.value = incomesPair.first
+            _ldIncTopCategoriesText.value = incomesPair.second
+            _ldExpPieData.value = expensesPair.first
+            _ldExpTopCategoriesText.value = expensesPair.second
+        }
     }
 
     private fun setPeriodText(month: Int, year: Int) {
@@ -113,87 +126,6 @@ class DataBoardViewModel @Inject constructor(
         }
         _ldSetTotalBalance.value =
             (incomesBalance - expensesBalance).toString() + spGetCurrencyName(mApp)
-    }
-
-    private fun updatePieChart(notes: List<Note>?, isIncomes: Boolean) {
-        val pieDataSet = PieDataSet(listOf(), "pie")
-        pieDataSet.setDrawValues(false)
-
-        if (notes == null) {
-            if (isIncomes) _ldIncPieData.value = PieData(pieDataSet)
-            else _ldExpPieData.value = PieData(pieDataSet)
-        } else {
-
-            //creating Map<String, Pair<Float, Int>>, where String is Category name, Float is total sum of this category and Int is color name of background of this category
-            val totalAmountMap = calculateTotalAmount(notes)
-            //converting map into the list and sorting by descending by total sum
-            val sortedTopCategoriesPairs =
-                totalAmountMap.toList().sortedByDescending { it.second.first }
-
-            //set colorArray with background colors of top categories
-            val colorsList = mutableListOf<Int>()
-            for (i in 0 until minOf(sortedTopCategoriesPairs.size, 4)) {
-                colorsList.add(sortedTopCategoriesPairs[i].second.second)
-            }
-            colorsList.add(mApp.getColor(R.color.transparent))
-
-            pieDataSet.colors = colorsList
-
-            //creating values which will be show in pie chart and description text with sums and category names
-            val (entries, descriptionStr) = createPieChartEntries(sortedTopCategoriesPairs)
-            pieDataSet.values = entries
-            if (isIncomes) {
-                _ldIncPieData.value = PieData(pieDataSet)
-
-                if (descriptionStr != "") {
-                    _ldIncTopCategoriesText.value = descriptionStr
-                } else {
-                    _ldIncTopCategoriesText.value = mApp.getString(R.string.clear_notes_list_text)
-                }
-            } else {
-                _ldExpPieData.value = PieData(pieDataSet)
-
-                if (descriptionStr != "") {
-                    _ldExpTopCategoriesText.value = descriptionStr
-                } else {
-                    _ldExpTopCategoriesText.value = mApp.getString(R.string.clear_notes_list_text)
-                }
-            }
-        }
-    }
-
-    private fun calculateTotalAmount(notes: List<Note>?): Map<String, Pair<Float, Int>> {
-        val totalAmountMap = hashMapOf<String, Pair<Float, Int>>()
-        for (note in notes!!) {
-            val currentTotalPrice = totalAmountMap.getOrDefault(note.categoryName, 0f to 0)
-            totalAmountMap[note.categoryName!!] =
-                (currentTotalPrice.first + note.amount!!) to note.color!!
-        }
-        return totalAmountMap
-    }
-
-    private fun createPieChartEntries(pairs: List<Pair<String, Pair<Float, Int>>>): Pair<List<PieEntry>, String> {
-        val entries = mutableListOf<PieEntry>()
-        var descriptionStr = ""
-        if (pairs.isNotEmpty()) {
-            for (i in 0 until minOf(pairs.size, 4)) {
-                entries.add(PieEntry(pairs[i].second.first, ""))
-                if (descriptionStr == "") {
-                    descriptionStr = "${pairs[i].second.first} - ${pairs[i].first}"
-                } else {
-                    descriptionStr += "\n\n${pairs[i].second.first} - ${pairs[i].first}"
-                }
-            }
-            if (pairs.size > 4) {
-                var sum = 0f
-                for (i in 3 until pairs.size) {
-                    sum += pairs[i].second.first
-                }
-                entries.add(PieEntry(sum, ""))
-                descriptionStr += "\n\n$sum - other"
-            }
-        }
-        return Pair(entries, descriptionStr)
     }
 
 }
