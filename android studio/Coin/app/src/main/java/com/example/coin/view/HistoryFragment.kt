@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coin.R
 import com.example.coin.databinding.FragmentHistoryBinding
+import com.example.coin.recyclerview.CategoryAdapter
 import com.example.coin.recyclerview.NoteAdapter
 import com.example.coin.recyclerview.SwipeToDeleteCallback
 import com.example.coin.repository.room.NoteRepository

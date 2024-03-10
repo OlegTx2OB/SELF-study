@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coin.R
+import kotlin.math.roundToInt
 
 
 abstract class SwipeToDeleteCallback(context: Context) :
@@ -74,8 +75,8 @@ abstract class SwipeToDeleteCallback(context: Context) :
         // Calculate position of delete icon
         val deleteIconTop = itemView.top + (itemHeight - intrinsicHeight) / 2
         val deleteIconMargin = (itemHeight - intrinsicHeight) / 2
-        val deleteIconLeft = itemView.right - deleteIconMargin - intrinsicWidth
-        val deleteIconRight = itemView.right - deleteIconMargin
+        val deleteIconLeft = (itemView.right - deleteIconMargin - 0.8 * intrinsicWidth).roundToInt()
+        val deleteIconRight = (itemView.right - deleteIconMargin + 0.2 * intrinsicWidth).roundToInt()
         val deleteIconBottom = deleteIconTop + intrinsicHeight
 
         // Draw the delete icon

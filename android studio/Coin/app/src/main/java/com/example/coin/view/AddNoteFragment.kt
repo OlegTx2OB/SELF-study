@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coin.COLOR_ATTR_PRESSED_CARD
 import com.example.coin.COLOR_ATTR_UNPRESSED_CARD
@@ -21,9 +22,14 @@ import com.example.coin.R
 import com.example.coin.databinding.FragmentAddNoteBinding
 import com.example.coin.paintCardViews
 import com.example.coin.recyclerview.CategoryAdapter
+import com.example.coin.recyclerview.NoteAdapter
+import com.example.coin.recyclerview.SwipeToDeleteCallback
 import com.example.coin.repository.room.CategoryRepository
 import com.example.coin.viewmodel.AddNoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import javax.inject.Inject
 
@@ -34,7 +40,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), CategoryAdapter.Cl
 
     private val mVM: AddNoteViewModel by viewModels()
     private val mAdapter: CategoryAdapter = CategoryAdapter(this)
-    private lateinit var mRecyclerView: RecyclerView
+    private var mRecyclerView: RecyclerView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -43,7 +49,6 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), CategoryAdapter.Cl
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_note, container, false)
 
         mRecyclerView = binding.cardCategories.recyclerView
-        val x = layoutInflater.inflate(R.layout.dialog_fragment_choose_period, null)
 
         setViewsPresets(binding)
         setupClickListeners(binding, mVM)
@@ -53,7 +58,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), CategoryAdapter.Cl
 
     override fun onClickCategory(view: CardView) {
         paintCardViews(
-            mRecyclerView.children.toList() as List<CardView>,
+            mRecyclerView!!.children.toList() as List<CardView>,
             COLOR_ATTR_UNPRESSED_CARD,
             requireContext()
         )
@@ -65,7 +70,14 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), CategoryAdapter.Cl
         binding: FragmentAddNoteBinding,
         mVM: AddNoteViewModel,
     ) {
-
+        val swipeHandler = object : SwipeToDeleteCallback(requireContext()) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val adapter = binding.cardCategories.recyclerView.adapter as CategoryAdapter
+                adapter.removeAt(viewHolder.adapterPosition)
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeHandler)
+        itemTouchHelper.attachToRecyclerView(binding.cardCategories.recyclerView)
 
         binding.cardviewIncExp.cardviewExpenses.setOnClickListener {
             mVM.onCardViewIncExp(false)
@@ -137,12 +149,18 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), CategoryAdapter.Cl
 
     private fun setupObservers(binding: FragmentAddNoteBinding, mVM: AddNoteViewModel) {
 
+        mAdapter.ldDeleteCategoryFromRoom.observe(viewLifecycleOwner) {
+            CoroutineScope(Dispatchers.IO).launch {
+                mCategoryRepository.deleteCategory(it)
+            }
+        }
+
         mCategoryRepository.getAllCategories().observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
-                mRecyclerView.visibility = View.VISIBLE
+                mRecyclerView!!.visibility = View.VISIBLE
                 binding.cardCategories.tvCategoriesListClear.visibility = View.GONE
             } else {
-                mRecyclerView.visibility = View.GONE
+                mRecyclerView!!.visibility = View.GONE
                 binding.cardCategories.tvCategoriesListClear.visibility = View.VISIBLE
             }
             mAdapter.addCategories(it)
@@ -158,8 +176,8 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note), CategoryAdapter.Cl
     }
 
     private fun setViewsPresets(binding: FragmentAddNoteBinding) {
-        mRecyclerView.layoutManager = GridLayoutManager(context, 4)
-        mRecyclerView.adapter = mAdapter
+        mRecyclerView!!.layoutManager = GridLayoutManager(context, 4)
+        mRecyclerView!!.adapter = mAdapter
         binding.cardviewAmount.textInputLayout.hint = getString(R.string.amount)
         binding.cardviewAmount.textInputEditText.inputType =
             InputType.TYPE_NUMBER_FLAG_DECIMAL or InputType.TYPE_CLASS_NUMBER
